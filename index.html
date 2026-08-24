@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سوق الجزائر</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f4f7f5;
+  color:#222;
+  padding-bottom:80px;
+}
+
+header{
+  background:linear-gradient(135deg,#087f5b,#0ca678);
+  color:white;
+  padding:22px 18px 28px;
+  border-radius:0 0 25px 25px;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.subtitle{
+  font-size:14px;
+  opacity:.9;
+}
+
+.search{
+  margin-top:18px;
+  background:white;
+  border-radius:14px;
+  padding:12px 15px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.search input{
+  border:0;
+  outline:0;
+  width:100%;
+  font-size:15px;
+  background:transparent;
+}
+
+.container{
+  padding:18px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0 14px;
+}
+
+.section-title h2{
+  font-size:20px;
+}
+
+.section-title span{
+  color:#087f5b;
+  font-size:13px;
+}
+
+select{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  background:white;
+  font-size:15px;
+  outline:none;
+  margin-bottom:20px;
+}
+
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:5px;
+}
+
+.category{
+  min-width:100px;
+  background:white;
+  border-radius:15px;
+  padding:15px 10px;
+  text-align:center;
+  box-shadow:0 3px 12px #00000010;
+}
+
+.category .icon{
+  font-size:30px;
+  margin-bottom:7px;
+}
+
+.category p{
+  font-size:14px;
+  font-weight:bold;
+}
+
+.prices{
+  display:grid;
+  gap:12px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 3px 12px #0000000d;
+}
+
+.product{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.product-icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:#e8f7f1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+}
+
+.product-name{
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.update{
+  color:#888;
+  font-size:11px;
+}
+
+.price{
+  text-align:left;
+}
+
+.price strong{
+  display:block;
+  color:#087f5b;
+  font-size:19px;
+}
+
+.price small{
+  color:#777;
+}
+
+.info{
+  background:#fff8e1;
+  border-radius:15px;
+  padding:15px;
+  margin-top:20px;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  right:0;
+  left:0;
+  height:70px;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  box-shadow:0 -3px 15px #00000015;
+  z-index:10;
+}
+
+.nav-item{
+  text-align:center;
+  color:#777;
+  font-size:12px;
+}
+
+.nav-item .nav-icon{
+  font-size:23px;
+  margin-bottom:4px;
+}
+
+.nav-item.active{
+  color:#087f5b;
+  font-weight:bold;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#777;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🇩🇿 سوق الجزائر</div>
+  <div class="subtitle">أسعار الخضر والفواكه في ولايات الجزائر</div>
+
+  <div class="search">
+    🔎
+    <input id="searchInput" type="text" placeholder="ابحث عن منتج...">
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section-title">
+    <h2>📍 اختر الولاية</h2>
+  </div>
+
+  <select id="wilaya">
+    <option>سطيف</option>
+    <option>الجزائر</option>
+    <option>وهران</option>
+    <option>قسنطينة</option>
+    <option>باتنة</option>
+    <option>برج بوعريريج</option>
+    <option>بسكرة</option>
+    <option>عنابة</option>
+    <option>بجاية</option>
+    <option>تيزي وزو</option>
+    <option>المسيلة</option>
+    <option>الجلفة</option>
+    <option>البويرة</option>
+    <option>البليدة</option>
+    <option>الوادي</option>
+    <option>أدرار</option>
+  </select>
+
+  <div class="section-title">
+    <h2>🛒 الأقسام</h2>
+  </div>
+
+  <div class="categories">
+    <div class="category">
+      <div class="icon">🥔</div>
+      <p>خضر</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">🍎</div>
+      <p>فواكه</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">🌿</div>
+      <p>أعشاب</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">🧺</div>
+      <p>الكل</p>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:25px">
+    <h2>💰 أسعار اليوم</h2>
+    <span>حسب الولاية</span>
+  </div>
+
+  <div class="prices" id="prices">
+
+    <div class="card" data-name="طماطم">
+      <div class="product">
+        <div class="product-icon">🍅</div>
+        <div>
+          <div class="product-name">طماطم</div>
+          <div class="update">آخر تحديث: اليوم</div>
+        </div>
+      </div>
+
+      <div class="price">
+        <strong>80 دج</strong>
+        <small>/ كغ</small>
+      </div>
+    </div>
+
+    <div class="card" data-name="بطاطا">
+      <div class="product">
+        <div class="product-icon">🥔</div>
+        <div>
+          <div class="product-name">بطاطا</div>
+          <div class="update">آخر تحديث: اليوم</div>
+        </div>
+      </div>
+
+      <div class="price">
+        <strong>70 دج</strong>
+        <small>/ كغ</small>
+      </div>
+    </div>
+
+    <div class="card" data-name="فلفل">
+      <div class="product">
+        <div class="product-icon">🫑</div>
+        <div>
+          <div class="product-name">فلفل</div>
+          <div class="update">آخر تحديث: اليوم</div>
+        </div>
+      </div>
+
+      <div class="price">
+        <strong>120 دج</strong>
+        <small>/ كغ</small>
+      </div>
+    </div>
+
+    <div class="card" data-name="خيار">
+      <div class="product">
+        <div class="product-icon">🥒</div>
+        <div>
+          <div class="product-name">خيار</div>
+          <div class="update">آخر تحديث: اليوم</div>
+        </div>
+      </div>
+
+      <div class="price">
+        <strong>90 دج</strong>
+        <small>/ كغ</small>
+      </div>
+    </div>
+
+    <div class="card" data-name="تفاح">
+      <div class="product">
+        <div class="product-icon">🍎</div>
+        <div>
+          <div class="product-name">تفاح</div>
+          <div class="update">آخر تحديث: اليوم</div>
+        </div>
+      </div>
+
+      <div class="price">
+        <strong>250 دج</strong>
+        <small>/ كغ</small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="empty" id="empty">
+    لم نجد هذا المنتج 🔎
+  </div>
+
+  <div class="info">
+    ℹ️ <strong>ملاحظة:</strong><br>
+    الأسعار المعروضة تجريبية في هذه المرحلة، وسيتم لاحقًا ربط التطبيق
+    بقاعدة بيانات حقيقية وتحديث الأسعار حسب كل ولاية ومصدر السعر.
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+
+  <div class="nav-item active">
+    <div class="nav-icon">🏠</div>
+    الرئيسية
+  </div>
+
+  <div class="nav-item">
+    <div class="nav-icon">📊</div>
+    الأسعار
+  </div>
+
+  <div class="nav-item">
+    <div class="nav-icon">➕</div>
+    إضافة
+  </div>
+
+  <div class="nav-item">
+    <div class="nav-icon">👤</div>
+    حسابي
+  </div>
+
+</div>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+const empty = document.getElementById("empty");
+
+searchInput.addEventListener("input", function(){
+
+  const text = this.value.trim().toLowerCase();
+  let found = false;
+
+  cards.forEach(card => {
+
+    const name = card.dataset.name.toLowerCase();
+
+    if(name.includes(text)){
+      card.style.display = "flex";
+      found = true;
+    }else{
+      card.style.display = "none";
+    }
+
+  });
+
+  empty.style.display = found ? "none" : "block";
+
+});
+
+document.getElementById("wilaya").addEventListener("change", function(){
+
+  alert("تم اختيار ولاية " + this.value);
+
+});
+
+</script>
+
+</body>
+</html>
