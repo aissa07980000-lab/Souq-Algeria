@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سوق الجزائر</title>
+<title>السوق والصندوق 🇩🇿</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -103,6 +102,7 @@ input{
   padding:15px 10px;
   text-align:center;
   box-shadow:0 3px 12px #00000010;
+  cursor:pointer;
 }
 
 .category .icon{
@@ -217,8 +217,6 @@ input{
   font-weight:bold;
 }
 
-/* نافذة إضافة السعر */
-
 .modal{
   position:fixed;
   inset:0;
@@ -299,6 +297,19 @@ input{
   display:none;
 }
 
+.filter-box{
+  background:white;
+  padding:15px;
+  border-radius:16px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px #0000000d;
+}
+
+.filter-title{
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
 </style>
 </head>
 
@@ -306,7 +317,7 @@ input{
 
 <header>
 
-<div class="logo">🇩🇿 سوق الجزائر</div>
+<div class="logo">🇩🇿 السوق والصندوق</div>
 
 <div class="subtitle">
 أسعار الخضر والفواكه في جميع ولايات الجزائر
@@ -319,7 +330,6 @@ input{
 
 </header>
 
-
 <div class="container">
 
 <div class="section-title">
@@ -327,7 +337,6 @@ input{
 </div>
 
 <select id="wilaya">
-
 <option>سطيف</option>
 <option>الجزائر</option>
 <option>وهران</option>
@@ -344,218 +353,58 @@ input{
 <option>البليدة</option>
 <option>الوادي</option>
 <option>أدرار</option>
-
 </select>
-
 
 <div class="section-title">
 <h2>🛒 الأقسام</h2>
 </div>
 
-
 <div class="categories">
 
-<div class="category">
+<div class="category" data-category="خضر">
 <div class="icon">🥔</div>
 <p>خضر</p>
 </div>
 
-<div class="category">
+<div class="category" data-category="فواكه">
 <div class="icon">🍎</div>
 <p>فواكه</p>
 </div>
 
-<div class="category">
+<div class="category" data-category="أعشاب">
 <div class="icon">🌿</div>
 <p>أعشاب</p>
 </div>
 
-<div class="category">
+<div class="category" data-category="الكل">
 <div class="icon">🧺</div>
 <p>الكل</p>
 </div>
 
 </div>
 
-
 <div class="section-title" style="margin-top:25px">
-
 <h2>💰 أسعار اليوم</h2>
+<span id="selectedWilaya">سطيف</span>
+</div>
 
-<span>حسب الولاية</span>
+<div class="filter-box">
+
+<div class="filter-title">
+🏪 اختر السوق
+</div>
+
+<select id="marketFilter">
+<option value="all">كل الأسواق</option>
+</select>
 
 </div>
 
-
-<div class="prices" id="prices">
-
-
-<div class="card" data-name="طماطم">
-
-<div class="product">
-
-<div class="product-icon">🍅</div>
-
-<div>
-
-<div class="product-name">
-طماطم
-</div>
-
-<div class="update">
-آخر تحديث: اليوم
-</div>
-
-</div>
-
-</div>
-
-<div class="price">
-
-<strong>80 دج</strong>
-
-<small>/ كغ</small>
-
-</div>
-
-</div>
-
-
-
-<div class="card" data-name="بطاطا">
-
-<div class="product">
-
-<div class="product-icon">🥔</div>
-
-<div>
-
-<div class="product-name">
-بطاطا
-</div>
-
-<div class="update">
-آخر تحديث: اليوم
-</div>
-
-</div>
-
-</div>
-
-<div class="price">
-
-<strong>70 دج</strong>
-
-<small>/ كغ</small>
-
-</div>
-
-</div>
-
-
-
-<div class="card" data-name="فلفل">
-
-<div class="product">
-
-<div class="product-icon">🫑</div>
-
-<div>
-
-<div class="product-name">
-فلفل
-</div>
-
-<div class="update">
-آخر تحديث: اليوم
-</div>
-
-</div>
-
-</div>
-
-<div class="price">
-
-<strong>120 دج</strong>
-
-<small>/ كغ</small>
-
-</div>
-
-</div>
-
-
-
-<div class="card" data-name="خيار">
-
-<div class="product">
-
-<div class="product-icon">🥒</div>
-
-<div>
-
-<div class="product-name">
-خيار
-</div>
-
-<div class="update">
-آخر تحديث: اليوم
-</div>
-
-</div>
-
-</div>
-
-<div class="price">
-
-<strong>90 دج</strong>
-
-<small>/ كغ</small>
-
-</div>
-
-</div>
-
-
-
-<div class="card" data-name="تفاح">
-
-<div class="product">
-
-<div class="product-icon">🍎</div>
-
-<div>
-
-<div class="product-name">
-تفاح
-</div>
-
-<div class="update">
-آخر تحديث: اليوم
-</div>
-
-</div>
-
-</div>
-
-<div class="price">
-
-<strong>250 دج</strong>
-
-<small>/ كغ</small>
-
-</div>
-
-</div>
-
-
-</div>
-
+<div class="prices" id="prices"></div>
 
 <div class="empty" id="empty">
 لم نجد هذا المنتج 🔎
 </div>
-
 
 <div class="info">
 
@@ -563,39 +412,29 @@ input{
 
 <br>
 
-الأسعار المعروضة تجريبية في هذه المرحلة.
+الأسعار المعروضة يتم حفظها على هذا الجهاز في هذه المرحلة.
 سيتم لاحقًا ربط الموقع بقاعدة بيانات حقيقية
-وتحديث الأسعار حسب كل ولاية وسوق ومصدر السعر.
+حتى تصبح الأسعار مشتركة بين جميع المستخدمين.
 
 </div>
 
 </div>
-
-
-<!-- نافذة إضافة السعر -->
 
 <div class="modal" id="addModal">
 
 <div class="modal-content">
 
-
 <div class="modal-title">
 
 <h2>➕ إضافة سعر جديد</h2>
 
-<button class="close" id="closeModal">
-✕
-</button>
+<button class="close" id="closeModal">✕</button>
 
 </div>
 
-
-<label class="form-label">
-📍 الولاية
-</label>
+<label class="form-label">📍 الولاية</label>
 
 <select id="addWilaya">
-
 <option>سطيف</option>
 <option>الجزائر</option>
 <option>وهران</option>
@@ -612,191 +451,273 @@ input{
 <option>البليدة</option>
 <option>الوادي</option>
 <option>أدرار</option>
-
 </select>
 
+<label class="form-label">🏪 اسم السوق</label>
 
-<label class="form-label">
-🏪 اسم السوق
-</label>
+<input id="market" type="text" placeholder="مثال: سوق الخضر والفواكه">
 
-<input
-id="market"
-type="text"
-placeholder="مثال: سوق الخضر والفواكه">
+<label class="form-label">🥬 اسم المنتج</label>
 
+<input id="product" type="text" placeholder="مثال: طماطم">
 
-<label class="form-label">
-🥬 اسم المنتج
-</label>
+<label class="form-label">💰 السعر</label>
 
-<input
-id="product"
-type="text"
-placeholder="مثال: طماطم">
+<input id="priceInput" type="number" min="0" placeholder="مثال: 80">
 
-
-<label class="form-label">
-💰 السعر
-</label>
-
-<input
-id="priceInput"
-type="number"
-placeholder="مثال: 80">
-
-
-<label class="form-label">
-⚖️ الوحدة
-</label>
+<label class="form-label">⚖️ الوحدة</label>
 
 <select id="unit">
-
-<option value="كغ">
-كغ
-</option>
-
-<option value="قنطار">
-قنطار
-</option>
-
-<option value="طن">
-طن
-</option>
-
+<option value="كغ">كغ</option>
+<option value="قنطار">قنطار</option>
+<option value="طن">طن</option>
 </select>
-
 
 <button class="save-btn" id="savePrice">
 💾 حفظ السعر
 </button>
 
-
 <button class="cancel-btn" id="cancelModal">
 إلغاء
 </button>
 
-
 </div>
-
 </div>
-
-
-<!-- القائمة السفلية -->
 
 <div class="bottom-nav">
 
-
-<div class="nav-item active">
-
-<div class="nav-icon">
-🏠
-</div>
-
+<div class="nav-item active" id="homeButton">
+<div class="nav-icon">🏠</div>
 الرئيسية
-
 </div>
 
-
-<div class="nav-item">
-
-<div class="nav-icon">
-📊
-</div>
-
+<div class="nav-item" id="pricesButton">
+<div class="nav-icon">📊</div>
 الأسعار
-
 </div>
-
 
 <div class="nav-item" id="addButton">
-
-<div class="nav-icon">
-➕
-</div>
-
+<div class="nav-icon">➕</div>
 إضافة
-
 </div>
 
-
-<div class="nav-item">
-
-<div class="nav-icon">
-👤
-</div>
-
+<div class="nav-item" id="accountButton">
+<div class="nav-icon">👤</div>
 حسابي
-
 </div>
 
-
 </div>
-
 
 <script>
 
-/* البحث */
+const defaultPrices = [
+{
+wilaya:"سطيف",
+market:"سوق الخضر والفواكه",
+product:"طماطم",
+price:80,
+unit:"كغ",
+category:"خضر",
+icon:"🍅"
+},
+{
+wilaya:"سطيف",
+market:"سوق الخضر والفواكه",
+product:"بطاطا",
+price:70,
+unit:"كغ",
+category:"خضر",
+icon:"🥔"
+},
+{
+wilaya:"سطيف",
+market:"سوق الخضر والفواكه",
+product:"فلفل",
+price:120,
+unit:"كغ",
+category:"خضر",
+icon:"🫑"
+},
+{
+wilaya:"سطيف",
+market:"سوق الخضر والفواكه",
+product:"خيار",
+price:90,
+unit:"كغ",
+category:"خضر",
+icon:"🥒"
+},
+{
+wilaya:"سطيف",
+market:"سوق الخضر والفواكه",
+product:"تفاح",
+price:250,
+unit:"كغ",
+category:"فواكه",
+icon:"🍎"
+}
+];
 
-const searchInput =
-document.getElementById("searchInput");
+let savedPrices =
+JSON.parse(localStorage.getItem("souqPrices")) || defaultPrices;
 
-const prices =
-document.getElementById("prices");
+let selectedCategory = "الكل";
 
-const empty =
-document.getElementById("empty");
+const prices = document.getElementById("prices");
+const empty = document.getElementById("empty");
+const searchInput = document.getElementById("searchInput");
+const wilayaSelect = document.getElementById("wilaya");
+const marketFilter = document.getElementById("marketFilter");
+const selectedWilaya = document.getElementById("selectedWilaya");
 
+function saveData(){
 
-searchInput.addEventListener("input",function(){
-
-const text =
-this.value.trim().toLowerCase();
-
-const cards =
-document.querySelectorAll(".card");
-
-let found=false;
-
-
-cards.forEach(card=>{
-
-const name =
-card.dataset.name.toLowerCase();
-
-if(name.includes(text)){
-
-card.style.display="flex";
-
-found=true;
-
-}else{
-
-card.style.display="none";
+localStorage.setItem(
+"souqPrices",
+JSON.stringify(savedPrices)
+);
 
 }
 
+function updateMarkets(){
+
+const wilaya = wilayaSelect.value;
+
+const markets = [
+...new Set(
+savedPrices
+.filter(item => item.wilaya === wilaya)
+.map(item => item.market)
+)
+];
+
+marketFilter.innerHTML =
+'<option value="all">كل الأسواق</option>';
+
+markets.forEach(market => {
+
+const option = document.createElement("option");
+
+option.value = market;
+option.textContent = market;
+
+marketFilter.appendChild(option);
+
 });
 
+}
+
+function renderPrices(){
+
+const wilaya = wilayaSelect.value;
+const market = marketFilter.value;
+const search = searchInput.value.trim().toLowerCase();
+
+prices.innerHTML = "";
+
+let filtered = savedPrices.filter(item => {
+
+const sameWilaya =
+item.wilaya === wilaya;
+
+const sameMarket =
+market === "all" || item.market === market;
+
+const sameSearch =
+item.product.toLowerCase().includes(search);
+
+const sameCategory =
+selectedCategory === "الكل" ||
+item.category === selectedCategory;
+
+return sameWilaya &&
+sameMarket &&
+sameSearch &&
+sameCategory;
+
+});
+
+filtered.forEach(item => {
+
+const card = document.createElement("div");
+
+card.className = "card";
+
+card.innerHTML = `
+
+<div class="product">
+
+<div class="product-icon">
+${item.icon || "🥬"}
+</div>
+
+<div>
+
+<div class="product-name">
+${item.product}
+</div>
+
+<div class="update">
+آخر تحديث: ${item.time || "اليوم"}
+</div>
+
+<div class="market-name">
+🏪 ${item.market}
+</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong>
+${item.price} دج
+</strong>
+
+<small>
+/ ${item.unit}
+</small>
+
+</div>
+
+`;
+
+prices.appendChild(card);
+
+});
 
 empty.style.display =
-found ? "none" : "block";
+filtered.length === 0 ? "block" : "none";
+
+selectedWilaya.textContent =
+wilaya;
+
+}
+
+wilayaSelect.addEventListener("change",function(){
+
+updateMarkets();
+renderPrices();
 
 });
 
+marketFilter.addEventListener("change",renderPrices);
 
-/* اختيار الولاية */
+searchInput.addEventListener("input",renderPrices);
 
-document
-.getElementById("wilaya")
-.addEventListener("change",function(){
+document.querySelectorAll(".category").forEach(category => {
 
-alert("تم اختيار ولاية "+this.value);
+category.addEventListener("click",function(){
+
+selectedCategory =
+this.dataset.category;
+
+renderPrices();
 
 });
 
-
-/* فتح نافذة إضافة السعر */
+});
 
 const addButton =
 document.getElementById("addButton");
@@ -810,15 +731,11 @@ document.getElementById("closeModal");
 const cancelModal =
 document.getElementById("cancelModal");
 
-
 addButton.addEventListener("click",function(){
 
 addModal.style.display="flex";
 
 });
-
-
-/* إغلاق */
 
 closeModal.addEventListener("click",function(){
 
@@ -826,19 +743,15 @@ addModal.style.display="none";
 
 });
 
-
 cancelModal.addEventListener("click",function(){
 
 addModal.style.display="none";
 
 });
 
-
-/* الضغط خارج النافذة */
-
 addModal.addEventListener("click",function(e){
 
-if(e.target===addModal){
+if(e.target === addModal){
 
 addModal.style.display="none";
 
@@ -846,13 +759,9 @@ addModal.style.display="none";
 
 });
 
-
-/* حفظ السعر */
-
 document
 .getElementById("savePrice")
 .addEventListener("click",function(){
-
 
 const wilaya =
 document.getElementById("addWilaya").value;
@@ -869,81 +778,105 @@ document.getElementById("priceInput").value;
 const unit =
 document.getElementById("unit").value;
 
-
 if(!market || !product || !price){
 
-alert("⚠️ يرجى ملء اسم السوق والمنتج والسعر");
+alert("⚠️ يرجى ملء جميع المعلومات");
 
 return;
 
 }
 
+let category = "خضر";
+let icon = "🥬";
 
-const card =
-document.createElement("div");
+const fruitNames =
+["تفاح","برتقال","موز","عنب","فراولة","خوخ","رمان"];
 
-card.className="card";
+if(fruitNames.includes(product)){
 
-card.dataset.name=product;
+category = "فواكه";
+icon = "🍎";
 
+}
 
-card.innerHTML=`
+const now =
+new Date();
 
-<div class="product">
+const time =
+now.toLocaleDateString("ar-DZ") +
+" " +
+now.toLocaleTimeString("ar-DZ",{
+hour:"2-digit",
+minute:"2-digit"
+});
 
-<div class="product-icon">
-🥬
-</div>
+savedPrices.push({
 
-<div>
+wilaya:wilaya,
+market:market,
+product:product,
+price:Number(price),
+unit:unit,
+category:category,
+icon:icon,
+time:time
 
-<div class="product-name">
-${product}
-</div>
+});
 
-<div class="update">
-آخر تحديث: الآن - ${wilaya}
-</div>
+saveData();
 
-<div class="market-name">
-🏪 ${market}
-</div>
+wilayaSelect.value = wilaya;
 
-</div>
+updateMarkets();
 
-</div>
+marketFilter.value = market;
 
-<div class="price">
-
-<strong>
-${price} دج
-</strong>
-
-<small>
-/ ${unit}
-</small>
-
-</div>
-
-`;
-
-
-prices.prepend(card);
-
+renderPrices();
 
 addModal.style.display="none";
 
-
 document.getElementById("market").value="";
-
 document.getElementById("product").value="";
-
 document.getElementById("priceInput").value="";
-
 
 alert("✅ تم حفظ السعر بنجاح");
 
 });
+
+document
+.getElementById("pricesButton")
+.addEventListener("click",function(){
+
+document.querySelector(".section-title[style]").scrollIntoView({
+behavior:"smooth"
+});
+
+});
+
+document
+.getElementById("homeButton")
+.addEventListener("click",function(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+document
+.getElementById("accountButton")
+.addEventListener("click",function(){
+
+alert(
+"👤 الحساب\n\n" +
+"سيتم تطوير صفحة الحساب في المرحلة القادمة."
+);
+
+});
+
+updateMarkets();
+renderPrices();
 
 </script>
 
