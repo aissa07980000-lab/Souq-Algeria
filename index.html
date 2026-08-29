@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#198754">
-<title>السوق والصندوق 🇩🇿</title>
+
+<title>السوق والصندوق</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,52 +15,20 @@
     font-family:Arial,Tahoma,sans-serif;
 }
 
-:root{
-    --green:#198754;
-    --darkgreen:#126b43;
-    --lightgreen:#e9f7ef;
-    --red:#dc3545;
-    --orange:#f59f00;
-    --blue:#0d6efd;
-    --bg:#f5f7f8;
-    --card:#ffffff;
-    --text:#202124;
-    --muted:#6c757d;
-    --border:#e1e5e8;
-    --shadow:0 4px 18px rgba(0,0,0,.07);
-}
-
 body{
-    background:var(--bg);
-    color:var(--text);
-    min-height:100vh;
-}
-
-button,input,select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-    border:0;
-}
-
-.app{
-    max-width:700px;
-    margin:auto;
-    min-height:100vh;
-    background:var(--bg);
+    background:#f4f7f5;
+    color:#222;
     padding-bottom:85px;
 }
 
 /* HEADER */
 
 .header{
-    background:linear-gradient(135deg,var(--green),var(--darkgreen));
+    background:linear-gradient(135deg,#087f3f,#19a65b);
     color:white;
-    padding:20px 16px 24px;
-    border-radius:0 0 25px 25px;
-    box-shadow:var(--shadow);
+    padding:22px 16px 28px;
+    border-radius:0 0 28px 28px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
 .header-top{
@@ -69,310 +38,146 @@ button{
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
+    font-size:27px;
+    font-weight:bold;
 }
 
-.logo-icon{
-    width:48px;
-    height:48px;
-    background:white;
-    color:var(--green);
-    border-radius:15px;
+.header-icon{
+    background:rgba(255,255,255,.18);
+    width:42px;
+    height:42px;
+    border-radius:50%;
     display:flex;
+    align-items:center;
     justify-content:center;
-    align-items:center;
-    font-size:25px;
-}
-
-.logo h1{
     font-size:21px;
 }
 
-.logo small{
-    display:block;
-    margin-top:4px;
-    opacity:.85;
+.header p{
+    margin-top:8px;
+    font-size:14px;
+    opacity:.95;
 }
 
-.header-actions{
-    display:flex;
-    gap:8px;
-}
+/* CONTAINER */
 
-.icon-btn{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:rgba(255,255,255,.18);
-    color:white;
-    font-size:19px;
-}
-
-.search-box{
-    margin-top:18px;
-    background:white;
-    border-radius:14px;
-    padding:4px;
-    display:flex;
-}
-
-.search-box input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:12px;
-    background:transparent;
-}
-
-/* CONTENT */
-
-.content{
+.container{
+    width:100%;
+    max-width:650px;
+    margin:auto;
     padding:16px;
 }
+
+/* SEARCH */
+
+.search-box{
+    background:white;
+    padding:14px;
+    border-radius:18px;
+    margin-top:-5px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.search-input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+}
+
+.search-input:focus{
+    border-color:#159653;
+}
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    gap:9px;
+    margin-top:10px;
+}
+
+.filters select{
+    width:50%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:11px;
+    background:white;
+    font-size:14px;
+}
+
+/* TITLE */
 
 .section-title{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:18px 0 12px;
+    margin:22px 2px 12px;
 }
 
 .section-title h2{
-    font-size:19px;
+    font-size:20px;
 }
 
-.section-title button{
-    background:none;
-    color:var(--green);
+.section-title span{
     font-size:13px;
-}
-
-/* STATS */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-}
-
-.stat{
-    background:var(--card);
-    padding:14px 8px;
-    border-radius:16px;
-    box-shadow:var(--shadow);
-    text-align:center;
-}
-
-.stat .number{
-    font-size:21px;
-    font-weight:bold;
-    color:var(--green);
-}
-
-.stat small{
-    color:var(--muted);
-    font-size:11px;
-}
-
-/* FILTERS */
-
-.filters{
-    background:white;
-    padding:12px;
-    border-radius:17px;
-    box-shadow:var(--shadow);
-    margin-bottom:15px;
-}
-
-.filters-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-select,
-.text-input{
-    width:100%;
-    padding:11px;
-    border:1px solid var(--border);
-    border-radius:11px;
-    outline:none;
-    background:white;
-}
-
-select:focus,
-.text-input:focus{
-    border-color:var(--green);
+    color:#16864b;
 }
 
 /* PRICE CARD */
 
 .price-card{
-    background:var(--card);
-    border-radius:18px;
-    padding:15px;
-    margin-bottom:11px;
-    box-shadow:var(--shadow);
+    background:white;
+    padding:16px;
+    border-radius:17px;
+    margin-bottom:12px;
+    box-shadow:0 2px 9px rgba(0,0,0,.07);
 }
 
-.price-head{
+.price-row{
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .product{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.product-icon{
-    width:48px;
-    height:48px;
-    border-radius:14px;
-    background:var(--lightgreen);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-}
-
-.product h3{
-    font-size:16px;
-}
-
-.product small{
-    color:var(--muted);
+    font-size:18px;
+    font-weight:bold;
 }
 
 .price{
+    color:#108449;
     font-size:21px;
     font-weight:bold;
-    color:var(--green);
 }
 
 .unit{
-    font-size:11px;
-    color:var(--muted);
-    font-weight:normal;
+    font-size:12px;
+    color:#777;
 }
 
-.price-info{
-    display:flex;
-    justify-content:space-between;
-    margin-top:12px;
-    padding-top:10px;
-    border-top:1px solid var(--border);
+.info{
+    margin-top:10px;
+    color:#666;
+    font-size:14px;
+}
+
+.date{
+    margin-top:6px;
+    color:#999;
     font-size:12px;
 }
 
-.change-up{
-    color:var(--red);
-    font-weight:bold;
-}
+/* EMPTY */
 
-.change-down{
-    color:var(--green);
-    font-weight:bold;
-}
-
-.change-same{
-    color:var(--muted);
-}
-
-.badge{
-    padding:4px 8px;
-    border-radius:20px;
-    font-size:10px;
-    background:#eee;
-}
-
-.badge.good{
-    background:#dff5e8;
-    color:var(--green);
-}
-
-.badge.pending{
-    background:#fff3cd;
-    color:#856404;
-}
-
-.badge.rejected{
-    background:#f8d7da;
-    color:#842029;
-}
-
-/* BUTTONS */
-
-.btn{
-    padding:11px 15px;
-    border-radius:11px;
-    font-weight:bold;
-}
-
-.btn-primary{
-    background:var(--green);
-    color:white;
-}
-
-.btn-danger{
-    background:var(--red);
-    color:white;
-}
-
-.btn-warning{
-    background:var(--orange);
-    color:white;
-}
-
-.btn-secondary{
-    background:#e9ecef;
-    color:#333;
-}
-
-.btn-block{
-    width:100%;
-}
-
-.actions{
-    display:flex;
-    gap:7px;
-    margin-top:12px;
-}
-
-.actions .btn{
-    flex:1;
-}
-
-/* CATEGORIES */
-
-.categories{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding-bottom:5px;
-}
-
-.category{
-    min-width:90px;
+.empty{
     background:white;
-    border-radius:15px;
-    padding:12px 8px;
+    padding:25px;
+    border-radius:16px;
     text-align:center;
-    box-shadow:var(--shadow);
-}
-
-.category span{
-    font-size:27px;
-    display:block;
-    margin-bottom:5px;
-}
-
-.category small{
-    font-weight:bold;
+    color:#777;
 }
 
 /* PAGES */
@@ -385,64 +190,18 @@ select:focus,
     display:block;
 }
 
-/* EMPTY */
+/* ADD PRICE */
 
-.empty{
+.form-card{
     background:white;
+    padding:18px;
     border-radius:18px;
-    padding:35px 15px;
-    text-align:center;
-    color:var(--muted);
-    box-shadow:var(--shadow);
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
 }
 
-.empty-icon{
-    font-size:45px;
-    margin-bottom:10px;
+.form-card h2{
+    margin-bottom:17px;
 }
-
-/* MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    z-index:1000;
-    padding:20px;
-    align-items:flex-end;
-    justify-content:center;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:650px;
-    max-height:92vh;
-    overflow-y:auto;
-    background:white;
-    border-radius:22px 22px 10px 10px;
-    padding:20px;
-}
-
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-}
-
-.close{
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    background:#eee;
-}
-
-/* FORM */
 
 .form-group{
     margin-bottom:13px;
@@ -450,2129 +209,1402 @@ select:focus,
 
 .form-group label{
     display:block;
-    margin-bottom:6px;
-    font-size:13px;
+    margin-bottom:7px;
+    font-size:14px;
     font-weight:bold;
 }
 
-/* LOGIN */
-
-.auth-box{
-    margin-top:30px;
-    background:white;
-    border-radius:22px;
-    padding:22px;
-    box-shadow:var(--shadow);
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:11px;
+    font-size:15px;
+    outline:none;
 }
 
-.auth-logo{
-    text-align:center;
-    font-size:50px;
-    margin-bottom:8px;
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#159653;
 }
 
-.auth-box h2{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-/* ADMIN */
-
-.admin-header{
-    background:#212529;
+.main-button{
+    width:100%;
+    border:none;
+    background:#11884b;
     color:white;
-    padding:18px;
-    border-radius:18px;
-    margin-bottom:15px;
-}
-
-.admin-header h2{
-    margin-bottom:5px;
-}
-
-.admin-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.admin-stat{
-    background:white;
-    padding:15px;
-    border-radius:15px;
-    box-shadow:var(--shadow);
-}
-
-.admin-stat strong{
-    display:block;
-    font-size:23px;
-    color:var(--green);
+    padding:14px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
     margin-top:5px;
 }
 
-/* PROFILE */
-
-.profile{
-    background:linear-gradient(135deg,var(--green),var(--darkgreen));
-    color:white;
-    border-radius:20px;
-    padding:20px;
+.success{
+    display:none;
+    background:#e4f7ec;
+    color:#087d3d;
+    padding:12px;
+    border-radius:11px;
     text-align:center;
+    margin-top:12px;
 }
 
-.avatar{
-    width:70px;
-    height:70px;
+/* ACCOUNT */
+
+.profile-card{
+    background:linear-gradient(135deg,#087f3f,#1aab60);
+    color:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.profile-circle{
+    width:75px;
+    height:75px;
     border-radius:50%;
     background:white;
-    color:var(--green);
-    margin:auto auto 10px;
+    color:#12894b;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:30px;
+    font-size:38px;
+    margin:0 auto 12px;
 }
 
-/* MENU */
+.profile-card h2{
+    font-size:20px;
+}
 
-.menu-list{
-    margin-top:15px;
+.profile-card p{
+    margin-top:5px;
+    font-size:13px;
+    opacity:.9;
+}
+
+.menu-card{
+    background:white;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 2px 9px rgba(0,0,0,.07);
 }
 
 .menu-item{
-    width:100%;
-    background:white;
-    padding:16px;
-    border-radius:14px;
-    margin-bottom:8px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    box-shadow:var(--shadow);
+    gap:13px;
+    padding:17px;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
 }
 
-.menu-item .left{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.menu-item:last-child{
+    border-bottom:none;
 }
 
 .menu-icon{
     width:40px;
     height:40px;
-    border-radius:12px;
-    background:var(--lightgreen);
+    border-radius:11px;
+    background:#eaf7f0;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+    font-size:20px;
 }
 
-/* BOTTOM NAV */
+.menu-text{
+    flex:1;
+}
+
+.menu-text strong{
+    display:block;
+    font-size:15px;
+}
+
+.menu-text small{
+    color:#888;
+    font-size:12px;
+}
+
+.arrow{
+    color:#aaa;
+    font-size:18px;
+}
+
+/* SETTINGS */
+
+.setting-card{
+    background:white;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 2px 9px rgba(0,0,0,.07);
+}
+
+.setting-title{
+    padding:15px;
+    font-weight:bold;
+    background:#f7f9f8;
+    color:#16864b;
+}
+
+.setting-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px;
+    border-bottom:1px solid #eee;
+}
+
+.setting-row:last-child{
+    border-bottom:none;
+}
+
+.setting-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.setting-icon{
+    font-size:21px;
+}
+
+.setting-text strong{
+    display:block;
+    font-size:15px;
+}
+
+.setting-text small{
+    color:#888;
+    font-size:12px;
+}
+
+/* SWITCH */
+
+.switch{
+    position:relative;
+    width:48px;
+    height:26px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    background:#ccc;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    left:3px;
+    top:3px;
+    background:white;
+    border-radius:50%;
+    transition:.3s;
+}
+
+.switch input:checked + .slider{
+    background:#168b4e;
+}
+
+.switch input:checked + .slider:before{
+    transform:translateX(22px);
+}
+
+/* CONTACT */
+
+.contact-card{
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 2px 9px rgba(0,0,0,.07);
+    text-align:center;
+}
+
+.contact-icon{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.contact-card h2{
+    margin-bottom:8px;
+}
+
+.contact-card p{
+    color:#777;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.contact-button{
+    display:block;
+    text-decoration:none;
+    background:#12884b;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+/* BOTTOM MENU */
 
 .bottom-nav{
     position:fixed;
     bottom:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:700px;
+    right:0;
+    left:0;
+    height:70px;
     background:white;
-    border-top:1px solid var(--border);
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    padding:7px 5px calc(7px + env(safe-area-inset-bottom));
-    z-index:900;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    box-shadow:0 -3px 14px rgba(0,0,0,.1);
+    z-index:1000;
 }
 
-.nav-item{
+.nav-button{
+    border:none;
     background:none;
     color:#777;
-    padding:5px;
-    font-size:10px;
+    font-size:11px;
     text-align:center;
+    min-width:65px;
 }
 
-.nav-item span{
+.nav-button .nav-icon{
     display:block;
-    font-size:21px;
-    margin-bottom:2px;
+    font-size:22px;
+    margin-bottom:3px;
 }
 
-.nav-item.active{
-    color:var(--green);
+.nav-button.active{
+    color:#11884b;
     font-weight:bold;
 }
 
-/* TOAST */
+/* NOTICE */
 
-.toast{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%) translateY(-100px);
-    background:#212529;
-    color:white;
-    padding:13px 18px;
+.notice{
+    background:#fff8df;
+    color:#8a6a00;
+    padding:13px;
     border-radius:12px;
-    z-index:3000;
-    transition:.3s;
-    max-width:90%;
-    text-align:center;
-}
-
-.toast.show{
-    transform:translateX(-50%) translateY(0);
-}
-
-/* DARK */
-
-body.dark{
-    --bg:#101414;
-    --card:#1b2222;
-    --text:#f2f2f2;
-    --muted:#aaa;
-    --border:#333;
-}
-
-body.dark .filters,
-body.dark .modal-box,
-body.dark .auth-box,
-body.dark .menu-item,
-body.dark .stat,
-body.dark .admin-stat,
-body.dark .category,
-body.dark .price-card,
-body.dark .bottom-nav{
-    background:#1b2222;
-    color:#f2f2f2;
-}
-
-body.dark select,
-body.dark .text-input{
-    background:#222;
-    color:white;
-    border-color:#444;
+    font-size:13px;
+    margin-top:15px;
+    line-height:1.6;
 }
 
 /* RESPONSIVE */
 
 @media(max-width:400px){
-    .stats{
-        gap:6px;
+
+    .logo{
+        font-size:23px;
     }
 
-    .stat{
-        padding:11px 5px;
-    }
-
-    .stat .number{
+    .price{
         font-size:18px;
     }
 
-    .filters-grid{
-        grid-template-columns:1fr;
+    .product{
+        font-size:16px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <!-- HEADER -->
+
 <header class="header">
 
-<div class="header-top">
+    <div class="header-top">
 
-<div class="logo">
-<div class="logo-icon">🥬</div>
-<div>
-<h1>السوق والصندوق</h1>
-<small>أسعار الخضر والفواكه في الجزائر 🇩🇿</small>
-</div>
-</div>
+        <div class="logo">
+            🥬 السوق والصندوق
+        </div>
 
-<div class="header-actions">
-<button class="icon-btn" onclick="toggleDark()">🌙</button>
-<button class="icon-btn" onclick="openNotifications()">🔔</button>
-</div>
+        <div class="header-icon">
+            🇩🇿
+        </div>
 
-</div>
+    </div>
 
-<div class="search-box">
-<span style="padding:10px">🔎</span>
-<input id="globalSearch" placeholder="ابحث عن منتج، ولاية أو سوق..." oninput="renderPrices()">
-</div>
+    <p>
+        أسعار الخضر والفواكه من الأسواق الجزائرية
+    </p>
 
 </header>
 
 
-<!-- HOME -->
+<div class="container">
 
-<main id="homePage" class="page active">
 
-<div class="content">
+<!-- ================= HOME ================= -->
 
-<div class="stats">
-<div class="stat">
-<div class="number" id="statProducts">0</div>
-<small>منتج</small>
+<section id="homePage" class="page active">
+
+    <div class="search-box">
+
+        <input
+            id="searchInput"
+            class="search-input"
+            type="text"
+            placeholder="🔎 ابحث عن الخضر أو الفواكه..."
+            oninput="displayPrices()"
+        >
+
+        <div class="filters">
+
+            <select id="wilayaFilter" onchange="displayPrices()">
+
+                <option value="">كل الولايات</option>
+
+                <option value="سطيف">سطيف</option>
+                <option value="الجزائر">الجزائر</option>
+                <option value="وهران">وهران</option>
+                <option value="قسنطينة">قسنطينة</option>
+                <option value="باتنة">باتنة</option>
+                <option value="بسكرة">بسكرة</option>
+                <option value="الوادي">الوادي</option>
+                <option value="أدرار">أدرار</option>
+                <option value="عنابة">عنابة</option>
+                <option value="تيزي وزو">تيزي وزو</option>
+
+            </select>
+
+            <select id="categoryFilter" onchange="displayPrices()">
+
+                <option value="">كل المنتجات</option>
+                <option value="خضر">🥕 خضر</option>
+                <option value="فواكه">🍎 فواكه</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+
+        <h2>📊 أسعار اليوم</h2>
+
+        <span id="priceCount">
+            0 سعر
+        </span>
+
+    </div>
+
+
+    <div id="pricesList"></div>
+
+
+    <div class="notice">
+
+        💡 الأسعار المعروضة يمكن أن تختلف حسب السوق
+        والجودة والكمية ووقت البيع.
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADD PRICE ================= -->
+
+<section id="addPage" class="page">
+
+    <div class="section-title">
+
+        <h2>➕ إضافة سعر</h2>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <h2>
+            إدخال سعر جديد
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                نوع المنتج
+            </label>
+
+            <select id="categoryInput">
+
+                <option value="">
+                    اختر النوع
+                </option>
+
+                <option value="خضر">
+                    🥕 خضر
+                </option>
+
+                <option value="فواكه">
+                    🍎 فواكه
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                اسم المنتج
+            </label>
+
+            <input
+                id="productInput"
+                type="text"
+                placeholder="مثلا: طماطم"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                السعر بالدينار / كغ
+            </label>
+
+            <input
+                id="priceInput"
+                type="number"
+                placeholder="مثلا: 80"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                الولاية
+            </label>
+
+            <select id="wilayaInput">
+
+                <option value="">
+                    اختر الولاية
+                </option>
+
+                <option value="سطيف">سطيف</option>
+                <option value="الجزائر">الجزائر</option>
+                <option value="وهران">وهران</option>
+                <option value="قسنطينة">قسنطينة</option>
+                <option value="باتنة">باتنة</option>
+                <option value="بسكرة">بسكرة</option>
+                <option value="الوادي">الوادي</option>
+                <option value="أدرار">أدرار</option>
+                <option value="عنابة">عنابة</option>
+                <option value="تيزي وزو">تيزي وزو</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                اسم السوق
+            </label>
+
+            <input
+                id="marketInput"
+                type="text"
+                placeholder="مثلا: سوق الخضر والفواكه"
+            >
+
+        </div>
+
+
+        <button
+            class="main-button"
+            onclick="addPrice()"
+        >
+            💾 حفظ السعر
+        </button>
+
+
+        <div id="successMessage" class="success">
+
+            تم حفظ السعر بنجاح ✅
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ACCOUNT ================= -->
+
+<section id="accountPage" class="page">
+
+    <div class="section-title">
+
+        <h2>👤 حسابي</h2>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <div class="profile-circle">
+            👤
+        </div>
+
+        <h2>
+            مرحباً بك
+        </h2>
+
+        <p>
+            عضو في منصة السوق والصندوق
+        </p>
+
+    </div>
+
+
+    <div class="menu-card">
+
+        <div
+            class="menu-item"
+            onclick="showPage('settingsPage')"
+        >
+
+            <div class="menu-icon">
+                ⚙️
+            </div>
+
+            <div class="menu-text">
+
+                <strong>
+                    الإعدادات
+                </strong>
+
+                <small>
+                    التحكم في إعدادات التطبيق
+                </small>
+
+            </div>
+
+            <div class="arrow">
+                ‹
+            </div>
+
+        </div>
+
+
+        <div
+            class="menu-item"
+            onclick="showPage('contactPage')"
+        >
+
+            <div class="menu-icon">
+                📞
+            </div>
+
+            <div class="menu-text">
+
+                <strong>
+                    تواصل معنا
+                </strong>
+
+                <small>
+                    أرسل اقتراح أو ملاحظة
+                </small>
+
+            </div>
+
+            <div class="arrow">
+                ‹
+            </div>
+
+        </div>
+
+
+        <div class="menu-item">
+
+            <div class="menu-icon">
+                ⭐
+            </div>
+
+            <div class="menu-text">
+
+                <strong>
+                    تقييم التطبيق
+                </strong>
+
+                <small>
+                    ساعدنا على تطوير السوق والصندوق
+                </small>
+
+            </div>
+
+            <div class="arrow">
+                ‹
+            </div>
+
+        </div>
+
+
+        <div class="menu-item">
+
+            <div class="menu-icon">
+                ℹ️
+            </div>
+
+            <div class="menu-text">
+
+                <strong>
+                    حول السوق والصندوق
+                </strong>
+
+                <small>
+                    معلومات عن المنصة
+                </small>
+
+            </div>
+
+            <div class="arrow">
+                ‹
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SETTINGS ================= -->
+
+<section id="settingsPage" class="page">
+
+    <div class="section-title">
+
+        <h2>⚙️ الإعدادات</h2>
+
+    </div>
+
+
+    <div class="setting-card">
+
+        <div class="setting-title">
+            الإعدادات العامة
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-left">
+
+                <div class="setting-icon">
+                    🔔
+                </div>
+
+                <div class="setting-text">
+
+                    <strong>
+                        الإشعارات
+                    </strong>
+
+                    <small>
+                        استقبال تنبيهات الأسعار الجديدة
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="notificationSwitch"
+                    checked
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-left">
+
+                <div class="setting-icon">
+                    🌙
+                </div>
+
+                <div class="setting-text">
+
+                    <strong>
+                        الوضع الليلي
+                    </strong>
+
+                    <small>
+                        تغيير مظهر التطبيق
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="darkSwitch"
+                    onchange="toggleDarkMode()"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-left">
+
+                <div class="setting-icon">
+                    📍
+                </div>
+
+                <div class="setting-text">
+
+                    <strong>
+                        الولاية المفضلة
+                    </strong>
+
+                    <small>
+                        اختر ولايتك لسهولة متابعة الأسعار
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <select
+                id="favoriteWilaya"
+                onchange="saveFavoriteWilaya()"
+                style="padding:8px;border:1px solid #ddd;border-radius:8px;"
+            >
+
+                <option value="">
+                    اختيار
+                </option>
+
+                <option value="سطيف">سطيف</option>
+                <option value="الجزائر">الجزائر</option>
+                <option value="وهران">وهران</option>
+                <option value="قسنطينة">قسنطينة</option>
+                <option value="باتنة">باتنة</option>
+                <option value="بسكرة">بسكرة</option>
+                <option value="الوادي">الوادي</option>
+                <option value="أدرار">أدرار</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="main-button"
+        onclick="showPage('accountPage')"
+        style="margin-top:15px;"
+    >
+        ← الرجوع إلى حسابي
+    </button>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contactPage" class="page">
+
+    <div class="section-title">
+
+        <h2>📞 تواصل معنا</h2>
+
+    </div>
+
+
+    <div class="contact-card">
+
+        <div class="contact-icon">
+            💬
+        </div>
+
+        <h2>
+            نحن نسمعك
+        </h2>
+
+        <p>
+
+            إذا عندك اقتراح لتطوير المنصة،
+            أو لاحظت خطأ في الأسعار،
+            أو عندك فكرة جديدة، تواصل معنا.
+
+        </p>
+
+
+        <a
+            class="contact-button"
+            href="mailto:"
+        >
+            ✉️ إرسال رسالة
+        </a>
+
+    </div>
+
+
+    <button
+        class="main-button"
+        onclick="showPage('accountPage')"
+        style="margin-top:15px;"
+    >
+        ← الرجوع إلى حسابي
+    </button>
+
+</section>
+
+
 </div>
 
-<div class="stat">
-<div class="number" id="statWilayas">58</div>
-<small>ولاية</small>
-</div>
 
-<div class="stat">
-<div class="number" id="statPrices">0</div>
-<small>سعر اليوم</small>
-</div>
-</div>
 
-
-<div class="section-title">
-<h2>🥬 الأقسام</h2>
-<button onclick="showPage('pricesPage')">عرض الكل</button>
-</div>
-
-<div class="categories">
-
-<button class="category" onclick="setCategory('خضر')">
-<span>🥦</span>
-<small>الخضر</small>
-</button>
-
-<button class="category" onclick="setCategory('فواكه')">
-<span>🍎</span>
-<small>الفواكه</small>
-</button>
-
-<button class="category" onclick="setCategory('بطاطا')">
-<span>🥔</span>
-<small>البطاطا</small>
-</button>
-
-<button class="category" onclick="setCategory('طماطم')">
-<span>🍅</span>
-<small>الطماطم</small>
-</button>
-
-<button class="category" onclick="setCategory('بصل')">
-<span>🧅</span>
-<small>البصل</small>
-</button>
-
-</div>
-
-
-<div class="section-title">
-<h2>📈 أسعار اليوم</h2>
-<button onclick="showPage('pricesPage')">كل الأسعار</button>
-</div>
-
-<div id="homePrices"></div>
-
-</div>
-
-</main>
-
-
-<!-- PRICES -->
-
-<main id="pricesPage" class="page">
-
-<div class="content">
-
-<div class="section-title">
-<h2>💰 أسعار الأسواق</h2>
-</div>
-
-<div class="filters">
-
-<div class="filters-grid">
-
-<select id="wilayaFilter" onchange="renderPrices()">
-<option value="">كل الولايات</option>
-</select>
-
-<select id="categoryFilter" onchange="renderPrices()">
-<option value="">كل الأقسام</option>
-<option value="خضر">خضر</option>
-<option value="فواكه">فواكه</option>
-</select>
-
-<select id="marketFilter" onchange="renderPrices()">
-<option value="">كل الأسواق</option>
-</select>
-
-<select id="sortFilter" onchange="renderPrices()">
-<option value="new">الأحدث</option>
-<option value="low">الأرخص</option>
-<option value="high">الأغلى</option>
-</select>
-
-</div>
-
-</div>
-
-<div id="priceList"></div>
-
-</div>
-
-</main>
-
-
-<!-- COMPARE -->
-
-<main id="comparePage" class="page">
-
-<div class="content">
-
-<div class="section-title">
-<h2>📊 مقارنة الأسعار</h2>
-</div>
-
-<div class="filters">
-
-<div class="form-group">
-<label>اختر المنتج</label>
-<select id="compareProduct" onchange="renderComparison()"></select>
-</div>
-
-<div class="form-group">
-<label>الولاية</label>
-<select id="compareWilaya" onchange="renderComparison()"></select>
-</div>
-
-</div>
-
-<div id="comparisonResult"></div>
-
-</div>
-
-</main>
-
-
-<!-- ACCOUNT -->
-
-<main id="accountPage" class="page">
-
-<div class="content">
-
-<div id="accountContent"></div>
-
-</div>
-
-</main>
-
-
-<!-- ADMIN -->
-
-<main id="adminPage" class="page">
-
-<div class="content">
-
-<div class="admin-header">
-<h2>👑 لوحة تحكم الإدارة</h2>
-<p>إدارة الأسعار والمستخدمين والمحتوى</p>
-</div>
-
-<div class="admin-grid">
-
-<div class="admin-stat">
-📦 الأسعار
-<strong id="adminPrices">0</strong>
-</div>
-
-<div class="admin-stat">
-👥 المستخدمون
-<strong id="adminUsers">0</strong>
-</div>
-
-<div class="admin-stat">
-⏳ قيد المراجعة
-<strong id="adminPending">0</strong>
-</div>
-
-<div class="admin-stat">
-⚠️ المرفوضة
-<strong id="adminRejected">0</strong>
-</div>
-
-</div>
-
-<div class="section-title">
-<h2>⏳ الأسعار الجديدة</h2>
-</div>
-
-<div id="pendingPrices"></div>
-
-<div class="section-title">
-<h2>⚙️ الإدارة</h2>
-</div>
-
-<div class="menu-list">
-
-<button class="menu-item" onclick="openAddPrice()">
-<div class="left">
-<div class="menu-icon">➕</div>
-<div>
-<strong>إضافة سعر</strong>
-<small>إضافة سعر جديد للسوق</small>
-</div>
-</div>
-<span>›</span>
-</button>
-
-<button class="menu-item" onclick="resetDemoData()">
-<div class="left">
-<div class="menu-icon">🔄</div>
-<div>
-<strong>إعادة بيانات التجربة</strong>
-<small>إرجاع الأسعار التجريبية</small>
-</div>
-</div>
-<span>›</span>
-</button>
-
-</div>
-
-</div>
-
-</main>
-
-
-<!-- BOTTOM NAV -->
+<!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
 
-<button class="nav-item active" data-page="homePage" onclick="showPage('homePage')">
-<span>🏠</span>
-الرئيسية
-</button>
+    <button
+        class="nav-button active"
+        onclick="showPage('homePage',this)"
+    >
 
-<button class="nav-item" data-page="pricesPage" onclick="showPage('pricesPage')">
-<span>💰</span>
-الأسعار
-</button>
+        <span class="nav-icon">
+            🏠
+        </span>
 
-<button class="nav-item" data-page="comparePage" onclick="showPage('comparePage')">
-<span>📊</span>
-مقارنة
-</button>
+        الرئيسية
 
-<button class="nav-item" data-page="accountPage" onclick="showPage('accountPage')">
-<span>👤</span>
-حسابي
-</button>
+    </button>
 
-<button class="nav-item" id="adminNav" data-page="adminPage" onclick="showPage('adminPage')" style="display:none">
-<span>👑</span>
-Admin
-</button>
+
+    <button
+        class="nav-button"
+        onclick="showPage('addPage',this)"
+    >
+
+        <span class="nav-icon">
+            ➕
+        </span>
+
+        إضافة سعر
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        onclick="showPage('accountPage',this)"
+    >
+
+        <span class="nav-icon">
+            👤
+        </span>
+
+        حسابي
+
+    </button>
 
 </nav>
 
-</div>
-
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-<div class="modal-box">
-
-<div class="modal-header">
-<h2>👤 تسجيل الدخول</h2>
-<button class="close" onclick="closeModal('loginModal')">✕</button>
-</div>
-
-<div class="auth-logo">🥬</div>
-
-<div class="form-group">
-<label>البريد الإلكتروني</label>
-<input class="text-input" id="loginEmail" type="email" placeholder="example@email.com">
-</div>
-
-<div class="form-group">
-<label>كلمة المرور</label>
-<input class="text-input" id="loginPassword" type="password" placeholder="كلمة المرور">
-</div>
-
-<button class="btn btn-primary btn-block" onclick="login()">
-تسجيل الدخول
-</button>
-
-<button class="btn btn-secondary btn-block" style="margin-top:8px" onclick="openRegister()">
-إنشاء حساب جديد
-</button>
-
-<p style="text-align:center;color:#888;font-size:11px;margin-top:15px">
-للتجربة: admin@souq.dz / 123456
-</p>
-
-</div>
-
-</div>
-
-
-<!-- REGISTER MODAL -->
-
-<div class="modal" id="registerModal">
-
-<div class="modal-box">
-
-<div class="modal-header">
-<h2>📝 إنشاء حساب</h2>
-<button class="close" onclick="closeModal('registerModal')">✕</button>
-</div>
-
-<div class="form-group">
-<label>الاسم</label>
-<input class="text-input" id="registerName" placeholder="اسمك">
-</div>
-
-<div class="form-group">
-<label>البريد الإلكتروني</label>
-<input class="text-input" id="registerEmail" type="email">
-</div>
-
-<div class="form-group">
-<label>كلمة المرور</label>
-<input class="text-input" id="registerPassword" type="password">
-</div>
-
-<div class="form-group">
-<label>الولاية</label>
-<select id="registerWilaya"></select>
-</div>
-
-<button class="btn btn-primary btn-block" onclick="register()">
-إنشاء الحساب
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ADD PRICE MODAL -->
-
-<div class="modal" id="priceModal">
-
-<div class="modal-box">
-
-<div class="modal-header">
-<h2>➕ إضافة سعر</h2>
-<button class="close" onclick="closeModal('priceModal')">✕</button>
-</div>
-
-<div class="form-group">
-<label>المنتج</label>
-<select id="priceProduct"></select>
-</div>
-
-<div class="form-group">
-<label>الولاية</label>
-<select id="priceWilaya"></select>
-</div>
-
-<div class="form-group">
-<label>السوق</label>
-<input class="text-input" id="priceMarket" placeholder="مثال: سوق الجملة">
-</div>
-
-<div class="form-group">
-<label>السعر بالدينار / كغ</label>
-<input class="text-input" id="priceValue" type="number" min="0" placeholder="مثال: 120">
-</div>
-
-<div class="form-group">
-<label>نوع السعر</label>
-<select id="priceType">
-<option value="جملة">جملة</option>
-<option value="تفصيل">تفصيل</option>
-</select>
-</div>
-
-<button class="btn btn-primary btn-block" onclick="addPrice()">
-حفظ السعر
-</button>
-
-</div>
-
-</div>
-
-
-<!-- NOTIFICATIONS -->
-
-<div class="modal" id="notificationModal">
-
-<div class="modal-box">
-
-<div class="modal-header">
-<h2>🔔 الإشعارات</h2>
-<button class="close" onclick="closeModal('notificationModal')">✕</button>
-</div>
-
-<div id="notifications"></div>
-
-</div>
-
-</div>
-
-
-<!-- TOAST -->
-
-<div class="toast" id="toast"></div>
 
 
 <script>
 
-/* =====================================================
-   السوق والصندوق
-   النسخة الشاملة
-===================================================== */
+/* ================= DATA ================= */
 
+let prices =
+JSON.parse(localStorage.getItem("marketPrices")) || [
 
-/* ---------- الولايات ---------- */
+    {
+        product:"طماطم",
+        price:80,
+        wilaya:"سطيف",
+        market:"سوق الخضر والفواكه",
+        category:"خضر",
+        date:"اليوم"
+    },
 
-const wilayas = [
-"أدرار","الشلف","الأغواط","أم البواقي","باتنة","بجاية",
-"بسكرة","بشار","البليدة","البويرة","تمنراست","تبسة",
-"تلمسان","تيارت","تيزي وزو","الجزائر","الجلفة","جيجل",
-"سطيف","سعيدة","سكيكدة","سيدي بلعباس","عنابة","قالمة",
-"قسنطينة","المدية","مستغانم","المسيلة","معسكر","ورقلة",
-"وهران","البيض","إليزي","برج بوعريريج","بومرداس","الطارف",
-"تندوف","تسمسيلت","الوادي","خنشلة","سوق أهراس","تيبازة",
-"ميلة","عين الدفلى","النعامة","عين تموشنت","غرداية",
-"غليزان","تيميمون","برج باجي مختار","أولاد جلال","بني عباس",
-"عين صالح","عين قزام","تقرت","جانت","المغير","المنيعة"
+    {
+        product:"بطاطا",
+        price:70,
+        wilaya:"سطيف",
+        market:"سوق الخضر والفواكه",
+        category:"خضر",
+        date:"اليوم"
+    },
+
+    {
+        product:"فلفل",
+        price:120,
+        wilaya:"سطيف",
+        market:"سوق الخضر والفواكه",
+        category:"خضر",
+        date:"اليوم"
+    },
+
+    {
+        product:"خيار",
+        price:90,
+        wilaya:"سطيف",
+        market:"سوق الخضر والفواكه",
+        category:"خضر",
+        date:"اليوم"
+    }
+
 ];
 
 
-/* ---------- المنتجات ---------- */
+/* ================= DISPLAY PRICES ================= */
 
-const products = [
-{ id:1,name:"بطاطا",category:"خضر",icon:"🥔"},
-{ id:2,name:"طماطم",category:"خضر",icon:"🍅"},
-{ id:3,name:"بصل",category:"خضر",icon:"🧅"},
-{ id:4,name:"فلفل",category:"خضر",icon:"🌶️"},
-{ id:5,name:"خيار",category:"خضر",icon:"🥒"},
-{ id:6,name:"جزر",category:"خضر",icon:"🥕"},
-{ id:7,name:"كوسة",category:"خضر",icon:"🥒"},
-{ id:8,name:"باذنجان",category:"خضر",icon:"🍆"},
-{ id:9,name:"تفاح",category:"فواكه",icon:"🍎"},
-{ id:10,name:"برتقال",category:"فواكه",icon:"🍊"},
-{ id:11,name:"موز",category:"فواكه",icon:"🍌"},
-{ id:12,name:"عنب",category:"فواكه",icon:"🍇"},
-{ id:13,name:"رمان",category:"فواكه",icon:"🍎"},
-{ id:14,name:"دلاع",category:"فواكه",icon:"🍉"},
-{ id:15,name:"بطيخ",category:"فواكه",icon:"🍈"}
-];
+function displayPrices(){
 
+    const list =
+        document.getElementById("pricesList");
 
-/* ---------- حسابات ---------- */
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
 
-let users = JSON.parse(localStorage.getItem("souq_users")) || [
-{
- id:1,
- name:"مدير النظام",
- email:"admin@souq.dz",
- password:"123456",
- wilaya:"الجزائر",
- role:"admin"
-}
-];
+    const wilaya =
+        document.getElementById("wilayaFilter")
+        .value;
 
-let currentUser =
-JSON.parse(localStorage.getItem("souq_current_user")) || null;
+    const category =
+        document.getElementById("categoryFilter")
+        .value;
 
 
-/* ---------- الأسعار ---------- */
-
-let prices = JSON.parse(localStorage.getItem("souq_prices"));
-
-if(!prices){
-
-prices = [
-{
-id:1,
-productId:1,
-wilaya:"سطيف",
-market:"سوق سطيف",
-price:85,
-type:"جملة",
-status:"approved",
-user:"الإدارة",
-date:new Date().toISOString()
-},
-{
-id:2,
-productId:2,
-wilaya:"سطيف",
-market:"سوق سطيف",
-price:120,
-type:"جملة",
-status:"approved",
-user:"الإدارة",
-date:new Date().toISOString()
-},
-{
-id:3,
-productId:3,
-wilaya:"الجزائر",
-market:"سوق الجملة",
-price:95,
-type:"جملة",
-status:"approved",
-user:"الإدارة",
-date:new Date().toISOString()
-},
-{
-id:4,
-productId:4,
-wilaya:"بسكرة",
-market:"سوق بسكرة",
-price:140,
-type:"جملة",
-status:"approved",
-user:"الإدارة",
-date:new Date().toISOString()
-},
-{
-id:5,
-productId:5,
-wilaya:"الجزائر",
-market:"سوق الجملة",
-price:110,
-type:"جملة",
-status:"approved",
-user:"الإدارة",
-date:new Date().toISOString()
-}
-];
-
-savePrices();
-
-}
+    list.innerHTML="";
 
 
-/* ---------- الحفظ ---------- */
+    const filtered =
+        prices.filter(item => {
 
-function savePrices(){
-localStorage.setItem("souq_prices",JSON.stringify(prices));
-}
+            const matchSearch =
+                item.product
+                .toLowerCase()
+                .includes(search);
 
-function saveUsers(){
-localStorage.setItem("souq_users",JSON.stringify(users));
-}
+            const matchWilaya =
+                wilaya === "" ||
+                item.wilaya === wilaya;
+
+            const matchCategory =
+                category === "" ||
+                item.category === category;
+
+            return(
+                matchSearch &&
+                matchWilaya &&
+                matchCategory
+            );
+
+        });
 
 
-/* ---------- التاريخ ---------- */
-
-function formatDate(date){
-
-return new Date(date).toLocaleDateString("ar-DZ",{
-day:"2-digit",
-month:"2-digit",
-year:"numeric"
-});
-
-}
+    document.getElementById("priceCount").textContent =
+        filtered.length + " سعر";
 
 
-/* ---------- المنتج ---------- */
+    if(filtered.length === 0){
 
-function getProduct(id){
+        list.innerHTML = `
 
-return products.find(p=>p.id==id) || products[0];
+            <div class="empty">
+
+                🔍<br><br>
+
+                لا توجد أسعار مطابقة للبحث.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    filtered.forEach(item => {
+
+        list.innerHTML += `
+
+            <div class="price-card">
+
+                <div class="price-row">
+
+                    <div>
+
+                        <div class="product">
+
+                            ${item.product}
+
+                        </div>
+
+                        <div class="unit">
+
+                            ${item.category || "منتج"}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="price">
+
+                        ${item.price}
+
+                        <span class="unit">
+                            دج/كغ
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info">
+
+                    📍 ${item.wilaya}
+
+                    — ${item.market}
+
+                </div>
+
+
+                <div class="date">
+
+                    🕒 ${item.date}
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
 
 }
 
 
-/* ---------- التنبيه ---------- */
-
-function toast(message){
-
-const el=document.getElementById("toast");
-
-el.textContent=message;
-
-el.classList.add("show");
-
-setTimeout(()=>{
-el.classList.remove("show");
-},2500);
-
-}
-
-
-/* ---------- الصفحات ---------- */
-
-function showPage(pageId){
-
-document.querySelectorAll(".page").forEach(p=>{
-p.classList.remove("active");
-});
-
-document.getElementById(pageId).classList.add("active");
-
-document.querySelectorAll(".nav-item").forEach(btn=>{
-btn.classList.remove("active");
-
-if(btn.dataset.page===pageId){
-btn.classList.add("active");
-}
-});
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-if(pageId==="pricesPage") renderPrices();
-if(pageId==="comparePage") initComparison();
-if(pageId==="accountPage") renderAccount();
-if(pageId==="adminPage") renderAdmin();
-
-}
-
-
-/* ---------- Modal ---------- */
-
-function openModal(id){
-document.getElementById(id).classList.add("show");
-}
-
-function closeModal(id){
-document.getElementById(id).classList.remove("show");
-}
-
-
-/* ---------- القوائم ---------- */
-
-function fillSelects(){
-
-const wilayaSelects=[
-"wilayaFilter",
-"compareWilaya",
-"registerWilaya",
-"priceWilaya"
-];
-
-wilayaSelects.forEach(id=>{
-
-const el=document.getElementById(id);
-
-if(!el)return;
-
-const first=el.options[0]?.text || "اختر الولاية";
-
-el.innerHTML=`<option value="">${first}</option>`;
-
-wilayas.forEach(w=>{
-el.innerHTML+=`<option value="${w}">${w}</option>`;
-});
-
-});
-
-
-const productSelects=[
-"compareProduct",
-"priceProduct"
-];
-
-productSelects.forEach(id=>{
-
-const el=document.getElementById(id);
-
-if(!el)return;
-
-el.innerHTML=`<option value="">اختر المنتج</option>`;
-
-products.forEach(p=>{
-el.innerHTML+=`
-<option value="${p.id}">
-${p.icon} ${p.name}
-</option>`;
-});
-
-});
-
-
-}
-
-
-/* ---------- الأسواق ---------- */
-
-function updateMarkets(){
-
-const filter=document.getElementById("marketFilter");
-
-const markets=[
-...new Set(
-prices
-.filter(p=>p.status==="approved")
-.map(p=>p.market)
-)
-];
-
-filter.innerHTML=`<option value="">كل الأسواق</option>`;
-
-markets.forEach(m=>{
-filter.innerHTML+=`<option value="${m}">${m}</option>`;
-});
-
-}
-
-
-/* ---------- بطاقة السعر ---------- */
-
-function priceCard(item,admin=false){
-
-const product=getProduct(item.productId);
-
-const previous=prices
-.filter(p=>
-p.productId===item.productId &&
-p.wilaya===item.wilaya &&
-p.status==="approved" &&
-p.id!==item.id
-)
-.sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
-
-let change="";
-
-if(previous){
-
-const diff=item.price-previous.price;
-
-if(diff>0){
-change=`
-<span class="change-up">
-⬆️ +${diff} دج
-</span>`;
-}
-else if(diff<0){
-change=`
-<span class="change-down">
-⬇️ ${Math.abs(diff)} دج
-</span>`;
-}
-else{
-change=`
-<span class="change-same">
-➖ ثابت
-</span>`;
-}
-
-}
-
-return `
-
-<div class="price-card">
-
-<div class="price-head">
-
-<div class="product">
-
-<div class="product-icon">
-${product.icon}
-</div>
-
-<div>
-<h3>${product.name}</h3>
-<small>
-📍 ${item.wilaya} — ${item.market}
-</small>
-</div>
-
-</div>
-
-<div>
-<div class="price">
-${Number(item.price).toLocaleString()}
-<span class="unit">دج/كغ</span>
-</div>
-
-${change}
-
-</div>
-
-</div>
-
-
-<div class="price-info">
-
-<span>
-${item.type}
-</span>
-
-<span>
-${formatDate(item.date)}
-</span>
-
-<span class="badge good">
-✓ موثوق
-</span>
-
-</div>
-
-
-${admin ? `
-
-<div class="actions">
-
-<button class="btn btn-warning"
-onclick="editPrice(${item.id})">
-✏️ تعديل
-</button>
-
-<button class="btn btn-danger"
-onclick="deletePrice(${item.id})">
-🗑️ حذف
-</button>
-
-</div>
-
-`:""}
-
-</div>
-
-`;
-
-}
-
-
-/* ---------- عرض الأسعار ---------- */
-
-function renderPrices(){
-
-const list=document.getElementById("priceList");
-const home=document.getElementById("homePrices");
-
-const search=
-(document.getElementById("globalSearch")?.value || "")
-.toLowerCase();
-
-const wilaya=
-document.getElementById("wilayaFilter")?.value || "";
-
-const category=
-document.getElementById("categoryFilter")?.value || "";
-
-const market=
-document.getElementById("marketFilter")?.value || "";
-
-const sort=
-document.getElementById("sortFilter")?.value || "new";
-
-
-let result=prices.filter(p=>p.status==="approved");
-
-result=result.filter(p=>{
-
-const product=getProduct(p.productId);
-
-const text=
-(product.name+" "+p.wilaya+" "+p.market)
-.toLowerCase();
-
-return text.includes(search);
-
-});
-
-
-if(wilaya){
-result=result.filter(p=>p.wilaya===wilaya);
-}
-
-if(category){
-result=result.filter(p=>getProduct(p.productId).category===category);
-}
-
-if(market){
-result=result.filter(p=>p.market===market);
-}
-
-
-if(sort==="low"){
-result.sort((a,b)=>a.price-b.price);
-}
-else if(sort==="high"){
-result.sort((a,b)=>b.price-a.price);
-}
-else{
-result.sort((a,b)=>new Date(b.date)-new Date(a.date));
-}
-
-
-document.getElementById("statPrices").textContent=result.length;
-
-
-if(result.length===0){
-
-list.innerHTML=`
-<div class="empty">
-<div class="empty-icon">🔎</div>
-<p>لم نجد أسعاراً مطابقة للبحث</p>
-</div>`;
-
-}
-else{
-
-list.innerHTML=result.map(p=>priceCard(p)).join("");
-
-}
-
-
-/* الصفحة الرئيسية */
-
-const latest=prices
-.filter(p=>p.status==="approved")
-.sort((a,b)=>new Date(b.date)-new Date(a.date))
-.slice(0,5);
-
-home.innerHTML=latest.length
-? latest.map(p=>priceCard(p)).join("")
-: `<div class="empty">لا توجد أسعار</div>`;
-
-}
-
-
-/* ---------- إحصائيات ---------- */
-
-function updateStats(){
-
-const approved=prices.filter(p=>p.status==="approved");
-
-document.getElementById("statProducts").textContent=
-new Set(approved.map(p=>p.productId)).size;
-
-document.getElementById("statWilayas").textContent=58;
-
-document.getElementById("statPrices").textContent=approved.length;
-
-}
-
-
-/* ---------- الفئات ---------- */
-
-function setCategory(category){
-
-document.getElementById("categoryFilter").value=category;
-
-showPage("pricesPage");
-
-renderPrices();
-
-}
-
-
-/* ---------- إضافة سعر ---------- */
-
-function openAddPrice(){
-
-if(!currentUser){
-
-openModal("loginModal");
-
-toast("يجب تسجيل الدخول أولاً");
-
-return;
-
-}
-
-openModal("priceModal");
-
-}
-
+/* ================= ADD PRICE ================= */
 
 function addPrice(){
 
-const productId=
-Number(document.getElementById("priceProduct").value);
+    const category =
+        document.getElementById("categoryInput").value;
 
-const wilaya=
-document.getElementById("priceWilaya").value;
+    const product =
+        document.getElementById("productInput")
+        .value
+        .trim();
 
-const market=
-document.getElementById("priceMarket").value.trim();
+    const price =
+        document.getElementById("priceInput").value;
 
-const price=
-Number(document.getElementById("priceValue").value);
+    const wilaya =
+        document.getElementById("wilayaInput").value;
 
-const type=
-document.getElementById("priceType").value;
-
-
-if(!productId || !wilaya || !market || !price){
-
-toast("⚠️ أكمل جميع المعلومات");
-
-return;
-
-}
+    const market =
+        document.getElementById("marketInput")
+        .value
+        .trim();
 
 
-const newPrice={
+    if(
+        category === "" ||
+        product === "" ||
+        price === "" ||
+        wilaya === "" ||
+        market === ""
+    ){
 
-id:Date.now(),
+        alert(
+            "من فضلك أكمل جميع المعلومات قبل الحفظ."
+        );
 
-productId,
+        return;
 
-wilaya,
-
-market,
-
-price,
-
-type,
-
-status:currentUser.role==="admin"
-?"approved"
-:"pending",
-
-user:currentUser.name,
-
-date:new Date().toISOString()
-
-};
+    }
 
 
-prices.push(newPrice);
+    const newPrice = {
 
-savePrices();
+        category:category,
 
-closeModal("priceModal");
+        product:product,
 
-renderAll();
+        price:Number(price),
 
-toast(
-currentUser.role==="admin"
-?"✅ تم حفظ السعر بنجاح"
-:"✅ تم إرسال السعر للمراجعة"
-);
+        wilaya:wilaya,
 
-}
+        market:market,
+
+        date:new Date()
+            .toLocaleDateString("ar-DZ")
+
+    };
 
 
-/* ---------- تعديل السعر ---------- */
+    prices.unshift(newPrice);
 
-function editPrice(id){
 
-const item=prices.find(p=>p.id===id);
+    localStorage.setItem(
+        "marketPrices",
+        JSON.stringify(prices)
+    );
 
-if(!item)return;
 
-const newValue=prompt(
-`السعر الحالي: ${item.price} دج\nأدخل السعر الجديد:`,
-item.price
-);
+    document.getElementById("categoryInput")
+        .value="";
 
-if(newValue===null)return;
+    document.getElementById("productInput")
+        .value="";
 
-const value=Number(newValue);
+    document.getElementById("priceInput")
+        .value="";
 
-if(!value || value<=0){
+    document.getElementById("wilayaInput")
+        .value="";
 
-toast("سعر غير صحيح");
+    document.getElementById("marketInput")
+        .value="";
 
-return;
 
-}
+    const message =
+        document.getElementById("successMessage");
 
-item.price=value;
 
-savePrices();
+    message.style.display="block";
 
-renderAll();
 
-toast("✅ تم تعديل السعر");
+    setTimeout(() => {
+
+        message.style.display="none";
+
+    },3000);
+
+
+    displayPrices();
 
 }
 
 
-/* ---------- حذف السعر ---------- */
+/* ================= PAGE NAVIGATION ================= */
 
-function deletePrice(id){
+function showPage(pageId, button){
 
-if(!confirm("هل أنت متأكد من حذف هذا السعر؟"))return;
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
 
-prices=prices.filter(p=>p.id!==id);
+            page.classList.remove("active");
 
-savePrices();
-
-renderAll();
-
-toast("🗑️ تم حذف السعر");
-
-}
+        });
 
 
-/* ---------- تسجيل الدخول ---------- */
+    const page =
+        document.getElementById(pageId);
 
-function login(){
-
-const email=
-document.getElementById("loginEmail").value.trim();
-
-const password=
-document.getElementById("loginPassword").value;
+    if(page){
+        page.classList.add("active");
+    }
 
 
-const user=users.find(u=>
-u.email===email &&
-u.password===password
-);
+    if(button){
+
+        document
+            .querySelectorAll(".nav-button")
+            .forEach(btn => {
+
+                btn.classList.remove("active");
+
+            });
+
+        button.classList.add("active");
+
+    }
 
 
-if(!user){
-
-toast("❌ البريد أو كلمة المرور غير صحيحة");
-
-return;
-
-}
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 
-currentUser=user;
+    if(pageId === "homePage"){
 
-localStorage.setItem(
-"souq_current_user",
-JSON.stringify(user)
-);
+        displayPrices();
 
-closeModal("loginModal");
-
-updateUserInterface();
-
-toast("✅ مرحباً "+user.name);
+    }
 
 }
 
 
-/* ---------- إنشاء حساب ---------- */
+/* ================= DARK MODE ================= */
 
-function openRegister(){
+function toggleDarkMode(){
 
-closeModal("loginModal");
-
-openModal("registerModal");
-
-}
+    const enabled =
+        document.getElementById("darkSwitch")
+        .checked;
 
 
-function register(){
+    if(enabled){
 
-const name=
-document.getElementById("registerName").value.trim();
+        document.body.style.background="#121212";
+        document.body.style.color="#eee";
 
-const email=
-document.getElementById("registerEmail").value.trim();
+        document
+            .querySelectorAll(
+                ".search-box,.price-card,.form-card,.menu-card,.setting-card,.contact-card"
+            )
+            .forEach(el => {
 
-const password=
-document.getElementById("registerPassword").value;
+                el.style.background="#1e1e1e";
+                el.style.color="#eee";
 
-const wilaya=
-document.getElementById("registerWilaya").value;
+            });
 
+        localStorage.setItem(
+            "darkMode",
+            "true"
+        );
 
-if(!name || !email || !password || !wilaya){
+    }else{
 
-toast("⚠️ أكمل المعلومات");
+        document.body.style.background="#f4f7f5";
+        document.body.style.color="#222";
 
-return;
+        document
+            .querySelectorAll(
+                ".search-box,.price-card,.form-card,.menu-card,.setting-card,.contact-card"
+            )
+            .forEach(el => {
 
-}
+                el.style.background="white";
+                el.style.color="#222";
 
+            });
 
-if(users.some(u=>u.email===email)){
+        localStorage.setItem(
+            "darkMode",
+            "false"
+        );
 
-toast("❌ البريد الإلكتروني مستعمل");
-
-return;
-
-}
-
-
-const user={
-
-id:Date.now(),
-
-name,
-
-email,
-
-password,
-
-wilaya,
-
-role:"user"
-
-};
-
-
-users.push(user);
-
-saveUsers();
-
-currentUser=user;
-
-localStorage.setItem(
-"souq_current_user",
-JSON.stringify(user)
-);
-
-closeModal("registerModal");
-
-updateUserInterface();
-
-toast("🎉 تم إنشاء الحساب");
+    }
 
 }
 
 
-/* ---------- الحساب ---------- */
+/* ================= FAVORITE WILAYA ================= */
 
-function renderAccount(){
+function saveFavoriteWilaya(){
 
-const box=document.getElementById("accountContent");
+    const value =
+        document.getElementById("favoriteWilaya")
+        .value;
 
-if(!currentUser){
-
-box.innerHTML=`
-
-<div class="auth-box">
-
-<div class="auth-logo">👤</div>
-
-<h2>حسابك</h2>
-
-<p style="text-align:center;color:#777;margin-bottom:20px">
-سجل الدخول للاستفادة من جميع خدمات السوق والصندوق
-</p>
-
-<button class="btn btn-primary btn-block"
-onclick="openModal('loginModal')">
-🔐 تسجيل الدخول
-</button>
-
-<button class="btn btn-secondary btn-block"
-style="margin-top:8px"
-onclick="openRegister()">
-📝 إنشاء حساب
-</button>
-
-</div>
-
-`;
-
-return;
+    localStorage.setItem(
+        "favoriteWilaya",
+        value
+    );
 
 }
 
 
-const myPrices=prices.filter(
-p=>p.user===currentUser.name
-).length;
+/* ================= LOAD SETTINGS ================= */
+
+function loadSettings(){
+
+    const darkMode =
+        localStorage.getItem("darkMode");
+
+    if(darkMode === "true"){
+
+        document.getElementById("darkSwitch")
+            .checked=true;
+
+        toggleDarkMode();
+
+    }
 
 
-box.innerHTML=`
+    const favorite =
+        localStorage.getItem("favoriteWilaya");
 
-<div class="profile">
+    if(favorite){
 
-<div class="avatar">👤</div>
+        document.getElementById("favoriteWilaya")
+            .value=favorite;
 
-<h2>${currentUser.name}</h2>
-
-<p>${currentUser.email}</p>
-
-<small>
-📍 ${currentUser.wilaya}
-</small>
-
-</div>
-
-
-<div class="stats" style="margin-top:15px">
-
-<div class="stat">
-<div class="number">${myPrices}</div>
-<small>أسعاري</small>
-</div>
-
-<div class="stat">
-<div class="number">⭐</div>
-<small>موثوق</small>
-</div>
-
-<div class="stat">
-<div class="number">🇩🇿</div>
-<small>الجزائر</small>
-</div>
-
-</div>
-
-
-<div class="menu-list">
-
-<button class="menu-item"
-onclick="openAddPrice()">
-
-<div class="left">
-
-<div class="menu-icon">➕</div>
-
-<div>
-<strong>إضافة سعر</strong>
-<small>أرسل سعر جديد للسوق</small>
-</div>
-
-</div>
-
-<span>›</span>
-
-</button>
-
-
-<button class="menu-item"
-onclick="openNotifications()">
-
-<div class="left">
-
-<div class="menu-icon">🔔</div>
-
-<div>
-<strong>الإشعارات</strong>
-<small>تابع تحديثات الأسعار</small>
-</div>
-
-</div>
-
-<span>›</span>
-
-</button>
-
-
-<button class="menu-item"
-onclick="showAbout()">
-
-<div class="left">
-
-<div class="menu-icon">ℹ️</div>
-
-<div>
-<strong>عن السوق والصندوق</strong>
-<small>معلومات عن المشروع</small>
-</div>
-
-</div>
-
-<span>›</span>
-
-</button>
-
-
-<button class="menu-item"
-onclick="contactOwner()">
-
-<div class="left">
-
-<div class="menu-icon">📞</div>
-
-<div>
-<strong>تواصل معنا</strong>
-<small>تواصل مع إدارة التطبيق</small>
-</div>
-
-</div>
-
-<span>›</span>
-
-</button>
-
-
-<button class="menu-item"
-onclick="logout()">
-
-<div class="left">
-
-<div class="menu-icon">🚪</div>
-
-<div>
-<strong>تسجيل الخروج</strong>
-<small>الخروج من الحساب</small>
-</div>
-
-</div>
-
-<span>›</span>
-
-</button>
-
-</div>
-
-`;
+    }
 
 }
 
 
-/* ---------- تحديث واجهة المستخدم ---------- */
+/* ================= START ================= */
 
-function updateUserInterface(){
+displayPrices();
 
-const adminNav=
-document.getElementById("adminNav");
-
-if(currentUser?.role==="admin"){
-adminNav.style.display="block";
-}
-else{
-adminNav.style.display="none";
-}
-
-renderAccount();
-
-}
-
-
-/* ---------- تسجيل الخروج ---------- */
-
-function logout(){
-
-currentUser=null;
-
-localStorage.removeItem("souq_current_user");
-
-updateUserInterface();
-
-showPage("homePage");
-
-toast("تم تسجيل الخروج");
-
-}
-
-
-/* ---------- لوحة الإدارة ---------- */
-
-function renderAdmin(){
-
-if(currentUser?.role!=="admin"){
-
-showPage("homePage");
-
-toast("غير مسموح");
-
-return;
-
-}
-
-
-const approved=
-prices.filter(p=>p.status==="approved").length;
-
-const pending=
-prices.filter(p=>p.status==="pending").length;
-
-const rejected=
-prices.filter(p=>p.status==="rejected").length;
-
-
-document.getElementById("adminPrices").textContent=approved;
-
-document.getElementById("adminUsers").textContent=users.length;
-
-document.getElementById("adminPending").textContent=pending;
-
-document.getElementById("adminRejected").textContent=rejected;
-
-
-const pendingList=document.getElementById("pendingPrices");
-
-const list=prices.filter(p=>p.status==="pending");
-
-
-if(!list.length){
-
-pendingList.innerHTML=`
-<div class="empty">
-<div class="empty-icon">✅</div>
-<p>لا توجد أسعار قيد المراجعة</p>
-</div>`;
-
-return;
-
-}
-
-
-pendingList.innerHTML=list.map(item=>{
-
-const product=getProduct(item.productId);
-
-return `
-
-<div class="price-card">
-
-<div class="price-head">
-
-<div class="product">
-
-<div class="product-icon">
-${product.icon}
-</div>
-
-<div>
-<h3>${product.name}</h3>
-<small>
-${item.wilaya} — ${item.market}
-</small>
-</div>
-
-</div>
-
-<div class="price">
-${item.price} دج
-</div>
-
-</div>
-
-
-<div class="price-info">
-<span>👤 ${item.user}</span>
-<span>${formatDate(item.date)}</span>
-</div>
-
-
-<div class="actions">
-
-<button class="btn btn-primary"
-onclick="approvePrice(${item.id})">
-✓ قبول
-</button>
-
-<button class="btn btn-danger"
-onclick="rejectPrice(${item.id})">
-✕ رفض
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-}
-
-
-/* ---------- قبول ---------- */
-
-function approvePrice(id){
-
-const item=prices.find(p=>p.id===id);
-
-if(!item)return;
-
-item.status="approved";
-
-savePrices();
-
-renderAll();
-
-toast("✅ تم قبول السعر");
-
-}
-
-
-/* ---------- رفض ---------- */
-
-function rejectPrice(id){
-
-const item=prices.find(p=>p.id===id);
-
-if(!item)return;
-
-item.status="rejected";
-
-savePrices();
-
-renderAll();
-
-toast("❌ تم رفض السعر");
-
-}
-
-
-/* ---------- المقارنة ---------- */
-
-function initComparison(){
-
-const productSelect=
-document.getElementById("compareProduct");
-
-if(!productSelect.options.length){
-
-products.forEach(p=>{
-productSelect.innerHTML+=`
-<option value="${p.id}">
-${p.icon} ${p.name}
-</option>`;
-});
-
-}
-
-
-renderComparison();
-
-}
-
-
-function renderComparison(){
-
-const productId=
-Number(document.getElementById("compareProduct").value);
-
-const wilaya=
-document.getElementById("compareWilaya").value;
-
-
-if(!productId){
-
-document.getElementById("comparisonResult").innerHTML=`
-<div class="empty">
-<div class="empty-icon">📊</div>
-<p>اختر منتجاً للمقارنة</p>
-</div>`;
-
-return;
-
-}
-
-
-let result=prices.filter(p=>
-p.productId===productId &&
-p.status==="approved"
-);
-
-
-if(wilaya){
-result=result.filter(p=>p.wilaya===wilaya);
-}
-
-
-result.sort((a,b)=>a.price-b.price);
-
-
-if(!result.length){
-
-document.getElementById("comparisonResult").innerHTML=`
-<div class="empty">
-<div class="empty-icon">🔎</div>
-<p>لا توجد بيانات كافية للمقارنة</p>
-</div>`;
-
-return;
-
-}
-
-
-const min=result[0].price;
-
-const max=result[result.length-1].price;
-
-const avg=
-result.reduce((sum,p)=>sum+p.price,0)/result.length;
-
-
-document.getElementById("comparisonResult").innerHTML=`
-
-<div class="stats">
-
-<div class="stat">
-<div class="number">${min}</div>
-<small>أرخص سعر</small>
-</div>
-
-<div class="stat">
-<div class="number">${Math.round(avg)}</div>
-<small>المتوسط</small>
-</div>
-
-<div class="stat">
-<div class="number">${max}</div>
-<small>أغلى سعر</small>
-</div>
-
-</div>
-
-<div class="section-title">
-<h2>الأسواق</h2>
-</div>
-
-${result.map(p=>priceCard(p)).join("")}
-
-`;
-
-}
-
-
-/* ---------- الإشعارات ---------- */
-
-function openNotifications(){
-
-const box=document.getElementById("notifications");
-
-const notifications=[];
-
-
-if(currentUser){
-
-const myPending=prices.filter(p=>
-p.user===currentUser.name &&
-p.status==="pending"
-).length;
-
-if(myPending){
-
-notifications.push(`
-<div class="price-card">
-🔔 لديك ${myPending} سعر قيد المراجعة
-</div>
-`);
-
-}
-
-}
-
-
-notifications.push(`
-<div class="price-card">
-📈 تم تحديث أسعار الأسواق
-</div>
-`);
-
-notifications.push(`
-<div class="price-card">
-🇩🇿 مرحباً بك في السوق والصندوق
-</div>
-`);
-
-
-box.innerHTML=notifications.join("");
-
-openModal("notificationModal");
-
-}
-
-
-/* ---------- الوضع الليلي ---------- */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
-localStorage.setItem(
-"souq_dark",
-document.body.classList.contains("dark")
-);
-
-}
-
-
-/* ---------- معلومات ---------- */
-
-function showAbout(){
-
-alert(
-"السوق والصندوق 🇩🇿\n\n"+
-"منصة لمتابعة أسعار الخضر والفواكه في الأسواق الجزائرية.\n\n"+
-"الهدف: توفير معلومات الأسعار ومقارنتها بين الولايات والأسواق."
-);
-
-}
-
-
-function contactOwner(){
-
-alert(
-"📞 تواصل معنا\n\n"+
-"يمكنك التواصل مع إدارة السوق والصندوق لإرسال الاقتراحات أو الإبلاغ عن أي سعر غير صحيح."
-);
-
-}
-
-
-/* ---------- بيانات التجربة ---------- */
-
-function resetDemoData(){
-
-if(!confirm("إعادة بيانات التجربة؟"))return;
-
-localStorage.removeItem("souq_prices");
-
-location.reload();
-
-}
-
-
-/* ---------- تشغيل ---------- */
-
-function renderAll(){
-
-fillSelects();
-
-updateMarkets();
-
-updateStats();
-
-renderPrices();
-
-updateUserInterface();
-
-if(currentUser?.role==="admin"){
-renderAdmin();
-}
-
-}
-
-
-window.addEventListener("DOMContentLoaded",()=>{
-
-if(localStorage.getItem("souq_dark")==="true"){
-document.body.classList.add("dark");
-}
-
-fillSelects();
-
-updateMarkets();
-
-updateStats();
-
-renderPrices();
-
-updateUserInterface();
-
-});
-
-
-/* ---------- إغلاق المودال عند الضغط خارجه ---------- */
-
-document.querySelectorAll(".modal").forEach(modal=>{
-
-modal.addEventListener("click",function(e){
-
-if(e.target===modal){
-modal.classList.remove("show");
-}
-
-});
-
-});
+loadSettings();
 
 </script>
 
