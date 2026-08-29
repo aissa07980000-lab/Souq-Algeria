@@ -2,182 +2,353 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>السوق والصندوق</title>
 
 <style>
-
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Tahoma,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --green:#079447;
+    --green-dark:#08783c;
+    --green-light:#e8f7ef;
+    --orange:#f28c28;
+    --red:#e53935;
+    --blue:#1976d2;
+    --text:#222;
+    --muted:#777;
+    --bg:#f4f7f5;
+    --card:#fff;
+    --border:#e1e5e2;
+    --shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 body{
-    background:#f4f7f5;
-    color:#222;
+    margin:0;
+    font-family:Arial,"Tahoma",sans-serif;
+    background:var(--bg);
+    color:var(--text);
     padding-bottom:85px;
+}
+
+button,input,select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
 }
 
 /* HEADER */
 
 .header{
-    background:linear-gradient(135deg,#087f3f,#19a65b);
+    background:linear-gradient(135deg,#078d45,#05a957);
     color:white;
-    padding:22px 16px 28px;
-    border-radius:0 0 28px 28px;
-    box-shadow:0 4px 15px rgba(0,0,0,.12);
+    border-radius:0 0 35px 35px;
+    padding:25px 18px 30px;
+    min-height:180px;
+    position:relative;
+    box-shadow:0 5px 18px rgba(0,0,0,.12);
 }
 
 .header-top{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
 }
 
 .logo{
-    font-size:27px;
-    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.header-icon{
-    background:rgba(255,255,255,.18);
-    width:42px;
-    height:42px;
-    border-radius:50%;
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    background:white;
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:27px;
+}
+
+.logo-title{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo-sub{
+    font-size:12px;
+    opacity:.9;
+    margin-top:3px;
+}
+
+.header-action{
+    border:0;
+    background:rgba(255,255,255,.18);
+    color:white;
+    width:42px;
+    height:42px;
+    border-radius:50%;
     font-size:21px;
 }
 
-.header p{
-    margin-top:8px;
-    font-size:14px;
+.welcome{
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.subtitle{
+    font-size:15px;
     opacity:.95;
 }
 
-/* CONTAINER */
+/* MAIN */
 
 .container{
-    width:100%;
-    max-width:650px;
+    width:94%;
+    max-width:700px;
     margin:auto;
-    padding:16px;
 }
-
-/* SEARCH */
 
 .search-box{
     background:white;
-    padding:14px;
-    border-radius:18px;
-    margin-top:-5px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-top:-30px;
+    border-radius:25px;
+    padding:15px;
+    position:relative;
+    z-index:3;
+    box-shadow:var(--shadow);
 }
 
 .search-input{
     width:100%;
-    padding:14px;
+    height:54px;
     border:1px solid #ddd;
-    border-radius:12px;
-    font-size:15px;
+    border-radius:17px;
+    padding:0 18px;
+    font-size:16px;
     outline:none;
+    background:#fafafa;
 }
 
 .search-input:focus{
-    border-color:#159653;
+    border-color:var(--green);
+    background:white;
 }
-
-/* FILTER */
 
 .filters{
-    display:flex;
-    gap:9px;
-    margin-top:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:12px;
 }
 
-.filters select{
-    width:50%;
-    padding:12px;
+.select{
+    width:100%;
+    height:50px;
     border:1px solid #ddd;
-    border-radius:11px;
+    border-radius:15px;
+    padding:0 12px;
+    font-size:15px;
     background:white;
-    font-size:14px;
+    outline:none;
 }
 
-/* TITLE */
+.section{
+    margin-top:28px;
+}
 
 .section-title{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:22px 2px 12px;
+    margin:0 8px 15px;
 }
 
 .section-title h2{
-    font-size:20px;
+    font-size:22px;
+    margin:0;
 }
 
 .section-title span{
-    font-size:13px;
-    color:#16864b;
+    color:var(--green);
+    font-size:14px;
+    font-weight:bold;
+}
+
+.cards{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
 }
 
 /* PRICE CARD */
 
 .price-card{
-    background:white;
-    padding:16px;
+    background:var(--card);
+    border-radius:24px;
+    padding:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    border:1px solid rgba(0,0,0,.03);
+}
+
+.price-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+}
+
+.product-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.product-icon{
+    width:55px;
+    height:55px;
+    background:var(--green-light);
     border-radius:17px;
-    margin-bottom:12px;
-    box-shadow:0 2px 9px rgba(0,0,0,.07);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+}
+
+.product-name{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.product-type{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:5px;
+}
+
+.favorite{
+    border:0;
+    background:transparent;
+    font-size:25px;
+    color:#bbb;
+}
+
+.favorite.active{
+    color:#e53935;
 }
 
 .price-row{
     display:flex;
     justify-content:space-between;
     align-items:center;
-}
-
-.product{
-    font-size:18px;
-    font-weight:bold;
+    margin-top:18px;
 }
 
 .price{
-    color:#108449;
-    font-size:21px;
+    font-size:27px;
+    color:var(--green);
     font-weight:bold;
 }
 
 .unit{
-    font-size:12px;
+    font-size:13px;
     color:#777;
 }
 
-.info{
-    margin-top:10px;
+.market{
     color:#666;
     font-size:14px;
 }
 
 .date{
-    margin-top:6px;
     color:#999;
+    font-size:12px;
+    margin-top:8px;
+}
+
+.change-up{
+    color:#e53935;
+    font-weight:bold;
+}
+
+.change-down{
+    color:#079447;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+
+.primary-btn{
+    width:100%;
+    height:54px;
+    border:0;
+    border-radius:17px;
+    background:var(--green);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    box-shadow:0 6px 15px rgba(7,148,71,.2);
+}
+
+.primary-btn:active{
+    transform:scale(.98);
+}
+
+.secondary-btn{
+    width:100%;
+    height:50px;
+    border:1px solid var(--green);
+    border-radius:16px;
+    background:white;
+    color:var(--green);
+    font-size:16px;
+    font-weight:bold;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    right:0;
+    left:0;
+    height:76px;
+    background:white;
+    border-top:1px solid #ddd;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    z-index:50;
+    box-shadow:0 -5px 20px rgba(0,0,0,.08);
+}
+
+.nav-item{
+    border:0;
+    background:transparent;
+    color:#777;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
     font-size:12px;
 }
 
-/* EMPTY */
+.nav-icon{
+    font-size:25px;
+}
 
-.empty{
-    background:white;
-    padding:25px;
-    border-radius:16px;
-    text-align:center;
-    color:#777;
+.nav-item.active{
+    color:var(--green);
+    font-weight:bold;
 }
 
 /* PAGES */
@@ -190,1296 +361,1007 @@ body{
     display:block;
 }
 
-/* ADD PRICE */
+.page-header{
+    background:linear-gradient(135deg,#078d45,#05a957);
+    color:white;
+    padding:25px 18px;
+    border-radius:0 0 28px 28px;
+}
+
+.page-header h1{
+    margin:0;
+    font-size:25px;
+}
+
+.page-header p{
+    margin:7px 0 0;
+    opacity:.9;
+}
+
+.content{
+    width:94%;
+    max-width:700px;
+    margin:20px auto;
+}
+
+/* ADD FORM */
 
 .form-card{
     background:white;
-    padding:18px;
-    border-radius:18px;
-    box-shadow:0 2px 10px rgba(0,0,0,.07);
-}
-
-.form-card h2{
-    margin-bottom:17px;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:var(--shadow);
 }
 
 .form-group{
-    margin-bottom:13px;
+    margin-bottom:17px;
 }
 
-.form-group label{
+.form-label{
     display:block;
-    margin-bottom:7px;
-    font-size:14px;
+    margin-bottom:8px;
+    font-size:15px;
     font-weight:bold;
 }
 
-.form-group input,
-.form-group select{
+.form-input,
+.form-select{
     width:100%;
-    padding:13px;
+    height:52px;
     border:1px solid #ddd;
-    border-radius:11px;
+    border-radius:15px;
+    padding:0 14px;
     font-size:15px;
     outline:none;
+    background:#fafafa;
 }
 
-.form-group input:focus,
-.form-group select:focus{
-    border-color:#159653;
+.form-input:focus,
+.form-select:focus{
+    border-color:var(--green);
+    background:white;
 }
 
-.main-button{
-    width:100%;
-    border:none;
-    background:#11884b;
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.info-box{
+    background:var(--green-light);
+    border-radius:15px;
+    padding:13px;
+    color:#176b3d;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+/* TABS */
+
+.tabs{
+    display:flex;
+    gap:8px;
+    overflow:auto;
+    padding-bottom:4px;
+}
+
+.tab{
+    flex-shrink:0;
+    padding:11px 17px;
+    border-radius:20px;
+    border:1px solid #ddd;
+    background:white;
+    color:#666;
+}
+
+.tab.active{
+    background:var(--green);
     color:white;
-    padding:14px;
-    border-radius:12px;
-    font-size:16px;
-    font-weight:bold;
-    margin-top:5px;
+    border-color:var(--green);
 }
 
-.success{
-    display:none;
-    background:#e4f7ec;
-    color:#087d3d;
-    padding:12px;
-    border-radius:11px;
+/* STATS */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.stat-card{
+    background:white;
+    border-radius:22px;
+    padding:20px 15px;
     text-align:center;
-    margin-top:12px;
+    box-shadow:var(--shadow);
+}
+
+.stat-icon{
+    font-size:30px;
+}
+
+.stat-number{
+    font-size:27px;
+    font-weight:bold;
+    color:var(--green);
+    margin:8px 0;
+}
+
+.stat-title{
+    color:#777;
+    font-size:13px;
 }
 
 /* ACCOUNT */
 
 .profile-card{
-    background:linear-gradient(135deg,#087f3f,#1aab60);
-    color:white;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    margin-bottom:15px;
-}
-
-.profile-circle{
-    width:75px;
-    height:75px;
-    border-radius:50%;
     background:white;
-    color:#12894b;
+    border-radius:25px;
+    padding:25px;
+    text-align:center;
+    box-shadow:var(--shadow);
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#e9eceb;
+    margin:auto;
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:38px;
-    margin:0 auto 12px;
+    align-items:center;
+    font-size:50px;
 }
 
-.profile-card h2{
-    font-size:20px;
+.profile-name{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:12px;
 }
 
-.profile-card p{
+.profile-sub{
+    color:#777;
+    font-size:14px;
     margin-top:5px;
-    font-size:13px;
-    opacity:.9;
 }
 
 .menu-card{
     background:white;
-    border-radius:17px;
+    border-radius:22px;
+    margin-top:15px;
     overflow:hidden;
-    box-shadow:0 2px 9px rgba(0,0,0,.07);
+    box-shadow:var(--shadow);
 }
 
-.menu-item{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    padding:17px;
+.menu-button{
+    width:100%;
+    min-height:58px;
+    border:0;
     border-bottom:1px solid #eee;
-    cursor:pointer;
-}
-
-.menu-item:last-child{
-    border-bottom:none;
-}
-
-.menu-icon{
-    width:40px;
-    height:40px;
-    border-radius:11px;
-    background:#eaf7f0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
-}
-
-.menu-text{
-    flex:1;
-}
-
-.menu-text strong{
-    display:block;
-    font-size:15px;
-}
-
-.menu-text small{
-    color:#888;
-    font-size:12px;
-}
-
-.arrow{
-    color:#aaa;
-    font-size:18px;
-}
-
-/* SETTINGS */
-
-.setting-card{
     background:white;
-    border-radius:17px;
-    overflow:hidden;
-    box-shadow:0 2px 9px rgba(0,0,0,.07);
-}
-
-.setting-title{
-    padding:15px;
-    font-weight:bold;
-    background:#f7f9f8;
-    color:#16864b;
-}
-
-.setting-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px;
-    border-bottom:1px solid #eee;
-}
-
-.setting-row:last-child{
-    border-bottom:none;
-}
-
-.setting-left{
+    padding:0 18px;
     display:flex;
     align-items:center;
     gap:12px;
-}
-
-.setting-icon{
-    font-size:21px;
-}
-
-.setting-text strong{
-    display:block;
     font-size:15px;
+    text-align:right;
 }
 
-.setting-text small{
-    color:#888;
-    font-size:12px;
+.menu-button:last-child{
+    border-bottom:0;
 }
 
-/* SWITCH */
-
-.switch{
-    position:relative;
-    width:48px;
-    height:26px;
+.menu-button span:first-child{
+    font-size:22px;
 }
 
-.switch input{
-    display:none;
+.menu-arrow{
+    margin-right:auto;
+    color:#aaa;
 }
 
-.slider{
-    position:absolute;
+/* MODAL */
+
+.modal{
+    position:fixed;
     inset:0;
-    background:#ccc;
-    border-radius:30px;
-    cursor:pointer;
+    background:rgba(0,0,0,.55);
+    z-index:100;
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
 }
 
-.slider:before{
-    content:"";
-    position:absolute;
-    width:20px;
-    height:20px;
-    left:3px;
-    top:3px;
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:700px;
     background:white;
+    border-radius:30px 30px 0 0;
+    padding:22px;
+    max-height:90vh;
+    overflow:auto;
+}
+
+.modal-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.modal-title h2{
+    margin:0;
+}
+
+.close{
+    width:38px;
+    height:38px;
+    border:0;
     border-radius:50%;
+    background:#eee;
+    font-size:20px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%) translateY(100px);
+    bottom:90px;
+    background:#222;
+    color:white;
+    padding:13px 20px;
+    border-radius:14px;
+    z-index:200;
+    opacity:0;
     transition:.3s;
+    font-size:14px;
 }
 
-.switch input:checked + .slider{
-    background:#168b4e;
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
 }
 
-.switch input:checked + .slider:before{
-    transform:translateX(22px);
-}
+/* EMPTY */
 
-/* CONTACT */
-
-.contact-card{
+.empty{
     background:white;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 2px 9px rgba(0,0,0,.07);
+    border-radius:23px;
+    padding:35px 20px;
     text-align:center;
+    color:#777;
+    box-shadow:var(--shadow);
 }
 
-.contact-icon{
-    font-size:50px;
+.empty-icon{
+    font-size:45px;
     margin-bottom:10px;
 }
 
-.contact-card h2{
-    margin-bottom:8px;
+/* DARK MODE */
+
+body.dark{
+    --text:#f1f1f1;
+    --muted:#aaa;
+    --bg:#101412;
+    --card:#1b211e;
+    --border:#303833;
 }
 
-.contact-card p{
-    color:#777;
-    font-size:14px;
-    line-height:1.7;
+body.dark .search-box,
+body.dark .form-card,
+body.dark .price-card,
+body.dark .stat-card,
+body.dark .profile-card,
+body.dark .menu-card,
+body.dark .menu-button,
+body.dark .modal-box,
+body.dark .bottom-nav,
+body.dark .empty{
+    background:#1b211e;
+    color:#f1f1f1;
 }
 
-.contact-button{
-    display:block;
-    text-decoration:none;
-    background:#12884b;
+body.dark .search-input,
+body.dark .select,
+body.dark .form-input,
+body.dark .form-select{
+    background:#151a17;
     color:white;
-    padding:14px;
-    border-radius:12px;
-    margin-top:15px;
-    font-weight:bold;
+    border-color:#39433e;
 }
 
-/* BOTTOM MENU */
-
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    right:0;
-    left:0;
-    height:70px;
-    background:white;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    box-shadow:0 -3px 14px rgba(0,0,0,.1);
-    z-index:1000;
+body.dark .secondary-btn{
+    background:#1b211e;
 }
 
-.nav-button{
-    border:none;
-    background:none;
-    color:#777;
-    font-size:11px;
-    text-align:center;
-    min-width:65px;
+body.dark .bottom-nav{
+    border-color:#333;
 }
 
-.nav-button .nav-icon{
-    display:block;
-    font-size:22px;
-    margin-bottom:3px;
+body.dark .menu-button{
+    border-color:#303833;
 }
 
-.nav-button.active{
-    color:#11884b;
-    font-weight:bold;
+body.dark .modal-box{
+    color:white;
 }
 
-/* NOTICE */
+/* DESKTOP */
 
-.notice{
-    background:#fff8df;
-    color:#8a6a00;
-    padding:13px;
-    border-radius:12px;
-    font-size:13px;
-    margin-top:15px;
-    line-height:1.6;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:400px){
-
-    .logo{
-        font-size:23px;
+@media(min-width:700px){
+    .bottom-nav{
+        width:700px;
+        left:50%;
+        transform:translateX(-50%);
+        border-radius:25px 25px 0 0;
     }
 
-    .price{
-        font-size:18px;
+    .cards{
+        display:grid;
+        grid-template-columns:1fr 1fr;
     }
-
-    .product{
-        font-size:16px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
-<header class="header">
-
-    <div class="header-top">
-
-        <div class="logo">
-            🥬 السوق والصندوق
-        </div>
-
-        <div class="header-icon">
-            🇩🇿
-        </div>
-
-    </div>
-
-    <p>
-        أسعار الخضر والفواكه من الأسواق الجزائرية
-    </p>
-
-</header>
-
-
-<div class="container">
-
-
 <!-- ================= HOME ================= -->
 
-<section id="homePage" class="page active">
+<div id="homePage" class="page active">
 
-    <div class="search-box">
+    <header class="header">
 
-        <input
-            id="searchInput"
-            class="search-input"
-            type="text"
-            placeholder="🔎 ابحث عن الخضر أو الفواكه..."
-            oninput="displayPrices()"
-        >
+        <div class="header-top">
 
-        <div class="filters">
+            <div class="logo">
+                <div class="logo-icon">🥬</div>
 
-            <select id="wilayaFilter" onchange="displayPrices()">
+                <div>
+                    <div class="logo-title">السوق والصندوق</div>
+                    <div class="logo-sub">أسعار الخضر والفواكه في الجزائر</div>
+                </div>
+            </div>
 
-                <option value="">كل الولايات</option>
-
-                <option value="سطيف">سطيف</option>
-                <option value="الجزائر">الجزائر</option>
-                <option value="وهران">وهران</option>
-                <option value="قسنطينة">قسنطينة</option>
-                <option value="باتنة">باتنة</option>
-                <option value="بسكرة">بسكرة</option>
-                <option value="الوادي">الوادي</option>
-                <option value="أدرار">أدرار</option>
-                <option value="عنابة">عنابة</option>
-                <option value="تيزي وزو">تيزي وزو</option>
-
-            </select>
-
-            <select id="categoryFilter" onchange="displayPrices()">
-
-                <option value="">كل المنتجات</option>
-                <option value="خضر">🥕 خضر</option>
-                <option value="فواكه">🍎 فواكه</option>
-
-            </select>
+            <button class="header-action" onclick="toggleDarkMode()">🌙</button>
 
         </div>
 
+        <div class="welcome">أسعار الخضر والفواكه</div>
+        <div class="subtitle">تابع أسعار الأسواق الجزائرية بسهولة</div>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="search-box">
+
+            <input
+                id="homeSearch"
+                class="search-input"
+                type="search"
+                placeholder="🔎 ابحث عن الخضر أو الفواكه..."
+                oninput="filterHome()"
+            >
+
+            <div class="filters">
+
+                <select id="homeWilaya" class="select" onchange="filterHome()">
+                    <option value="">كل الولايات</option>
+                </select>
+
+                <select id="homeProduct" class="select" onchange="filterHome()">
+                    <option value="">كل المنتجات</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <section class="section">
+
+            <div class="section-title">
+                <h2>📊 أسعار اليوم</h2>
+                <span id="todayCount">0 سعر</span>
+            </div>
+
+            <div id="homeCards" class="cards"></div>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="section-title">
+                <h2>⚡ اختصارات</h2>
+            </div>
+
+            <div class="stats-grid">
+
+                <button class="stat-card" onclick="showPage('addPage')">
+                    <div class="stat-icon">➕</div>
+                    <div class="stat-title">إضافة سعر</div>
+                </button>
+
+                <button class="stat-card" onclick="showPage('pricesPage')">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-title">كل الأسعار</div>
+                </button>
+
+                <button class="stat-card" onclick="showPage('favoritesPage')">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-title">المفضلة</div>
+                </button>
+
+                <button class="stat-card" onclick="showPage('comparePage')">
+                    <div class="stat-icon">⚖️</div>
+                    <div class="stat-title">مقارنة الأسعار</div>
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= PRICES ================= -->
+
+<div id="pricesPage" class="page">
+
+    <div class="page-header">
+        <h1>📊 كل الأسعار</h1>
+        <p>استعرض أسعار المنتجات حسب الولاية والسوق</p>
     </div>
 
+    <div class="content">
 
-    <div class="section-title">
+        <input
+            id="pricesSearch"
+            class="form-input"
+            placeholder="🔎 ابحث عن منتج..."
+            oninput="renderPricesPage()"
+        >
 
-        <h2>📊 أسعار اليوم</h2>
+        <br><br>
 
-        <span id="priceCount">
-            0 سعر
-        </span>
+        <div class="tabs">
+            <button class="tab active" onclick="setCategory('all',this)">الكل</button>
+            <button class="tab" onclick="setCategory('خضر',this)">🥬 خضر</button>
+            <button class="tab" onclick="setCategory('فواكه',this)">🍎 فواكه</button>
+        </div>
+
+        <br>
+
+        <div id="pricesCards" class="cards"></div>
 
     </div>
 
-
-    <div id="pricesList"></div>
-
-
-    <div class="notice">
-
-        💡 الأسعار المعروضة يمكن أن تختلف حسب السوق
-        والجودة والكمية ووقت البيع.
-
-    </div>
-
-</section>
-
+</div>
 
 
 <!-- ================= ADD PRICE ================= -->
 
-<section id="addPage" class="page">
+<div id="addPage" class="page">
 
-    <div class="section-title">
-
-        <h2>➕ إضافة سعر</h2>
-
+    <div class="page-header">
+        <h1>➕ إضافة سعر</h1>
+        <p>ساهم في تحديث أسعار الأسواق الجزائرية</p>
     </div>
 
+    <div class="content">
 
-    <div class="form-card">
+        <div class="form-card">
 
-        <h2>
-            إدخال سعر جديد
-        </h2>
+            <div class="info-box">
+                💡 أدخل معلومات السعر بدقة حتى يستفيد منها التجار والمستهلكون.
+            </div>
 
+            <div class="form-group">
+                <label class="form-label">المنتج</label>
 
-        <div class="form-group">
-
-            <label>
-                نوع المنتج
-            </label>
-
-            <select id="categoryInput">
-
-                <option value="">
-                    اختر النوع
-                </option>
-
-                <option value="خضر">
-                    🥕 خضر
-                </option>
-
-                <option value="فواكه">
-                    🍎 فواكه
-                </option>
-
-            </select>
-
-        </div>
+                <select id="addProduct" class="form-select">
+                    <option value="">اختر المنتج</option>
+                </select>
+            </div>
 
 
-        <div class="form-group">
+            <div class="form-group">
+                <label class="form-label">الولاية</label>
 
-            <label>
-                اسم المنتج
-            </label>
-
-            <input
-                id="productInput"
-                type="text"
-                placeholder="مثلا: طماطم"
-            >
-
-        </div>
+                <select id="addWilaya" class="form-select" onchange="updateMarkets()">
+                    <option value="">اختر الولاية</option>
+                </select>
+            </div>
 
 
-        <div class="form-group">
+            <div class="form-group">
+                <label class="form-label">السوق</label>
 
-            <label>
-                السعر بالدينار / كغ
-            </label>
-
-            <input
-                id="priceInput"
-                type="number"
-                placeholder="مثلا: 80"
-            >
-
-        </div>
+                <select id="addMarket" class="form-select">
+                    <option value="">اختر السوق</option>
+                </select>
+            </div>
 
 
-        <div class="form-group">
+            <div class="form-grid">
 
-            <label>
-                الولاية
-            </label>
+                <div class="form-group">
+                    <label class="form-label">سعر الجملة (دج/كغ)</label>
 
-            <select id="wilayaInput">
+                    <input
+                        id="wholesalePrice"
+                        class="form-input"
+                        type="number"
+                        min="0"
+                        placeholder="مثال: 50"
+                    >
+                </div>
 
-                <option value="">
-                    اختر الولاية
-                </option>
+                <div class="form-group">
+                    <label class="form-label">سعر التجزئة (دج/كغ)</label>
 
-                <option value="سطيف">سطيف</option>
-                <option value="الجزائر">الجزائر</option>
-                <option value="وهران">وهران</option>
-                <option value="قسنطينة">قسنطينة</option>
-                <option value="باتنة">باتنة</option>
-                <option value="بسكرة">بسكرة</option>
-                <option value="الوادي">الوادي</option>
-                <option value="أدرار">أدرار</option>
-                <option value="عنابة">عنابة</option>
-                <option value="تيزي وزو">تيزي وزو</option>
+                    <input
+                        id="retailPrice"
+                        class="form-input"
+                        type="number"
+                        min="0"
+                        placeholder="مثال: 70"
+                    >
+                </div>
 
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                اسم السوق
-            </label>
-
-            <input
-                id="marketInput"
-                type="text"
-                placeholder="مثلا: سوق الخضر والفواكه"
-            >
-
-        </div>
+            </div>
 
 
-        <button
-            class="main-button"
-            onclick="addPrice()"
-        >
-            💾 حفظ السعر
-        </button>
+            <div class="form-group">
+                <label class="form-label">ملاحظة</label>
+
+                <input
+                    id="addNote"
+                    class="form-input"
+                    placeholder="مثال: نوعية ممتازة"
+                >
+            </div>
 
 
-        <div id="successMessage" class="success">
-
-            تم حفظ السعر بنجاح ✅
+            <button class="primary-btn" onclick="savePrice()">
+                💾 حفظ السعر
+            </button>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
+
+<!-- ================= FAVORITES ================= -->
+
+<div id="favoritesPage" class="page">
+
+    <div class="page-header">
+        <h1>❤️ المفضلة</h1>
+        <p>المنتجات والأسعار التي تتابعها</p>
+    </div>
+
+    <div class="content">
+
+        <div id="favoritesCards" class="cards"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= COMPARE ================= -->
+
+<div id="comparePage" class="page">
+
+    <div class="page-header">
+        <h1>⚖️ مقارنة الأسعار</h1>
+        <p>قارن سعر المنتج بين الأسواق</p>
+    </div>
+
+    <div class="content">
+
+        <div class="form-card">
+
+            <div class="form-group">
+
+                <label class="form-label">اختر المنتج</label>
+
+                <select id="compareProduct" class="form-select" onchange="renderCompare()">
+                    <option value="">اختر المنتج</option>
+                </select>
+
+            </div>
+
+            <div id="compareResult"></div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- ================= ACCOUNT ================= -->
 
-<section id="accountPage" class="page">
+<div id="accountPage" class="page">
 
-    <div class="section-title">
-
-        <h2>👤 حسابي</h2>
-
+    <div class="page-header">
+        <h1>👤 حسابي</h1>
+        <p>إدارة إعدادات التطبيق</p>
     </div>
 
+    <div class="content">
 
-    <div class="profile-card">
+        <div class="profile-card">
 
-        <div class="profile-circle">
-            👤
-        </div>
+            <div class="avatar">👤</div>
 
-        <h2>
-            مرحباً بك
-        </h2>
-
-        <p>
-            عضو في منصة السوق والصندوق
-        </p>
-
-    </div>
-
-
-    <div class="menu-card">
-
-        <div
-            class="menu-item"
-            onclick="showPage('settingsPage')"
-        >
-
-            <div class="menu-icon">
-                ⚙️
+            <div id="profileName" class="profile-name">
+                زائر
             </div>
 
-            <div class="menu-text">
-
-                <strong>
-                    الإعدادات
-                </strong>
-
-                <small>
-                    التحكم في إعدادات التطبيق
-                </small>
-
-            </div>
-
-            <div class="arrow">
-                ‹
+            <div class="profile-sub">
+                مرحباً بك في السوق والصندوق
             </div>
 
         </div>
 
 
-        <div
-            class="menu-item"
-            onclick="showPage('contactPage')"
-        >
+        <div class="menu-card">
 
-            <div class="menu-icon">
-                📞
-            </div>
+            <button class="menu-button" onclick="editName()">
+                <span>✏️</span>
+                <span>تعديل الاسم</span>
+                <span class="menu-arrow">‹</span>
+            </button>
 
-            <div class="menu-text">
+            <button class="menu-button" onclick="showStatistics()">
+                <span>📈</span>
+                <span>الإحصائيات</span>
+                <span class="menu-arrow">‹</span>
+            </button>
 
-                <strong>
-                    تواصل معنا
-                </strong>
+            <button class="menu-button" onclick="toggleDarkMode()">
+                <span>🌙</span>
+                <span>الوضع الليلي</span>
+                <span class="menu-arrow">‹</span>
+            </button>
 
-                <small>
-                    أرسل اقتراح أو ملاحظة
-                </small>
+            <button class="menu-button" onclick="showAbout()">
+                <span>ℹ️</span>
+                <span>عن التطبيق</span>
+                <span class="menu-arrow">‹</span>
+            </button>
 
-            </div>
+            <button class="menu-button" onclick="showContact()">
+                <span>📞</span>
+                <span>تواصل معنا</span>
+                <span class="menu-arrow">‹</span>
+            </button>
 
-            <div class="arrow">
-                ‹
-            </div>
-
-        </div>
-
-
-        <div class="menu-item">
-
-            <div class="menu-icon">
-                ⭐
-            </div>
-
-            <div class="menu-text">
-
-                <strong>
-                    تقييم التطبيق
-                </strong>
-
-                <small>
-                    ساعدنا على تطوير السوق والصندوق
-                </small>
-
-            </div>
-
-            <div class="arrow">
-                ‹
-            </div>
-
-        </div>
-
-
-        <div class="menu-item">
-
-            <div class="menu-icon">
-                ℹ️
-            </div>
-
-            <div class="menu-text">
-
-                <strong>
-                    حول السوق والصندوق
-                </strong>
-
-                <small>
-                    معلومات عن المنصة
-                </small>
-
-            </div>
-
-            <div class="arrow">
-                ‹
-            </div>
+            <button class="menu-button" onclick="clearAllData()">
+                <span>🗑️</span>
+                <span>حذف البيانات المحلية</span>
+                <span class="menu-arrow">‹</span>
+            </button>
 
         </div>
 
     </div>
-
-</section>
-
-
-
-<!-- ================= SETTINGS ================= -->
-
-<section id="settingsPage" class="page">
-
-    <div class="section-title">
-
-        <h2>⚙️ الإعدادات</h2>
-
-    </div>
-
-
-    <div class="setting-card">
-
-        <div class="setting-title">
-            الإعدادات العامة
-        </div>
-
-
-        <div class="setting-row">
-
-            <div class="setting-left">
-
-                <div class="setting-icon">
-                    🔔
-                </div>
-
-                <div class="setting-text">
-
-                    <strong>
-                        الإشعارات
-                    </strong>
-
-                    <small>
-                        استقبال تنبيهات الأسعار الجديدة
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <label class="switch">
-
-                <input
-                    type="checkbox"
-                    id="notificationSwitch"
-                    checked
-                >
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
-
-        <div class="setting-row">
-
-            <div class="setting-left">
-
-                <div class="setting-icon">
-                    🌙
-                </div>
-
-                <div class="setting-text">
-
-                    <strong>
-                        الوضع الليلي
-                    </strong>
-
-                    <small>
-                        تغيير مظهر التطبيق
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <label class="switch">
-
-                <input
-                    type="checkbox"
-                    id="darkSwitch"
-                    onchange="toggleDarkMode()"
-                >
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
-
-        <div class="setting-row">
-
-            <div class="setting-left">
-
-                <div class="setting-icon">
-                    📍
-                </div>
-
-                <div class="setting-text">
-
-                    <strong>
-                        الولاية المفضلة
-                    </strong>
-
-                    <small>
-                        اختر ولايتك لسهولة متابعة الأسعار
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <select
-                id="favoriteWilaya"
-                onchange="saveFavoriteWilaya()"
-                style="padding:8px;border:1px solid #ddd;border-radius:8px;"
-            >
-
-                <option value="">
-                    اختيار
-                </option>
-
-                <option value="سطيف">سطيف</option>
-                <option value="الجزائر">الجزائر</option>
-                <option value="وهران">وهران</option>
-                <option value="قسنطينة">قسنطينة</option>
-                <option value="باتنة">باتنة</option>
-                <option value="بسكرة">بسكرة</option>
-                <option value="الوادي">الوادي</option>
-                <option value="أدرار">أدرار</option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <button
-        class="main-button"
-        onclick="showPage('accountPage')"
-        style="margin-top:15px;"
-    >
-        ← الرجوع إلى حسابي
-    </button>
-
-</section>
-
-
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contactPage" class="page">
-
-    <div class="section-title">
-
-        <h2>📞 تواصل معنا</h2>
-
-    </div>
-
-
-    <div class="contact-card">
-
-        <div class="contact-icon">
-            💬
-        </div>
-
-        <h2>
-            نحن نسمعك
-        </h2>
-
-        <p>
-
-            إذا عندك اقتراح لتطوير المنصة،
-            أو لاحظت خطأ في الأسعار،
-            أو عندك فكرة جديدة، تواصل معنا.
-
-        </p>
-
-
-        <a
-            class="contact-button"
-            href="mailto:"
-        >
-            ✉️ إرسال رسالة
-        </a>
-
-    </div>
-
-
-    <button
-        class="main-button"
-        onclick="showPage('accountPage')"
-        style="margin-top:15px;"
-    >
-        ← الرجوع إلى حسابي
-    </button>
-
-</section>
-
 
 </div>
 
+
+<!-- ================= MODAL ================= -->
+
+<div id="modal" class="modal" onclick="closeModalOutside(event)">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+
+            <h2 id="modalTitle">العنوان</h2>
+
+            <button class="close" onclick="closeModal()">×</button>
+
+        </div>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+    تم الحفظ بنجاح
+</div>
 
 
 <!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
 
-    <button
-        class="nav-button active"
-        onclick="showPage('homePage',this)"
-    >
-
-        <span class="nav-icon">
-            🏠
-        </span>
-
-        الرئيسية
-
+    <button class="nav-item active" data-page="homePage" onclick="showPage('homePage')">
+        <div class="nav-icon">🏠</div>
+        <div>الرئيسية</div>
     </button>
 
-
-    <button
-        class="nav-button"
-        onclick="showPage('addPage',this)"
-    >
-
-        <span class="nav-icon">
-            ➕
-        </span>
-
-        إضافة سعر
-
+    <button class="nav-item" data-page="pricesPage" onclick="showPage('pricesPage')">
+        <div class="nav-icon">📊</div>
+        <div>الأسعار</div>
     </button>
 
+    <button class="nav-item" data-page="addPage" onclick="showPage('addPage')">
+        <div class="nav-icon">➕</div>
+        <div>إضافة سعر</div>
+    </button>
 
-    <button
-        class="nav-button"
-        onclick="showPage('accountPage',this)"
-    >
+    <button class="nav-item" data-page="favoritesPage" onclick="showPage('favoritesPage')">
+        <div class="nav-icon">❤️</div>
+        <div>المفضلة</div>
+    </button>
 
-        <span class="nav-icon">
-            👤
-        </span>
-
-        حسابي
-
+    <button class="nav-item" data-page="accountPage" onclick="showPage('accountPage')">
+        <div class="nav-icon">👤</div>
+        <div>حسابي</div>
     </button>
 
 </nav>
 
 
-
 <script>
 
-/* ================= DATA ================= */
+/* =========================================================
+   DATA
+========================================================= */
 
-let prices =
-JSON.parse(localStorage.getItem("marketPrices")) || [
+const products = [
 
-    {
-        product:"طماطم",
-        price:80,
-        wilaya:"سطيف",
-        market:"سوق الخضر والفواكه",
-        category:"خضر",
-        date:"اليوم"
-    },
+    {id:"tomato",name:"طماطم",category:"خضر",icon:"🍅"},
+    {id:"pepper",name:"فلفل",category:"خضر",icon:"🌶️"},
+    {id:"potato",name:"بطاطا",category:"خضر",icon:"🥔"},
+    {id:"onion",name:"بصل",category:"خضر",icon:"🧅"},
+    {id:"carrot",name:"جزر",category:"خضر",icon:"🥕"},
+    {id:"cucumber",name:"خيار",category:"خضر",icon:"🥒"},
+    {id:"lettuce",name:"خس",category:"خضر",icon:"🥬"},
+    {id:"zucchini",name:"كوسة",category:"خضر",icon:"🥒"},
+    {id:"eggplant",name:"باذنجان",category:"خضر",icon:"🍆"},
+    {id:"garlic",name:"ثوم",category:"خضر",icon:"🧄"},
 
-    {
-        product:"بطاطا",
-        price:70,
-        wilaya:"سطيف",
-        market:"سوق الخضر والفواكه",
-        category:"خضر",
-        date:"اليوم"
-    },
-
-    {
-        product:"فلفل",
-        price:120,
-        wilaya:"سطيف",
-        market:"سوق الخضر والفواكه",
-        category:"خضر",
-        date:"اليوم"
-    },
-
-    {
-        product:"خيار",
-        price:90,
-        wilaya:"سطيف",
-        market:"سوق الخضر والفواكه",
-        category:"خضر",
-        date:"اليوم"
-    }
-
+    {id:"apple",name:"تفاح",category:"فواكه",icon:"🍎"},
+    {id:"banana",name:"موز",category:"فواكه",icon:"🍌"},
+    {id:"orange",name:"برتقال",category:"فواكه",icon:"🍊"},
+    {id:"lemon",name:"ليمون",category:"فواكه",icon:"🍋"},
+    {id:"strawberry",name:"فراولة",category:"فواكه",icon:"🍓"},
+    {id:"watermelon",name:"بطيخ",category:"فواكه",icon:"🍉"},
+    {id:"melon",name:"شمام",category:"فواكه",icon:"🍈"},
+    {id:"grape",name:"عنب",category:"فواكه",icon:"🍇"},
+    {id:"peach",name:"خوخ",category:"فواكه",icon:"🍑"},
+    {id:"pear",name:"إجاص",category:"فواكه",icon:"🍐"}
 ];
 
 
-/* ================= DISPLAY PRICES ================= */
+const wilayas = [
 
-function displayPrices(){
-
-    const list =
-        document.getElementById("pricesList");
-
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const wilaya =
-        document.getElementById("wilayaFilter")
-        .value;
-
-    const category =
-        document.getElementById("categoryFilter")
-        .value;
+"أدرار","الشلف","الأغواط","أم البواقي","باتنة",
+"بجاية","بسكرة","بشار","البليدة","البويرة",
+"تمنراست","تبسة","تلمسان","تيارت","تيزي وزو",
+"الجزائر","الجلفة","جيجل","سطيف","سعيدة",
+"سكيكدة","سيدي بلعباس","عنابة","قالمة","قسنطينة",
+"المدية","مستغانم","المسيلة","معسكر","ورقلة",
+"وهران","البيض","إليزي","برج بوعريريج","بومرداس",
+"الطارف","تندوف","تيسمسيلت","الوادي","خنشلة",
+"سوق أهراس","تيبازة","ميلة","عين الدفلى","النعامة",
+"عين تموشنت","غرداية","غليزان",
+"تيميمون","برج باجي مختار","أولاد جلال","بني عباس",
+"إن صالح","إن قزام","تقرت","جانت","المغير",
+"المنيعة"
+];
 
 
-    list.innerHTML="";
+const markets = {
+
+"سطيف":[
+"سوق مڨرّو سطيف",
+"سوق الخضر والفواكه سطيف",
+"السوق المركزي سطيف",
+"سوق عين أرنات",
+"سوق العلمة"
+],
+
+"الجزائر":[
+"سوق الحميز",
+"سوق بئر توتة",
+"سوق الجملة للخضر والفواكه",
+"سوق سطاوالي"
+],
+
+"قسنطينة":[
+"سوق الجملة قسنطينة",
+"سوق بومرزوق",
+"السوق المركزي"
+],
+
+"باتنة":[
+"سوق الجملة باتنة",
+"السوق المركزي باتنة"
+],
+
+"عنابة":[
+"سوق الجملة عنابة",
+"السوق المركزي عنابة"
+],
+
+"وهران":[
+"سوق الجملة وهران",
+"السوق المركزي وهران"
+],
+
+"بسكرة":[
+"سوق الجملة بسكرة",
+"سوق الخضر والفواكه بسكرة"
+]
+
+};
 
 
-    const filtered =
-        prices.filter(item => {
+/* =========================================================
+   LOCAL STORAGE
+========================================================= */
 
-            const matchSearch =
-                item.product
-                .toLowerCase()
-                .includes(search);
+let priceData = JSON.parse(localStorage.getItem("souqPrices") || "null");
 
-            const matchWilaya =
-                wilaya === "" ||
-                item.wilaya === wilaya;
+if(!priceData){
 
-            const matchCategory =
-                category === "" ||
-                item.category === category;
+    priceData = [
 
-            return(
-                matchSearch &&
-                matchWilaya &&
-                matchCategory
-            );
+        {
+            id:Date.now()+1,
+            product:"pepper",
+            wilaya:"سطيف",
+            market:"سوق مڨرّو سطيف",
+            wholesale:11,
+            retail:15,
+            date:"2026-08-28",
+            note:"",
+            favorite:false
+        },
+
+        {
+            id:Date.now()+2,
+            product:"tomato",
+            wilaya:"سطيف",
+            market:"سوق الخضر والفواكه",
+            wholesale:80,
+            retail:90,
+            date:"2026-08-29",
+            note:"",
+            favorite:false
+        }
+
+    ];
+
+    saveData();
+
+}
+
+
+let selectedCategory = "all";
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    fillSelects();
+
+    renderHome();
+
+    applySavedSettings();
+
+});
+
+
+/* =========================================================
+   SELECTS
+========================================================= */
+
+function fillSelects(){
+
+    const wilayaSelects = [
+        document.getElementById("homeWilaya"),
+        document.getElementById("addWilaya")
+    ];
+
+    wilayaSelects.forEach(select=>{
+
+        wilayas.forEach(w=>{
+
+            const option = document.createElement("option");
+
+            option.value = w;
+            option.textContent = w;
+
+            select.appendChild(option);
 
         });
 
-
-    document.getElementById("priceCount").textContent =
-        filtered.length + " سعر";
+    });
 
 
-    if(filtered.length === 0){
-
-        list.innerHTML = `
-
-            <div class="empty">
-
-                🔍<br><br>
-
-                لا توجد أسعار مطابقة للبحث.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
+    const productSelects = [
+        document.getElementById("homeProduct"),
+        document.getElementById("addProduct"),
+        document.getElementById("compareProduct")
+    ];
 
 
-    filtered.forEach(item => {
+    productSelects.forEach(select=>{
 
-        list.innerHTML += `
+        products.forEach(p=>{
 
-            <div class="price-card">
+            const option = document.createElement("option");
 
-                <div class="price-row">
+            option.value = p.id;
+            option.textContent = p.icon+" "+p.name;
 
-                    <div>
+            select.appendChild(option);
 
-                        <div class="product">
-
-                            ${item.product}
-
-                        </div>
-
-                        <div class="unit">
-
-                            ${item.category || "منتج"}
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="price">
-
-                        ${item.price}
-
-                        <span class="unit">
-                            دج/كغ
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="info">
-
-                    📍 ${item.wilaya}
-
-                    — ${item.market}
-
-                </div>
-
-
-                <div class="date">
-
-                    🕒 ${item.date}
-
-                </div>
-
-            </div>
-
-        `;
+        });
 
     });
 
 }
 
 
-/* ================= ADD PRICE ================= */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-function addPrice(){
+function showPage(pageId){
 
-    const category =
-        document.getElementById("categoryInput").value;
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
+    });
 
-    const product =
-        document.getElementById("productInput")
-        .value
-        .trim();
-
-    const price =
-        document.getElementById("priceInput").value;
-
-    const wilaya =
-        document.getElementById("wilayaInput").value;
-
-    const market =
-        document.getElementById("marketInput")
-        .value
-        .trim();
-
-
-    if(
-        category === "" ||
-        product === "" ||
-        price === "" ||
-        wilaya === "" ||
-        market === ""
-    ){
-
-        alert(
-            "من فضلك أكمل جميع المعلومات قبل الحفظ."
-        );
-
-        return;
-
-    }
-
-
-    const newPrice = {
-
-        category:category,
-
-        product:product,
-
-        price:Number(price),
-
-        wilaya:wilaya,
-
-        market:market,
-
-        date:new Date()
-            .toLocaleDateString("ar-DZ")
-
-    };
-
-
-    prices.unshift(newPrice);
-
-
-    localStorage.setItem(
-        "marketPrices",
-        JSON.stringify(prices)
-    );
-
-
-    document.getElementById("categoryInput")
-        .value="";
-
-    document.getElementById("productInput")
-        .value="";
-
-    document.getElementById("priceInput")
-        .value="";
-
-    document.getElementById("wilayaInput")
-        .value="";
-
-    document.getElementById("marketInput")
-        .value="";
-
-
-    const message =
-        document.getElementById("successMessage");
-
-
-    message.style.display="block";
-
-
-    setTimeout(() => {
-
-        message.style.display="none";
-
-    },3000);
-
-
-    displayPrices();
-
-}
-
-
-/* ================= PAGE NAVIGATION ================= */
-
-function showPage(pageId, button){
-
-    document
-        .querySelectorAll(".page")
-        .forEach(page => {
-
-            page.classList.remove("active");
-
-        });
-
-
-    const page =
-        document.getElementById(pageId);
+    const page = document.getElementById(pageId);
 
     if(page){
         page.classList.add("active");
     }
 
 
-    if(button){
+    document.querySelectorAll(".nav-item").forEach(item=>{
+        item.classList.remove("active");
+    });
 
-        document
-            .querySelectorAll(".nav-button")
-            .forEach(btn => {
 
-                btn.classList.remove("active");
+    const nav = document.querySelector(`[data-page="${pageId}"]`);
 
-            });
-
-        button.classList.add("active");
-
+    if(nav){
+        nav.classList.add("active");
     }
 
 
@@ -1489,122 +1371,1092 @@ function showPage(pageId, button){
     });
 
 
-    if(pageId === "homePage"){
-
-        displayPrices();
-
-    }
-
-}
-
-
-/* ================= DARK MODE ================= */
-
-function toggleDarkMode(){
-
-    const enabled =
-        document.getElementById("darkSwitch")
-        .checked;
-
-
-    if(enabled){
-
-        document.body.style.background="#121212";
-        document.body.style.color="#eee";
-
-        document
-            .querySelectorAll(
-                ".search-box,.price-card,.form-card,.menu-card,.setting-card,.contact-card"
-            )
-            .forEach(el => {
-
-                el.style.background="#1e1e1e";
-                el.style.color="#eee";
-
-            });
-
-        localStorage.setItem(
-            "darkMode",
-            "true"
-        );
-
-    }else{
-
-        document.body.style.background="#f4f7f5";
-        document.body.style.color="#222";
-
-        document
-            .querySelectorAll(
-                ".search-box,.price-card,.form-card,.menu-card,.setting-card,.contact-card"
-            )
-            .forEach(el => {
-
-                el.style.background="white";
-                el.style.color="#222";
-
-            });
-
-        localStorage.setItem(
-            "darkMode",
-            "false"
-        );
-
-    }
+    if(pageId==="homePage") renderHome();
+    if(pageId==="pricesPage") renderPricesPage();
+    if(pageId==="favoritesPage") renderFavorites();
+    if(pageId==="comparePage") renderCompare();
 
 }
 
 
-/* ================= FAVORITE WILAYA ================= */
+/* =========================================================
+   HOME
+========================================================= */
 
-function saveFavoriteWilaya(){
+function renderHome(){
 
-    const value =
-        document.getElementById("favoriteWilaya")
-        .value;
+    const container = document.getElementById("homeCards");
 
-    localStorage.setItem(
-        "favoriteWilaya",
-        value
+    const search = document.getElementById("homeSearch").value.toLowerCase().trim();
+
+    const wilaya = document.getElementById("homeWilaya").value;
+
+    const product = document.getElementById("homeProduct").value;
+
+
+    let data = [...priceData];
+
+
+    if(search){
+
+        data = data.filter(item=>{
+
+            const p = getProduct(item.product);
+
+            return (
+                p.name.toLowerCase().includes(search) ||
+                item.market.toLowerCase().includes(search) ||
+                item.wilaya.toLowerCase().includes(search)
+            );
+
+        });
+
+    }
+
+
+    if(wilaya){
+        data = data.filter(x=>x.wilaya===wilaya);
+    }
+
+
+    if(product){
+        data = data.filter(x=>x.product===product);
+    }
+
+
+    data.sort((a,b)=>new Date(b.date)-new Date(a.date));
+
+
+    document.getElementById("todayCount").textContent =
+        data.length+" سعر";
+
+
+    renderCards(container,data);
+
+}
+
+
+function filterHome(){
+    renderHome();
+}
+
+
+/* =========================================================
+   PRICES PAGE
+========================================================= */
+
+function setCategory(category,button){
+
+    selectedCategory = category;
+
+    document.querySelectorAll(".tab").forEach(t=>{
+        t.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderPricesPage();
+
+}
+
+
+function renderPricesPage(){
+
+    const container = document.getElementById("pricesCards");
+
+    const search = document.getElementById("pricesSearch").value.toLowerCase().trim();
+
+
+    let data = [...priceData];
+
+
+    if(selectedCategory!=="all"){
+
+        data = data.filter(item=>{
+
+            const p = getProduct(item.product);
+
+            return p.category===selectedCategory;
+
+        });
+
+    }
+
+
+    if(search){
+
+        data = data.filter(item=>{
+
+            const p = getProduct(item.product);
+
+            return (
+                p.name.toLowerCase().includes(search) ||
+                item.wilaya.toLowerCase().includes(search) ||
+                item.market.toLowerCase().includes(search)
+            );
+
+        });
+
+    }
+
+
+    renderCards(container,data);
+
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+function renderCards(container,data){
+
+    if(!data.length){
+
+        container.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">🔎</div>
+                <div>لا توجد أسعار مطابقة للبحث</div>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = data.map(item=>{
+
+        const p = getProduct(item.product);
+
+        const favoriteClass = item.favorite ? "active" : "";
+
+
+        let change = "";
+
+        if(item.wholesale && item.retail){
+
+            const difference = item.retail-item.wholesale;
+
+            if(difference>0){
+
+                change = `
+                    <span class="change-up">
+                        +${difference} دج
+                    </span>
+                `;
+
+            }
+
+        }
+
+
+        return `
+
+        <div class="price-card">
+
+            <div class="price-top">
+
+                <div class="product-info">
+
+                    <div class="product-icon">
+                        ${p.icon}
+                    </div>
+
+                    <div>
+
+                        <div class="product-name">
+                            ${p.name}
+                        </div>
+
+                        <div class="product-type">
+                            ${p.category}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="favorite ${favoriteClass}"
+                    onclick="toggleFavorite(${item.id})"
+                >
+                    ${item.favorite ? "❤️" : "♡"}
+                </button>
+
+            </div>
+
+
+            <div class="price-row">
+
+                <div>
+
+                    <div class="price">
+                        ${item.wholesale}
+                        <span class="unit">دج/كغ</span>
+                    </div>
+
+                    <div class="market">
+                        📍 ${item.wilaya} — ${item.market}
+                    </div>
+
+                    <div class="date">
+                        🕒 ${formatDate(item.date)}
+                    </div>
+
+                </div>
+
+
+                <div style="text-align:left">
+
+                    <div style="font-size:12px;color:#888">
+                        التجزئة
+                    </div>
+
+                    <div style="font-size:20px;font-weight:bold">
+                        ${item.retail || "-"} دج
+                    </div>
+
+                    ${change}
+
+                </div>
+
+            </div>
+
+
+            ${
+                item.note
+                ?
+                `<div style="
+                    margin-top:13px;
+                    padding:10px;
+                    background:#f5f7f6;
+                    border-radius:12px;
+                    color:#666;
+                    font-size:13px;
+                ">
+                    📝 ${escapeHtml(item.note)}
+                </div>`
+                :
+                ""
+            }
+
+
+            <div style="
+                display:flex;
+                gap:8px;
+                margin-top:14px;
+            ">
+
+                <button
+                    class="secondary-btn"
+                    style="height:42px;font-size:13px"
+                    onclick="showPriceDetails(${item.id})"
+                >
+                    التفاصيل
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    style="
+                        height:42px;
+                        font-size:13px;
+                        border-color:#e53935;
+                        color:#e53935;
+                    "
+                    onclick="deletePrice(${item.id})"
+                >
+                    حذف
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   ADD PRICE
+========================================================= */
+
+function updateMarkets(){
+
+    const wilaya = document.getElementById("addWilaya").value;
+
+    const marketSelect = document.getElementById("addMarket");
+
+    marketSelect.innerHTML =
+        `<option value="">اختر السوق</option>`;
+
+
+    if(!wilaya) return;
+
+
+    let list = markets[wilaya] || [
+        `السوق المركزي ${wilaya}`,
+        `سوق الخضر والفواكه ${wilaya}`,
+        `سوق الجملة ${wilaya}`
+    ];
+
+
+    list.forEach(m=>{
+
+        const option = document.createElement("option");
+
+        option.value = m;
+        option.textContent = m;
+
+        marketSelect.appendChild(option);
+
+    });
+
+}
+
+
+function savePrice(){
+
+    const product = document.getElementById("addProduct").value;
+
+    const wilaya = document.getElementById("addWilaya").value;
+
+    const market = document.getElementById("addMarket").value;
+
+    const wholesale = Number(
+        document.getElementById("wholesalePrice").value
+    );
+
+    const retail = Number(
+        document.getElementById("retailPrice").value
+    );
+
+    const note = document.getElementById("addNote").value.trim();
+
+
+    if(!product){
+
+        showToast("⚠️ اختر المنتج أولا");
+
+        return;
+    }
+
+
+    if(!wilaya){
+
+        showToast("⚠️ اختر الولاية");
+
+        return;
+    }
+
+
+    if(!market){
+
+        showToast("⚠️ اختر السوق");
+
+        return;
+    }
+
+
+    if(!wholesale || wholesale<=0){
+
+        showToast("⚠️ أدخل سعر الجملة");
+
+        return;
+    }
+
+
+    if(!retail || retail<=0){
+
+        showToast("⚠️ أدخل سعر التجزئة");
+
+        return;
+    }
+
+
+    const today = new Date();
+
+    const date =
+        today.getFullYear()+"-"+
+        String(today.getMonth()+1).padStart(2,"0")+"-"+
+        String(today.getDate()).padStart(2,"0");
+
+
+    const newPrice = {
+
+        id:Date.now(),
+
+        product:product,
+
+        wilaya:wilaya,
+
+        market:market,
+
+        wholesale:wholesale,
+
+        retail:retail,
+
+        date:date,
+
+        note:note,
+
+        favorite:false
+
+    };
+
+
+    priceData.unshift(newPrice);
+
+    saveData();
+
+
+    document.getElementById("addProduct").value="";
+    document.getElementById("addWilaya").value="";
+    document.getElementById("addMarket").innerHTML=
+        `<option value="">اختر السوق</option>`;
+
+    document.getElementById("wholesalePrice").value="";
+    document.getElementById("retailPrice").value="";
+    document.getElementById("addNote").value="";
+
+
+    showToast("✅ تم حفظ السعر بنجاح");
+
+    setTimeout(()=>{
+        showPage("pricesPage");
+    },700);
+
+}
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+function toggleFavorite(id){
+
+    const item = priceData.find(x=>x.id===id);
+
+    if(!item) return;
+
+    item.favorite = !item.favorite;
+
+    saveData();
+
+    renderHome();
+    renderPricesPage();
+    renderFavorites();
+
+    showToast(
+        item.favorite
+        ? "❤️ تمت الإضافة للمفضلة"
+        : "تمت الإزالة من المفضلة"
     );
 
 }
 
 
-/* ================= LOAD SETTINGS ================= */
+function renderFavorites(){
 
-function loadSettings(){
+    const container = document.getElementById("favoritesCards");
 
-    const darkMode =
-        localStorage.getItem("darkMode");
+    const data = priceData.filter(x=>x.favorite);
 
-    if(darkMode === "true"){
+    renderCards(container,data);
 
-        document.getElementById("darkSwitch")
-            .checked=true;
+}
 
-        toggleDarkMode();
 
+/* =========================================================
+   COMPARE
+========================================================= */
+
+function renderCompare(){
+
+    const productId =
+        document.getElementById("compareProduct").value;
+
+    const container =
+        document.getElementById("compareResult");
+
+
+    if(!productId){
+
+        container.innerHTML=`
+            <div class="empty">
+                ⚖️ اختر منتجاً للمقارنة
+            </div>
+        `;
+
+        return;
     }
 
 
-    const favorite =
-        localStorage.getItem("favoriteWilaya");
+    const data =
+        priceData.filter(x=>x.product===productId);
 
-    if(favorite){
 
-        document.getElementById("favoriteWilaya")
-            .value=favorite;
+    if(!data.length){
 
+        container.innerHTML=`
+            <div class="empty">
+                لا توجد بيانات لهذا المنتج حالياً.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const p = getProduct(productId);
+
+
+    data.sort((a,b)=>a.wholesale-b.wholesale);
+
+
+    const cheapest = data[0];
+
+
+    container.innerHTML = `
+
+        <div style="
+            background:var(--green-light);
+            padding:15px;
+            border-radius:16px;
+            margin-bottom:15px;
+        ">
+
+            🏆 أرخص سعر للجملة حالياً:
+
+            <strong>
+                ${cheapest.wholesale} دج/كغ
+            </strong>
+
+            <br>
+
+            📍 ${cheapest.wilaya} — ${cheapest.market}
+
+        </div>
+
+
+        ${data.map(item=>`
+
+            <div style="
+                padding:15px 0;
+                border-bottom:1px solid #eee;
+            ">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                ">
+
+                    <div>
+
+                        <strong>
+                            ${p.icon} ${p.name}
+                        </strong>
+
+                        <div style="
+                            color:#777;
+                            font-size:13px;
+                            margin-top:5px;
+                        ">
+                            📍 ${item.wilaya}
+                        </div>
+
+                        <div style="
+                            color:#999;
+                            font-size:12px;
+                            margin-top:3px;
+                        ">
+                            ${item.market}
+                        </div>
+
+                    </div>
+
+                    <div style="
+                        color:var(--green);
+                        font-size:22px;
+                        font-weight:bold;
+                    ">
+                        ${item.wholesale} دج
+                    </div>
+
+                </div>
+
+            </div>
+
+        `).join("")}
+
+    `;
+
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+function showPriceDetails(id){
+
+    const item = priceData.find(x=>x.id===id);
+
+    if(!item) return;
+
+    const p = getProduct(item.product);
+
+
+    openModal(
+        "تفاصيل السعر",
+        `
+
+        <div style="text-align:center">
+
+            <div style="font-size:55px">
+                ${p.icon}
+            </div>
+
+            <h2>
+                ${p.name}
+            </h2>
+
+            <p style="color:#777">
+                ${p.category}
+            </p>
+
+        </div>
+
+
+        <div class="stat-card" style="margin-top:15px">
+
+            <div class="stat-title">
+                سعر الجملة
+            </div>
+
+            <div class="stat-number">
+                ${item.wholesale} دج
+            </div>
+
+            <div class="stat-title">
+                للكيلوغرام
+            </div>
+
+        </div>
+
+
+        <div class="stat-card" style="margin-top:12px">
+
+            <div class="stat-title">
+                سعر التجزئة
+            </div>
+
+            <div class="stat-number">
+                ${item.retail} دج
+            </div>
+
+            <div class="stat-title">
+                للكيلوغرام
+            </div>
+
+        </div>
+
+
+        <div style="
+            margin-top:15px;
+            padding:15px;
+            background:#f5f7f6;
+            border-radius:15px;
+        ">
+
+            📍 الولاية:
+            <strong>${item.wilaya}</strong>
+
+            <br><br>
+
+            🏪 السوق:
+            <strong>${item.market}</strong>
+
+            <br><br>
+
+            🕒 التاريخ:
+            <strong>${formatDate(item.date)}</strong>
+
+            ${
+                item.note
+                ?
+                `<br><br>📝 ${escapeHtml(item.note)}`
+                :
+                ""
+            }
+
+        </div>
+
+        `
+    );
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+function deletePrice(id){
+
+    const item = priceData.find(x=>x.id===id);
+
+    if(!item) return;
+
+
+    const p = getProduct(item.product);
+
+
+    if(!confirm(
+        `هل تريد حذف سعر ${p.name}؟`
+    )) return;
+
+
+    priceData =
+        priceData.filter(x=>x.id!==id);
+
+
+    saveData();
+
+    renderHome();
+    renderPricesPage();
+    renderFavorites();
+
+    showToast("🗑️ تم حذف السعر");
+
+}
+
+
+/* =========================================================
+   ACCOUNT
+========================================================= */
+
+function editName(){
+
+    const oldName =
+        localStorage.getItem("souqUserName") || "زائر";
+
+
+    const name =
+        prompt("اكتب اسمك:",oldName);
+
+
+    if(name===null) return;
+
+
+    const clean = name.trim();
+
+
+    if(!clean) return;
+
+
+    localStorage.setItem(
+        "souqUserName",
+        clean
+    );
+
+
+    applySavedSettings();
+
+    showToast("✅ تم تحديث الاسم");
+
+}
+
+
+function applySavedSettings(){
+
+    const name =
+        localStorage.getItem("souqUserName") || "زائر";
+
+    document.getElementById("profileName").textContent=name;
+
+
+    const dark =
+        localStorage.getItem("souqDarkMode")==="true";
+
+    document.body.classList.toggle("dark",dark);
+
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+function toggleDarkMode(){
+
+    const active =
+        document.body.classList.toggle("dark");
+
+
+    localStorage.setItem(
+        "souqDarkMode",
+        active
+    );
+
+
+    showToast(
+        active
+        ? "🌙 تم تفعيل الوضع الليلي"
+        : "☀️ تم إيقاف الوضع الليلي"
+    );
+
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+function showStatistics(){
+
+    const total = priceData.length;
+
+    const favorites =
+        priceData.filter(x=>x.favorite).length;
+
+    const wilayaCount =
+        new Set(priceData.map(x=>x.wilaya)).size;
+
+    const productCount =
+        new Set(priceData.map(x=>x.product)).size;
+
+
+    openModal(
+        "📈 الإحصائيات",
+        `
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-number">${total}</div>
+                <div class="stat-title">إجمالي الأسعار</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-number">${favorites}</div>
+                <div class="stat-title">المفضلة</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📍</div>
+                <div class="stat-number">${wilayaCount}</div>
+                <div class="stat-title">الولايات</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🥬</div>
+                <div class="stat-number">${productCount}</div>
+                <div class="stat-title">المنتجات</div>
+            </div>
+
+        </div>
+
+        `
+    );
+
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+function showAbout(){
+
+    openModal(
+        "ℹ️ عن السوق والصندوق",
+        `
+
+        <div style="text-align:center">
+
+            <div style="font-size:60px">
+                🥬🍎
+            </div>
+
+            <h2>السوق والصندوق</h2>
+
+            <p style="line-height:1.8;color:#777">
+                منصة تهدف إلى تسهيل متابعة أسعار
+                الخضر والفواكه في الأسواق الجزائرية،
+                ومساعدة التجار والمستهلكين على معرفة
+                الأسعار ومقارنتها بين الأسواق.
+            </p>
+
+            <div class="info-box">
+                🇩🇿 مشروع جزائري
+            </div>
+
+        </div>
+
+        `
+    );
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+function showContact(){
+
+    openModal(
+        "📞 تواصل معنا",
+        `
+
+        <p style="line-height:1.8">
+            عندك اقتراح، ملاحظة، أو حاب تبلغنا عن سعر
+            غير صحيح؟ يمكنك التواصل مع إدارة
+            <strong>السوق والصندوق</strong>.
+        </p>
+
+        <div class="info-box">
+            📩 سيتم إضافة وسائل التواصل الرسمية
+            في النسخة القادمة.
+        </div>
+
+        <button
+            class="primary-btn"
+            onclick="closeModal()"
+        >
+            حسناً
+        </button>
+
+        `
+    );
+
+}
+
+
+/* =========================================================
+   CLEAR DATA
+========================================================= */
+
+function clearAllData(){
+
+    if(!confirm(
+        "⚠️ هل أنت متأكد؟ سيتم حذف الأسعار المحفوظة في هذا الهاتف."
+    )) return;
+
+
+    localStorage.removeItem("souqPrices");
+
+    location.reload();
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(title,content){
+
+    document.getElementById("modalTitle").textContent=title;
+
+    document.getElementById("modalContent").innerHTML=content;
+
+    document.getElementById("modal").classList.add("show");
+
+}
+
+
+function closeModal(){
+
+    document.getElementById("modal").classList.remove("show");
+
+}
+
+
+function closeModalOutside(event){
+
+    if(event.target.id==="modal"){
+        closeModal();
     }
 
 }
 
 
-/* ================= START ================= */
+/* =========================================================
+   HELPERS
+========================================================= */
 
-displayPrices();
+function getProduct(id){
 
-loadSettings();
+    return products.find(x=>x.id===id) || {
+        name:"منتج غير معروف",
+        category:"",
+        icon:"🥬"
+    };
+
+}
+
+
+function formatDate(date){
+
+    if(!date) return "";
+
+    const parts = date.split("-");
+
+    if(parts.length!==3) return date;
+
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+}
+
+
+function saveData(){
+
+    localStorage.setItem(
+        "souqPrices",
+        JSON.stringify(priceData)
+    );
+
+}
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent=message;
+
+    toast.classList.add("show");
+
+
+    clearTimeout(window.toastTimer);
+
+
+    window.toastTimer =
+        setTimeout(()=>{
+            toast.classList.remove("show");
+        },2500);
+
+}
+
+
+function escapeHtml(text){
+
+    const div=document.createElement("div");
+
+    div.textContent=text;
+
+    return div.innerHTML;
+
+}
 
 </script>
 
