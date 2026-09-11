@@ -5,328 +5,3158 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#087f4e">
 <title>السوق والصندوق</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#09120f;--card:#121e19;--card2:#17251f;--line:#293b33;--green:#09aa5e;--green2:#087f4e;--text:#f4f7f5;--muted:#9aa9a2;--red:#ed5555;--gold:#f5c84b}
-body{font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:88px}
-.app{max-width:760px;margin:auto}.hidden{display:none!important}
-.header{background:linear-gradient(145deg,#087f4e,#0aa45b);border-radius:0 0 34px 34px;padding:20px 16px 28px;box-shadow:0 8px 25px #0003}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px}.logo{font-size:23px;font-weight:900}.logo small{display:block;font-size:11px;font-weight:400;margin-top:4px;opacity:.9}
-.icon-btn{width:43px;height:43px;border-radius:14px;background:#ffffff22;color:#fff;font-size:20px}.hero h1{font-size:29px;margin-top:27px}.hero p{color:#dcf4e8;margin-top:7px}
-.container{padding:16px 13px}.page{display:none}.page.active{display:block}
-.search{position:relative;margin-bottom:11px}.search span{position:absolute;right:15px;top:11px;font-size:22px}.search input,.field input,.field select,.field textarea{width:100%;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:14px 44px 14px 13px;outline:none}
-.field textarea{min-height:80px;resize:vertical;padding:13px}.field input,.field select{padding:13px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}
-.filters,.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.filter{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:13px}
-.chips{display:flex;gap:8px;overflow:auto;padding:12px 0 7px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chip{white-space:nowrap;background:var(--card);border:1px solid var(--line);color:var(--muted);padding:10px 15px;border-radius:22px}.chip.active{background:var(--green2);color:#fff;border-color:var(--green)}
-.section-title{display:flex;align-items:center;justify-content:space-between;margin:21px 2px 12px}.section-title h2{font-size:23px}.section-title span{color:var(--green);font-weight:bold}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:15px;margin-bottom:11px;box-shadow:0 5px 16px #0002}
-.price-card .mainrow{display:flex;align-items:center;gap:12px}.product-icon{width:60px;height:60px;flex:none;border-radius:17px;background:#1b3026;display:flex;align-items:center;justify-content:center;font-size:32px}.product-info{flex:1;min-width:0}.product-info h3{font-size:19px;margin-bottom:6px}.meta,.small{font-size:12px;color:var(--muted)}
-.price{font-size:25px;font-weight:900;color:var(--green);white-space:nowrap}.unit{font-size:10px;color:var(--muted);font-weight:normal}
-.range{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:12px}.range b{color:var(--text)}
-.actions{display:flex;gap:7px;border-top:1px solid var(--line);padding-top:11px;margin-top:12px}.action{background:var(--card2);color:var(--text);border-radius:12px;padding:9px 11px;font-size:12px}.action.fav{color:#ff6670}.action.del{color:#ff7979}
-.empty{text-align:center;color:var(--muted);padding:40px 15px}.notice{background:#14281f;border:1px solid #28533f;border-radius:15px;padding:12px;color:#cbe9da;font-size:12px;line-height:1.7;margin-bottom:13px}
-.form-card{padding:17px}.field{margin-bottom:13px}.field label{display:block;margin-bottom:6px;font-size:13px;color:#d8e3dd}.primary{width:100%;background:var(--green);color:#fff;border-radius:15px;padding:14px;font-weight:bold;font-size:16px}.secondary{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:15px;padding:13px;margin-top:8px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:16px}.stat p{font-size:12px;color:var(--muted)}.stat .num{font-size:27px;font-weight:900;color:var(--green);margin-top:6px}
-.bottom{position:fixed;z-index:20;bottom:0;left:0;right:0;max-width:760px;margin:auto;height:80px;background:#101b17;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);align-items:end;padding:6px 3px}
-.nav{background:none;color:var(--muted);font-size:10px;padding:3px;display:flex;flex-direction:column;align-items:center;gap:2px}.nav .ico{font-size:23px;line-height:27px}.nav.active{color:var(--green)}.addnav{position:relative;top:-23px}.addnav .ico{width:66px;height:66px;border-radius:50%;background:var(--green);border:7px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:38px;color:#fff;box-shadow:0 4px 16px #0006}
-.authbox{padding:18px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}.tab{padding:12px;background:var(--card2);color:var(--muted);border-radius:13px}.tab.active{background:var(--green2);color:#fff}
-.profile{display:flex;align-items:center;gap:13px}.avatar{width:66px;height:66px;border-radius:20px;background:var(--green2);display:flex;align-items:center;justify-content:center;font-size:34px}.profile h2{font-size:20px}.profile p{color:var(--muted);font-size:12px;margin-top:4px}
-.menu-btn{width:100%;background:var(--card);color:var(--text);border:1px solid var(--line);padding:14px;border-radius:15px;text-align:right;margin-top:8px}
-.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#1d3429;color:#8ce0b4;font-size:10px}.badge.pending{color:#ffd66e;background:#392f18}.badge.rejected{color:#ff9b9b;background:#3a1d1d}
-.toast{position:fixed;z-index:60;left:50%;bottom:95px;transform:translate(-50%,20px);background:#173329;color:#fff;border:1px solid #2c6a51;border-radius:14px;padding:12px 17px;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
-.modal{position:fixed;z-index:50;inset:0;background:#000a;display:none;align-items:flex-end}.modal.show{display:flex}.modal-box{width:100%;max-width:760px;max-height:90vh;overflow:auto;background:#101b17;border:1px solid var(--line);border-radius:27px 27px 0 0;padding:19px;margin:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.close{width:40px;height:40px;border-radius:12px;background:var(--card2);color:#fff}
-.loading{text-align:center;padding:25px;color:var(--muted)}.online{color:#9be8bd}.offline{color:#ffd66e}
-@media(max-width:380px){.hero h1{font-size:25px}.price{font-size:22px}.product-info h3{font-size:17px}}
+
+:root{
+--bg:#09120f;
+--card:#121e19;
+--card2:#17251f;
+--line:#293b33;
+--green:#09aa5e;
+--green2:#087f4e;
+--text:#f4f7f5;
+--muted:#9aa9a2;
+--red:#ed5555;
+--gold:#f5c84b
+}
+
+body{
+font-family:Arial,Tahoma,sans-serif;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+padding-bottom:88px
+}
+
+.app{
+max-width:760px;
+margin:auto
+}
+
+.hidden{
+display:none!important
+}
+
+.header{
+background:linear-gradient(145deg,#087f4e,#0aa45b);
+border-radius:0 0 34px 34px;
+padding:20px 16px 28px;
+box-shadow:0 8px 25px #0003
+}
+
+.top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px
+}
+
+.logo{
+font-size:23px;
+font-weight:900
+}
+
+.logo small{
+display:block;
+font-size:11px;
+font-weight:400;
+margin-top:4px;
+opacity:.9
+}
+
+.icon-btn{
+width:43px;
+height:43px;
+border-radius:14px;
+background:#ffffff22;
+color:#fff;
+font-size:20px;
+border:0
+}
+
+.hero h1{
+font-size:29px;
+margin-top:27px
+}
+
+.hero p{
+color:#dcf4e8;
+margin-top:7px
+}
+
+.container{
+padding:16px 13px
+}
+
+.page{
+display:none
+}
+
+.page.active{
+display:block
+}
+
+.search{
+position:relative;
+margin-bottom:11px
+}
+
+.search span{
+position:absolute;
+right:15px;
+top:11px;
+font-size:22px
+}
+
+.search input,
+.field input,
+.field select,
+.field textarea{
+width:100%;
+background:var(--card);
+color:var(--text);
+border:1px solid var(--line);
+border-radius:16px;
+padding:14px 44px 14px 13px;
+outline:none
+}
+
+.field textarea{
+min-height:80px;
+resize:vertical;
+padding:13px
+}
+
+.field input,
+.field select{
+padding:13px
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+border-color:var(--green)
+}
+
+.filters,
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px
+}
+
+.filter{
+background:var(--card);
+color:var(--text);
+border:1px solid var(--line);
+border-radius:16px;
+padding:13px
+}
+
+.chips{
+display:flex;
+gap:8px;
+overflow:auto;
+padding:12px 0 7px;
+scrollbar-width:none
+}
+
+.chips::-webkit-scrollbar{
+display:none
+}
+
+.chip{
+white-space:nowrap;
+background:var(--card);
+border:1px solid var(--line);
+color:var(--muted);
+padding:10px 15px;
+border-radius:22px
+}
+
+.chip.active{
+background:var(--green2);
+color:#fff;
+border-color:var(--green)
+}
+
+.section-title{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin:21px 2px 12px
+}
+
+.section-title h2{
+font-size:23px
+}
+
+.section-title span{
+color:var(--green);
+font-weight:bold
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:22px;
+padding:15px;
+margin-bottom:11px;
+box-shadow:0 5px 16px #0002
+}
+
+.price-card .mainrow{
+display:flex;
+align-items:center;
+gap:12px
+}
+
+.product-icon{
+width:60px;
+height:60px;
+flex:none;
+border-radius:17px;
+background:#1b3026;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px
+}
+
+.product-info{
+flex:1;
+min-width:0
+}
+
+.product-info h3{
+font-size:19px;
+margin-bottom:6px
+}
+
+.meta,
+.small{
+font-size:12px;
+color:var(--muted)
+}
+
+.price{
+font-size:25px;
+font-weight:900;
+color:var(--green);
+white-space:nowrap
+}
+
+.unit{
+font-size:10px;
+color:var(--muted);
+font-weight:normal
+}
+
+.range{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:10px;
+color:var(--muted);
+font-size:12px
+}
+
+.range b{
+color:var(--text)
+}
+
+.actions{
+display:flex;
+gap:7px;
+border-top:1px solid var(--line);
+padding-top:11px;
+margin-top:12px
+}
+
+.action{
+background:var(--card2);
+color:var(--text);
+border:0;
+border-radius:12px;
+padding:9px 11px;
+font-size:12px
+}
+
+.action.fav{
+color:#ff6670
+}
+
+.action.del{
+color:#ff7979
+}
+
+.empty{
+text-align:center;
+color:var(--muted);
+padding:40px 15px
+}
+
+.notice{
+background:#14281f;
+border:1px solid #28533f;
+border-radius:15px;
+padding:12px;
+color:#cbe9da;
+font-size:12px;
+line-height:1.7;
+margin-bottom:13px
+}
+
+.form-card{
+padding:17px
+}
+
+.field{
+margin-bottom:13px
+}
+
+.field label{
+display:block;
+margin-bottom:6px;
+font-size:13px;
+color:#d8e3dd
+}
+
+.primary{
+width:100%;
+background:var(--green);
+color:#fff;
+border:0;
+border-radius:15px;
+padding:14px;
+font-weight:bold;
+font-size:16px
+}
+
+.secondary{
+width:100%;
+background:var(--card2);
+color:var(--text);
+border:1px solid var(--line);
+border-radius:15px;
+padding:13px;
+margin-top:8px
+}
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px
+}
+
+.stat{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:19px;
+padding:16px
+}
+
+.stat p{
+font-size:12px;
+color:var(--muted)
+}
+
+.stat .num{
+font-size:27px;
+font-weight:900;
+color:var(--green);
+margin-top:6px
+}
+
+.bottom{
+position:fixed;
+z-index:20;
+bottom:0;
+left:0;
+right:0;
+max-width:760px;
+margin:auto;
+height:80px;
+background:#101b17;
+border-top:1px solid var(--line);
+display:grid;
+grid-template-columns:repeat(5,1fr);
+align-items:end;
+padding:6px 3px
+}
+
+.nav{
+background:none;
+border:0;
+color:var(--muted);
+font-size:10px;
+padding:3px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:2px
+}
+
+.nav .ico{
+font-size:23px;
+line-height:27px
+}
+
+.nav.active{
+color:var(--green)
+}
+
+.addnav{
+position:relative;
+top:-23px
+}
+
+.addnav .ico{
+width:66px;
+height:66px;
+border-radius:50%;
+background:var(--green);
+border:7px solid var(--bg);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+color:#fff;
+box-shadow:0 4px 16px #0006
+}
+
+.authbox{
+padding:18px
+}
+
+.tabs{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:7px;
+margin-bottom:14px
+}
+
+.tab{
+padding:12px;
+background:var(--card2);
+color:var(--muted);
+border:0;
+border-radius:13px
+}
+
+.tab.active{
+background:var(--green2);
+color:#fff
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:13px
+}
+
+.avatar{
+width:66px;
+height:66px;
+border-radius:20px;
+background:var(--green2);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px
+}
+
+.profile h2{
+font-size:20px
+}
+
+.profile p{
+color:var(--muted);
+font-size:12px;
+margin-top:4px
+}
+
+.menu-btn{
+width:100%;
+background:var(--card);
+color:var(--text);
+border:1px solid var(--line);
+padding:14px;
+border-radius:15px;
+text-align:right;
+margin-top:8px
+}
+
+.badge{
+display:inline-block;
+padding:4px 8px;
+border-radius:20px;
+background:#1d3429;
+color:#8ce0b4;
+font-size:10px
+}
+
+.badge.pending{
+color:#ffd66e;
+background:#392f18
+}
+
+.badge.rejected{
+color:#ff9b9b;
+background:#3a1d1d
+}
+
+.toast{
+position:fixed;
+z-index:60;
+left:50%;
+bottom:95px;
+transform:translate(-50%,20px);
+background:#173329;
+color:#fff;
+border:1px solid #2c6a51;
+border-radius:14px;
+padding:12px 17px;
+opacity:0;
+pointer-events:none;
+transition:.25s;
+white-space:nowrap
+}
+
+.toast.show{
+opacity:1;
+transform:translate(-50%,0)
+}
+
+.modal{
+position:fixed;
+z-index:50;
+inset:0;
+background:#000a;
+display:none;
+align-items:flex-end
+}
+
+.modal.show{
+display:flex
+}
+
+.modal-box{
+width:100%;
+max-width:760px;
+max-height:90vh;
+overflow:auto;
+background:#101b17;
+border:1px solid var(--line);
+border-radius:27px 27px 0 0;
+padding:19px;
+margin:auto
+}
+
+.modal-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px
+}
+
+.close{
+width:40px;
+height:40px;
+border-radius:12px;
+background:var(--card2);
+color:#fff;
+border:0
+}
+
+.loading{
+text-align:center;
+padding:25px;
+color:var(--muted)
+}
+
+.online{
+color:#9be8bd
+}
+
+.offline{
+color:#ffd66e
+}
+
+@media(max-width:380px){
+.hero h1{font-size:25px}
+.price{font-size:22px}
+.product-info h3{font-size:17px}
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
 
 <header class="header">
- <div class="top">
-  <div class="logo">🥬 السوق والصندوق <small>أسعار الخضر والفواكه في الجزائر</small></div>
-  <button class="icon-btn" onclick="toggleTheme()">☀️</button>
- </div>
- <div class="hero"><h1>أسعار السوق اليوم 🌿</h1><p>تابع الأسعار حسب الولاية والسوق وشارك أسعارك.</p></div>
+
+<div class="top">
+
+<div class="logo">
+🥬 السوق والصندوق
+<small>أسعار الخضر والفواكه في الجزائر</small>
+</div>
+
+<button class="icon-btn" onclick="toggleTheme()">☀️</button>
+
+</div>
+
+<div class="hero">
+<h1>أسعار السوق اليوم 🌿</h1>
+<p>تابع الأسعار حسب الولاية والسوق وشارك أسعارك.</p>
+</div>
+
 </header>
+
 
 <main class="container">
 
+
 <section id="homePage" class="page active">
- <div class="search"><span>🔎</span><input id="searchInput" oninput="renderAll()" placeholder="ابحث عن منتج أو ولاية أو سوق..."></div>
- <div class="filters">
-  <select class="filter" id="wilayaFilter" onchange="updateMarkets();renderAll()"></select>
-  <select class="filter" id="marketFilter" onchange="renderAll()"></select>
- </div>
- <div class="chips">
-  <button class="chip active" data-cat="الكل" onclick="setCat('الكل')">الكل</button>
-  <button class="chip" data-cat="خضر" onclick="setCat('خضر')">🥬 خضر</button>
-  <button class="chip" data-cat="فواكه" onclick="setCat('فواكه')">🍎 فواكه</button>
-  <button class="chip" data-cat="بطاطا" onclick="setCat('بطاطا')">🥔 بطاطا</button>
-  <button class="chip" data-cat="بصل" onclick="setCat('بصل')">🧅 بصل</button>
- </div>
- <div class="section-title"><h2>أسعار اليوم</h2><span id="countText">0 سعر</span></div>
- <div id="priceList"><div class="loading">جاري تحميل الأسعار...</div></div>
+
+<div class="search">
+<span>🔎</span>
+<input id="searchInput"
+oninput="renderAll()"
+placeholder="ابحث عن منتج أو ولاية أو سوق...">
+</div>
+
+<div class="filters">
+
+<select class="filter"
+id="wilayaFilter"
+onchange="updateMarkets();renderAll()">
+</select>
+
+<select class="filter"
+id="marketFilter"
+onchange="renderAll()">
+</select>
+
+</div>
+
+
+<div class="chips">
+
+<button class="chip active"
+data-cat="الكل"
+onclick="setCat('الكل')">
+الكل
+</button>
+
+<button class="chip"
+data-cat="خضر"
+onclick="setCat('خضر')">
+🥬 خضر
+</button>
+
+<button class="chip"
+data-cat="فواكه"
+onclick="setCat('فواكه')">
+🍎 فواكه
+</button>
+
+<button class="chip"
+data-cat="بطاطا"
+onclick="setCat('بطاطا')">
+🥔 بطاطا
+</button>
+
+<button class="chip"
+data-cat="بصل"
+onclick="setCat('بصل')">
+🧅 بصل
+</button>
+
+</div>
+
+
+<div class="section-title">
+<h2>أسعار اليوم</h2>
+<span id="countText">0 سعر</span>
+</div>
+
+<div id="priceList">
+<div class="loading">
+جاري تحميل الأسعار...
+</div>
+</div>
+
 </section>
+
+
 
 <section id="pricesPage" class="page">
- <div class="section-title"><h2>كل الأسعار 💰</h2></div>
- <div class="notice">كل سعر منشور يظهر هنا. الأسعار السحابية يمكن مشاركتها بين المستخدمين عند تشغيل Firebase.</div>
- <div id="allPrices"></div>
+
+<div class="section-title">
+<h2>كل الأسعار 💰</h2>
+</div>
+
+<div class="notice">
+كل سعر منشور يظهر هنا. الأسعار السحابية يمكن مشاركتها بين المستخدمين عند تشغيل Firebase.
+</div>
+
+<div id="allPrices"></div>
+
 </section>
+
+
 
 <section id="addPage" class="page">
- <div class="section-title"><h2 id="formTitle">إضافة سعر ➕</h2></div>
- <div class="card form-card">
-  <div class="notice">أدخل السعر الحقيقي قدر الإمكان. في الوضع السحابي سيُحفظ اسم صاحب الإضافة مع السعر.</div>
-  <div class="field"><label>المنتج</label><select id="product"></select></div>
-  <div class="field"><label>أو منتج جديد</label><input id="customProduct" placeholder="مثال: فلفل حار"></div>
-  <div class="grid2">
-   <div class="field"><label>الولاية</label><select id="wilaya"></select></div>
-   <div class="field"><label>السوق</label><input id="market" placeholder="مثال: سوق الجملة"></div>
-  </div>
-  <div class="grid2">
-   <div class="field"><label>السعر الأدنى دج</label><input id="minPrice" type="number" min="0"></div>
-   <div class="field"><label>السعر الأعلى دج</label><input id="maxPrice" type="number" min="0"></div>
-  </div>
-  <div class="field"><label>السعر الحالي دج/كغ</label><input id="priceInput" type="number" min="0" placeholder="مثال: 100"></div>
-  <div class="field"><label>ملاحظة</label><textarea id="note" placeholder="اختياري"></textarea></div>
-  <button class="primary" onclick="savePrice()">💾 حفظ السعر</button>
-  <button id="cancelEdit" class="secondary hidden" onclick="resetForm()">إلغاء التعديل</button>
- </div>
+
+<div class="section-title">
+<h2 id="formTitle">إضافة سعر ➕</h2>
+</div>
+
+<div class="card form-card">
+
+<div class="notice">
+أدخل السعر الحقيقي قدر الإمكان. في الوضع السحابي سيُحفظ اسم صاحب الإضافة مع السعر.
+</div>
+
+
+<div class="field">
+<label>المنتج</label>
+<select id="product"></select>
+</div>
+
+
+<div class="field">
+<label>أو منتج جديد</label>
+<input id="customProduct"
+placeholder="مثال: فلفل حار">
+</div>
+
+
+<div class="grid2">
+
+<div class="field">
+<label>الولاية</label>
+<select id="wilaya"></select>
+</div>
+
+<div class="field">
+<label>السوق</label>
+<input id="market"
+placeholder="مثال: سوق الجملة">
+</div>
+
+</div>
+
+
+<div class="grid2">
+
+<div class="field">
+<label>السعر الأدنى دج</label>
+<input id="minPrice" type="number" min="0">
+</div>
+
+<div class="field">
+<label>السعر الأعلى دج</label>
+<input id="maxPrice" type="number" min="0">
+</div>
+
+</div>
+
+
+<div class="field">
+<label>السعر الحالي دج/كغ</label>
+<input id="priceInput"
+type="number"
+min="0"
+placeholder="مثال: 100">
+</div>
+
+
+<div class="field">
+<label>ملاحظة</label>
+<textarea id="note"
+placeholder="اختياري"></textarea>
+</div>
+
+
+<button class="primary"
+onclick="savePrice()">
+💾 حفظ السعر
+</button>
+
+<button id="cancelEdit"
+class="secondary hidden"
+onclick="resetForm()">
+إلغاء التعديل
+</button>
+
+</div>
+
 </section>
+
+
 
 <section id="favPage" class="page">
- <div class="section-title"><h2>المفضلة ❤️</h2></div><div id="favList"></div>
+
+<div class="section-title">
+<h2>المفضلة ❤️</h2>
+</div>
+
+<div id="favList"></div>
+
 </section>
+
+
 
 <section id="statsPage" class="page">
- <div class="section-title"><h2>الإحصائيات 📊</h2></div>
- <div class="stats">
-  <div class="stat"><p>إجمالي الأسعار</p><div class="num" id="statPrices">0</div></div>
-  <div class="stat"><p>المنتجات</p><div class="num" id="statProducts">0</div></div>
-  <div class="stat"><p>الولايات</p><div class="num" id="statWilayas">0</div></div>
-  <div class="stat"><p>المفضلة</p><div class="num" id="statFav">0</div></div>
- </div>
- <div class="section-title"><h2>أكثر المنتجات</h2></div><div class="card" id="topProducts"></div>
+
+<div class="section-title">
+<h2>الإحصائيات 📊</h2>
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<p>إجمالي الأسعار</p>
+<div class="num" id="statPrices">0</div>
+</div>
+
+<div class="stat">
+<p>المنتجات</p>
+<div class="num" id="statProducts">0</div>
+</div>
+
+<div class="stat">
+<p>الولايات</p>
+<div class="num" id="statWilayas">0</div>
+</div>
+
+<div class="stat">
+<p>المفضلة</p>
+<div class="num" id="statFav">0</div>
+</div>
+
+</div>
+
+
+<div class="section-title">
+<h2>أكثر المنتجات</h2>
+</div>
+
+<div class="card" id="topProducts"></div>
+
 </section>
 
+
+
 <section id="accountPage" class="page">
- <div class="section-title"><h2>حسابي 👤</h2></div>
- <div id="loggedOut">
-  <div class="card authbox">
-   <div class="tabs"><button class="tab active" id="loginTab" onclick="authTab('login')">دخول</button><button class="tab" id="registerTab" onclick="authTab('register')">حساب جديد</button></div>
-   <div class="field"><label>البريد الإلكتروني</label><input id="email" type="email" placeholder="example@gmail.com" dir="ltr"></div>
-   <div class="field"><label>كلمة المرور</label><input id="password" type="password" placeholder="6 أحرف على الأقل" dir="ltr"></div>
-   <div class="field hidden" id="nameField"><label>الاسم</label><input id="displayName" placeholder="اسمك"></div>
-   <button class="primary" onclick="submitAuth()" id="authButton">دخول</button>
-   <p class="small" style="margin-top:10px">الوضع الحالي: <span id="modeText">محلي</span></p>
-  </div>
- </div>
- <div id="loggedIn" class="hidden">
-  <div class="card"><div class="profile"><div class="avatar">👤</div><div><h2 id="userName">مستخدم</h2><p id="userEmail"></p><span class="badge" id="roleBadge">عضو</span></div></div></div>
-  <button class="menu-btn" onclick="go('addPage',document.querySelector('[data-page=addPage]'))">➕ أضف سعراً</button>
-  <button class="menu-btn" onclick="showMyPrices()">📋 أسعاري</button>
-  <button class="menu-btn" onclick="exportData()">📤 تصدير نسخة احتياطية</button>
-  <button class="menu-btn" onclick="document.getElementById('importFile').click()">📥 استيراد نسخة احتياطية</button>
-  <button class="menu-btn" onclick="logout()">🚪 تسجيل الخروج</button>
- </div>
- <div class="card" style="margin-top:12px"><p class="small">حالة قاعدة البيانات: <b id="connectionStatus" class="offline">الوضع المحلي</b></p></div>
+
+<div class="section-title">
+<h2>حسابي 👤</h2>
+</div>
+
+
+<div id="loggedOut">
+
+<div class="card authbox">
+
+<div class="tabs">
+
+<button class="tab active"
+id="loginTab"
+onclick="authTab('login')">
+دخول
+</button>
+
+<button class="tab"
+id="registerTab"
+onclick="authTab('register')">
+حساب جديد
+</button>
+
+</div>
+
+
+<div class="field">
+<label>البريد الإلكتروني</label>
+<input id="email"
+type="email"
+placeholder="example@gmail.com"
+dir="ltr">
+</div>
+
+
+<div class="field">
+<label>كلمة المرور</label>
+<input id="password"
+type="password"
+placeholder="6 أحرف على الأقل"
+dir="ltr">
+</div>
+
+
+<div class="field hidden" id="nameField">
+<label>الاسم</label>
+<input id="displayName"
+placeholder="اسمك">
+</div>
+
+
+<button class="primary"
+onclick="submitAuth()"
+id="authButton">
+دخول
+</button>
+
+
+<p class="small" style="margin-top:10px">
+الوضع الحالي:
+<span id="modeText">جاري الاتصال...</span>
+</p>
+
+</div>
+
+</div>
+
+
+
+<div id="loggedIn" class="hidden">
+
+<div class="card">
+
+<div class="profile">
+
+<div class="avatar">
+👤
+</div>
+
+<div>
+
+<h2 id="userName">
+مستخدم
+</h2>
+
+<p id="userEmail"></p>
+
+<span class="badge"
+id="roleBadge">
+عضو
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<button class="menu-btn"
+onclick="go('addPage',document.querySelector('[data-page=addPage]'))">
+➕ أضف سعراً
+</button>
+
+
+<button class="menu-btn"
+onclick="showMyPrices()">
+📋 أسعاري
+</button>
+
+
+<button class="menu-btn"
+onclick="exportData()">
+📤 تصدير نسخة احتياطية
+</button>
+
+
+<button class="menu-btn"
+onclick="document.getElementById('importFile').click()">
+📥 استيراد نسخة احتياطية
+</button>
+
+
+<button class="menu-btn"
+onclick="logout()">
+🚪 تسجيل الخروج
+</button>
+
+</div>
+
+
+<div class="card" style="margin-top:12px">
+
+<p class="small">
+حالة قاعدة البيانات:
+<b id="connectionStatus"
+class="offline">
+جاري الاتصال...
+</b>
+</p>
+
+</div>
+
 </section>
 
 </main>
 
+
+
 <nav class="bottom">
- <button class="nav active" data-page="homePage" onclick="go('homePage',this)"><span class="ico">🏠</span>الرئيسية</button>
- <button class="nav" data-page="pricesPage" onclick="go('pricesPage',this)"><span class="ico">💰</span>الأسعار</button>
- <button class="nav addnav" data-page="addPage" onclick="go('addPage',this)"><span class="ico">＋</span><small>إضافة</small></button>
- <button class="nav" data-page="favPage" onclick="go('favPage',this)"><span class="ico">❤️</span>المفضلة</button>
- <button class="nav" data-page="accountPage" onclick="go('accountPage',this)"><span class="ico">👤</span>حسابي</button>
+
+<button class="nav active"
+data-page="homePage"
+onclick="go('homePage',this)">
+<span class="ico">🏠</span>
+الرئيسية
+</button>
+
+
+<button class="nav"
+data-page="pricesPage"
+onclick="go('pricesPage',this)">
+<span class="ico">💰</span>
+الأسعار
+</button>
+
+
+<button class="nav addnav"
+data-page="addPage"
+onclick="go('addPage',this)">
+<span class="ico">＋</span>
+<small>إضافة</small>
+</button>
+
+
+<button class="nav"
+data-page="favPage"
+onclick="go('favPage',this)">
+<span class="ico">❤️</span>
+المفضلة
+</button>
+
+
+<button class="nav"
+data-page="accountPage"
+onclick="go('accountPage',this)">
+<span class="ico">👤</span>
+حسابي
+</button>
+
 </nav>
+
 </div>
+
+
 
 <div id="toast" class="toast"></div>
-<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
- <div class="modal-box"><div class="modal-head"><h2 id="modalTitle">معلومة</h2><button class="close" onclick="closeModal()">✕</button></div><div id="modalContent"></div></div>
+
+
+<div id="modal"
+class="modal"
+onclick="if(event.target===this)closeModal()">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2 id="modalTitle">
+معلومة
+</h2>
+
+<button class="close"
+onclick="closeModal()">
+✕
+</button>
+
 </div>
-<input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)">
 
-<!--
-=========================================================
-إعداد قاعدة البيانات الحقيقية - Firebase
-=========================================================
-1) أنشئ مشروعاً مجانياً في Firebase.
-2) فعّل Authentication > Sign-in method > Email/Password.
-3) أنشئ Firestore Database.
-4) من Project settings > Your apps أضف Web App.
-5) انسخ إعدادات firebaseConfig وضعها في المكان المحدد تحت.
-6) انشر هذا الملف من جديد على GitHub Pages.
+<div id="modalContent"></div>
 
-مهم: لا تضع service account/private key هنا. إعداد Web App العادي ليس مفتاحاً سرياً.
-=========================================================
--->
+</div>
+
+</div>
+
+
+<input id="importFile"
+type="file"
+accept=".json"
+style="display:none"
+onchange="importData(event)">
+
+
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,updateProfile} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {getFirestore,collection,addDoc,doc,updateDoc,deleteDoc,onSnapshot,query,orderBy,serverTimestamp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-/* ====== ضع إعدادات Firebase هنا ====== */
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+getAuth,
+onAuthStateChanged,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+updateProfile
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+addDoc,
+doc,
+updateDoc,
+deleteDoc,
+onSnapshot,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
+/* =====================================================
+   FIREBASE الحقيقي لمشروع السوق والصندوق
+   ===================================================== */
+
 const firebaseConfig={
- apiKey:"YOUR_API_KEY",
- authDomain:"YOUR_PROJECT.firebaseapp.com",
- projectId:"YOUR_PROJECT_ID",
- storageBucket:"YOUR_PROJECT.appspot.com",
- messagingSenderId:"YOUR_SENDER_ID",
- appId:"YOUR_APP_ID"
+
+apiKey:"AIzaSyARsSEbdkOFvLydHPrmfut47Tr3su7wgD4",
+
+authDomain:"souq-w-sandouq.firebaseapp.com",
+
+projectId:"souq-w-sandouq",
+
+storageBucket:"souq-w-sandouq.firebasestorage.app",
+
+messagingSenderId:"1081988090892",
+
+appId:"1:1081988090892:web:7efab14a461ddbc43c7229",
+
+measurementId:"G-PYE5HJ9HML"
+
 };
-/* ===================================== */
 
-window.cloudReady=false;window.db=null;window.auth=null;window.currentUser=null;
-const configReady=!Object.values(firebaseConfig).some(v=>String(v).includes("YOUR_"));
 
-if(configReady){
- try{
-  const app=initializeApp(firebaseConfig);
-  window.auth=getAuth(app);window.db=getFirestore(app);window.cloudReady=true;
-  document.getElementById("modeText").textContent="سحابي Firebase";
-  document.getElementById("connectionStatus").textContent="متصل بقاعدة البيانات";
-  document.getElementById("connectionStatus").className="online";
-  const q=query(collection(window.db,"prices"),orderBy("createdAt","desc"));
-  onSnapshot(q,snap=>{
-   window.data=snap.docs.map(d=>({id:d.id,...d.data()}));
-   if(!window.data.length) window.data=[];
-   window.renderAll();
-  },err=>{console.warn(err);toast("⚠️ تعذر قراءة قاعدة البيانات");});
-  onAuthStateChanged(window.auth,user=>{
-   window.currentUser=user;window.renderAccount();
-  });
- }catch(e){console.warn(e);toast("الوضع المحلي مفعل");}
-}else{
- document.getElementById("modeText").textContent="محلي — Firebase غير مفعّل";
- document.getElementById("connectionStatus").textContent="الوضع المحلي";
+
+window.cloudReady=false;
+window.db=null;
+window.auth=null;
+window.currentUser=null;
+
+
+try{
+
+const app=initializeApp(firebaseConfig);
+
+window.auth=getAuth(app);
+
+window.db=getFirestore(app);
+
+window.cloudReady=true;
+
+
+document.getElementById("modeText").textContent=
+"سحابي Firebase";
+
+
+document.getElementById("connectionStatus").textContent=
+"متصل بـ Firebase";
+
+
+document.getElementById("connectionStatus").className=
+"online";
+
+
+
+/* =====================================================
+   قراءة الأسعار من Firestore
+   بدون orderBy حتى لا تتعطل البيانات القديمة
+   ===================================================== */
+
+onSnapshot(
+
+collection(window.db,"prices"),
+
+snap=>{
+
+data=snap.docs.map(d=>({
+
+id:d.id,
+
+...d.data()
+
+}));
+
+
+/* ترتيب أحدث الأسعار أولاً */
+
+data.sort((a,b)=>{
+
+const da=a.createdAt?.seconds
+?Number(a.createdAt.seconds)
+:0;
+
+const db=b.createdAt?.seconds
+?Number(b.createdAt.seconds)
+:0;
+
+if(db!==da)return db-da;
+
+return String(b.date||"")
+.localeCompare(String(a.date||""));
+
+});
+
+
+window.data=data;
+
+renderAll();
+
+},
+
+err=>{
+
+console.error("Firestore error:",err);
+
+document.getElementById("connectionStatus").textContent=
+"خطأ في قاعدة البيانات";
+
+document.getElementById("connectionStatus").className=
+"offline";
+
+toast("⚠️ تحقق من إعدادات Firestore والصلاحيات");
+
 }
+
+);
+
+
+
+/* =====================================================
+   تسجيل الدخول ومراقبة الحساب
+   ===================================================== */
+
+onAuthStateChanged(
+window.auth,
+
+user=>{
+
+window.currentUser=user;
+
+renderAccount();
+
+if(user){
+
+toast("👋 مرحباً "+(user.displayName||"بك"));
+
+}
+
+}
+
+);
+
+
+}catch(e){
+
+console.error("Firebase initialization error:",e);
+
+window.cloudReady=false;
+
+document.getElementById("modeText").textContent=
+"الوضع المحلي";
+
+document.getElementById("connectionStatus").textContent=
+"الوضع المحلي";
+
+}
+
+
+
+/* =====================================================
+   حفظ سعر جديد
+   ===================================================== */
+
 window.firebaseSave=async function(obj){
- if(!window.cloudReady||!window.currentUser) return false;
- await addDoc(collection(window.db,"prices"),{...obj,uid:window.currentUser.uid,userName:window.currentUser.displayName||window.currentUser.email,createdAt:serverTimestamp()});
- return true;
+
+if(!window.cloudReady||!window.currentUser)
+return false;
+
+
+await addDoc(
+
+collection(window.db,"prices"),
+
+{
+
+...obj,
+
+uid:window.currentUser.uid,
+
+userName:
+window.currentUser.displayName||
+window.currentUser.email||
+"مستخدم",
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+return true;
+
 };
+
+
+
+/* =====================================================
+   تعديل سعر
+   ===================================================== */
+
 window.firebaseUpdate=async function(id,obj){
- if(!window.cloudReady) return false;await updateDoc(doc(window.db,"prices",id),{...obj,updatedAt:serverTimestamp()});return true;
+
+if(!window.cloudReady)
+return false;
+
+
+await updateDoc(
+
+doc(window.db,"prices",id),
+
+{
+
+...obj,
+
+updatedAt:serverTimestamp()
+
+}
+
+);
+
+return true;
+
 };
+
+
+
+/* =====================================================
+   حذف سعر
+   ===================================================== */
+
 window.firebaseDelete=async function(id){
- if(!window.cloudReady) return false;await deleteDoc(doc(window.db,"prices",id));return true;
+
+if(!window.cloudReady)
+return false;
+
+
+await deleteDoc(
+
+doc(window.db,"prices",id)
+
+);
+
+return true;
+
 };
-window.firebaseRegister=async function(email,password,name){
- const c=await createUserWithEmailAndPassword(window.auth,email,password);
- if(name) await updateProfile(c.user,{displayName:name});
- return c.user;
+
+
+
+/* =====================================================
+   إنشاء حساب
+   ===================================================== */
+
+window.firebaseRegister=
+async function(email,password,name){
+
+const c=
+await createUserWithEmailAndPassword(
+window.auth,
+email,
+password
+);
+
+
+if(name){
+
+await updateProfile(
+c.user,
+{
+displayName:name
+}
+);
+
+}
+
+
+return c.user;
+
 };
-window.firebaseLogin=(email,password)=>signInWithEmailAndPassword(window.auth,email,password);
-window.firebaseLogout=()=>signOut(window.auth);
+
+
+
+/* =====================================================
+   تسجيل الدخول
+   ===================================================== */
+
+window.firebaseLogin=
+(email,password)=>
+signInWithEmailAndPassword(
+window.auth,
+email,
+password
+);
+
+
+
+/* =====================================================
+   تسجيل الخروج
+   ===================================================== */
+
+window.firebaseLogout=
+()=>signOut(window.auth);
+
 </script>
+
+
 
 <script>
-const WILAYAS=["أدرار","الشلف","الأغواط","أم البواقي","باتنة","بجاية","بسكرة","بشار","البليدة","البويرة","تمنراست","تبسة","تلمسان","تيارت","تيزي وزو","الجزائر","الجلفة","جيجل","سطيف","سعيدة","سكيكدة","سيدي بلعباس","عنابة","قالمة","قسنطينة","المدية","مستغانم","المسيلة","معسكر","ورقلة","وهران","البيض","إليزي","برج بوعريريج","بومرداس","الطارف","تندوف","تيسمسيلت","الوادي","خنشلة","سوق أهراس","تيبازة","ميلة","عين الدفلى","النعامة","عين تموشنت","غرداية","غليزان","تيميمون","برج باجي مختار","أولاد جلال","بني عباس","عين صالح","عين قزام","تقرت","جانت","المغير","المنيعة"];
-const PRODUCTS=[["طماطم","🍅","خضر"],["بطاطا","🥔","بطاطا"],["بصل","🧅","بصل"],["فلفل","🌶️","خضر"],["فلفل حار","🌶️","خضر"],["خيار","🥒","خضر"],["جزر","🥕","خضر"],["كوسة","🥒","خضر"],["باذنجان","🍆","خضر"],["خس","🥬","خضر"],["قرنبيط","🥦","خضر"],["ملفوف","🥬","خضر"],["ثوم","🧄","خضر"],["فاصوليا","🫛","خضر"],["بازلاء","🫛","خضر"],["سبانخ","🥬","خضر"],["تفاح","🍎","فواكه"],["موز","🍌","فواكه"],["برتقال","🍊","فواكه"],["ليمون","🍋","فواكه"],["فراولة","🍓","فواكه"],["عنب","🍇","فواكه"],["بطيخ","🍉","فواكه"],["شمام","🍈","فواكه"],["خوخ","🍑","فواكه"],["مشمش","🍑","فواكه"],["رمان","🍎","فواكه"],["تمر","🌴","فواكه"]];
-const KEY="souqDataV5",FAVKEY="souqFavV5";
-const demo=[
-{id:"demo1",product:"فلفل",icon:"🌶️",cat:"خضر",wilaya:"سطيف",market:"سوق مافروسطيف",price:110,min:90,max:120,note:"سعر تجريبي",date:"2026-09-02",uid:"demo"},
-{id:"demo2",product:"بطاطا",icon:"🥔",cat:"بطاطا",wilaya:"سطيف",market:"السوق المركزي",price:85,min:70,max:100,note:"",date:"2026-09-02",uid:"demo"},
-{id:"demo3",product:"طماطم",icon:"🍅",cat:"خضر",wilaya:"قسنطينة",market:"سوق الجملة",price:100,min:80,max:120,note:"",date:"2026-09-02",uid:"demo"},
-{id:"demo4",product:"تفاح",icon:"🍎",cat:"فواكه",wilaya:"الجزائر",market:"سوق الجملة",price:250,min:200,max:300,note:"",date:"2026-09-02",uid:"demo"},
-{id:"demo5",product:"بصل",icon:"🧅",cat:"بصل",wilaya:"باتنة",market:"السوق اليومي",price:75,min:60,max:90,note:"",date:"2026-09-02",uid:"demo"}];
-let data=JSON.parse(localStorage.getItem(KEY)||"null")||demo,favs=JSON.parse(localStorage.getItem(FAVKEY)||"[]"),cat="الكل",editId=null,authMode="login";
 
-const $=id=>document.getElementById(id);
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function money(n){return Number(n||0).toLocaleString("ar-DZ")}
-function today(){return new Date().toLocaleDateString("en-CA")}
-function toast(t){const x=$("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
-function localSave(){localStorage.setItem(KEY,JSON.stringify(data));localStorage.setItem(FAVKEY,JSON.stringify(favs))}
-function iconFor(p){const x=PRODUCTS.find(a=>a[0]===p);return x?.[1]||"🥬"}
-function catFor(p){const x=PRODUCTS.find(a=>a[0]===p);return x?.[2]||"خضر"}
+
+const WILAYAS=[
+
+"أدرار",
+"الشلف",
+"الأغواط",
+"أم البواقي",
+"باتنة",
+"بجاية",
+"بسكرة",
+"بشار",
+"البليدة",
+"البويرة",
+"تمنراست",
+"تبسة",
+"تلمسان",
+"تيارت",
+"تيزي وزو",
+"الجزائر",
+"الجلفة",
+"جيجل",
+"سطيف",
+"سعيدة",
+"سكيكدة",
+"سيدي بلعباس",
+"عنابة",
+"قالمة",
+"قسنطينة",
+"المدية",
+"مستغانم",
+"المسيلة",
+"معسكر",
+"ورقلة",
+"وهران",
+"البيض",
+"إليزي",
+"برج بوعريريج",
+"بومرداس",
+"الطارف",
+"تندوف",
+"تيسمسيلت",
+"الوادي",
+"خنشلة",
+"سوق أهراس",
+"تيبازة",
+"ميلة",
+"عين الدفلى",
+"النعامة",
+"عين تموشنت",
+"غرداية",
+"غليزان",
+"تيميمون",
+"برج باجي مختار",
+"أولاد جلال",
+"بني عباس",
+"عين صالح",
+"عين قزام",
+"تقرت",
+"جانت",
+"المغير",
+"المنيعة"
+
+];
+
+
+
+const PRODUCTS=[
+
+["طماطم","🍅","خضر"],
+["بطاطا","🥔","بطاطا"],
+["بصل","🧅","بصل"],
+["فلفل","🌶️","خضر"],
+["فلفل حار","🌶️","خضر"],
+["خيار","🥒","خضر"],
+["جزر","🥕","خضر"],
+["كوسة","🥒","خضر"],
+["باذنجان","🍆","خضر"],
+["خس","🥬","خضر"],
+["قرنبيط","🥦","خضر"],
+["ملفوف","🥬","خضر"],
+["ثوم","🧄","خضر"],
+["فاصوليا","🫛","خضر"],
+["بازلاء","🫛","خضر"],
+["سبانخ","🥬","خضر"],
+["تفاح","🍎","فواكه"],
+["موز","🍌","فواكه"],
+["برتقال","🍊","فواكه"],
+["ليمون","🍋","فواكه"],
+["فراولة","🍓","فواكه"],
+["عنب","🍇","فواكه"],
+["بطيخ","🍉","فواكه"],
+["شمام","🍈","فواكه"],
+["خوخ","🍑","فواكه"],
+["مشمش","🍑","فواكه"],
+["رمان","🍎","فواكه"],
+["تمر","🌴","فواكه"]
+
+];
+
+
+
+const KEY="souqDataV6";
+
+const FAVKEY="souqFavV6";
+
+
+
+const demo=[
+
+{
+id:"demo1",
+product:"فلفل",
+icon:"🌶️",
+cat:"خضر",
+wilaya:"سطيف",
+market:"سوق مافروسطيف",
+price:110,
+min:90,
+max:120,
+note:"سعر تجريبي",
+date:"2026-09-02",
+uid:"demo"
+},
+
+{
+id:"demo2",
+product:"بطاطا",
+icon:"🥔",
+cat:"بطاطا",
+wilaya:"سطيف",
+market:"السوق المركزي",
+price:85,
+min:70,
+max:100,
+note:"",
+date:"2026-09-02",
+uid:"demo"
+},
+
+{
+id:"demo3",
+product:"طماطم",
+icon:"🍅",
+cat:"خضر",
+wilaya:"قسنطينة",
+market:"سوق الجملة",
+price:100,
+min:80,
+max:120,
+note:"",
+date:"2026-09-02",
+uid:"demo"
+},
+
+{
+id:"demo4",
+product:"تفاح",
+icon:"🍎",
+cat:"فواكه",
+wilaya:"الجزائر",
+market:"سوق الجملة",
+price:250,
+min:200,
+max:300,
+note:"",
+date:"2026-09-02",
+uid:"demo"
+},
+
+{
+id:"demo5",
+product:"بصل",
+icon:"🧅",
+cat:"بصل",
+wilaya:"باتنة",
+market:"السوق اليومي",
+price:75,
+min:60,
+max:90,
+note:"",
+date:"2026-09-02",
+uid:"demo"
+}
+
+];
+
+
+
+let data=
+JSON.parse(localStorage.getItem(KEY)||"null")||demo;
+
+
+let favs=
+JSON.parse(localStorage.getItem(FAVKEY)||"[]");
+
+
+let cat="الكل";
+
+let editId=null;
+
+let authMode="login";
+
+
+
+const $=id=>
+document.getElementById(id);
+
+
+
+function esc(s){
+
+return String(s??"").replace(
+
+/[&<>"']/g,
+
+m=>({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[m])
+
+);
+
+}
+
+
+
+function money(n){
+
+return Number(n||0)
+.toLocaleString("ar-DZ");
+
+}
+
+
+
+function today(){
+
+return new Date()
+.toLocaleDateString("en-CA");
+
+}
+
+
+
+function toast(t){
+
+const x=$("toast");
+
+x.textContent=t;
+
+x.classList.add("show");
+
+setTimeout(
+()=>x.classList.remove("show"),
+2200
+);
+
+}
+
+
+
+function localSave(){
+
+localStorage.setItem(
+KEY,
+JSON.stringify(data)
+);
+
+localStorage.setItem(
+FAVKEY,
+JSON.stringify(favs)
+);
+
+}
+
+
+
+function iconFor(p){
+
+const x=PRODUCTS.find(
+a=>a[0]===p
+);
+
+return x?.[1]||"🥬";
+
+}
+
+
+
+function catFor(p){
+
+const x=PRODUCTS.find(
+a=>a[0]===p
+);
+
+return x?.[2]||"خضر";
+
+}
+
+
 
 function fill(){
- $("wilayaFilter").innerHTML='<option value="">كل الولايات</option>'+WILAYAS.map(x=>`<option>${x}</option>`).join("");
- $("wilaya").innerHTML=WILAYAS.map(x=>`<option>${x}</option>`).join("");
- $("product").innerHTML='<option value="">اختر منتجاً</option>'+PRODUCTS.map(x=>`<option value="${x[0]}">${x[1]} ${x[0]}</option>`).join("");
- updateMarkets();
+
+$("wilayaFilter").innerHTML=
+'<option value="">كل الولايات</option>'+
+WILAYAS.map(
+x=>`<option>${x}</option>`
+).join("");
+
+
+$("wilaya").innerHTML=
+WILAYAS.map(
+x=>`<option>${x}</option>`
+).join("");
+
+
+$("product").innerHTML=
+'<option value="">اختر منتجاً</option>'+
+PRODUCTS.map(
+x=>`<option value="${esc(x[0])}">${x[1]} ${esc(x[0])}</option>`
+).join("");
+
+
+updateMarkets();
+
 }
+
+
+
 function updateMarkets(){
- const w=$("wilayaFilter").value;
- const ms=[...new Set(data.filter(x=>!w||x.wilaya===w).map(x=>x.market).filter(Boolean))];
- $("marketFilter").innerHTML='<option value="">كل الأسواق</option>'+ms.map(x=>`<option>${esc(x)}</option>`).join("");
+
+const w=$("wilayaFilter").value;
+
+
+const ms=[
+
+...new Set(
+
+data
+
+.filter(
+x=>!w||x.wilaya===w
+)
+
+.map(x=>x.market)
+
+.filter(Boolean)
+
+)
+
+];
+
+
+$("marketFilter").innerHTML=
+'<option value="">كل الأسواق</option>'+
+ms.map(
+x=>`<option>${esc(x)}</option>`
+).join("");
+
 }
-function setCat(x){cat=x;document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("active",b.dataset.cat===x));renderHome()}
+
+
+
+function setCat(x){
+
+cat=x;
+
+document
+.querySelectorAll(".chip")
+.forEach(
+b=>b.classList.toggle(
+"active",
+b.dataset.cat===x
+)
+);
+
+renderHome();
+
+}
+
+
+
 function filtered(){
- const q=($("searchInput").value||"").toLowerCase().trim(),w=$("wilayaFilter").value,m=$("marketFilter").value;
- return data.filter(x=>(!q||[x.product,x.wilaya,x.market].join(" ").toLowerCase().includes(q))&&(!w||x.wilaya===w)&&(!m||x.market===m)&&(cat==="الكل"||x.cat===cat));
+
+const q=
+($("searchInput").value||"")
+.toLowerCase()
+.trim();
+
+
+const w=
+$("wilayaFilter").value;
+
+
+const m=
+$("marketFilter").value;
+
+
+return data.filter(x=>
+
+(
+
+!q||
+
+[x.product,x.wilaya,x.market]
+.join(" ")
+.toLowerCase()
+.includes(q)
+
+)
+
+&&
+
+(!w||x.wilaya===w)
+
+&&
+
+(!m||x.market===m)
+
+&&
+
+(cat==="الكل"||x.cat===cat)
+
+);
+
 }
+
+
+
 function card(x){
- const fav=favs.includes(x.id),owner=window.currentUser&&x.uid===window.currentUser.uid;
- const status=x.status||"approved";
- return `<div class="card price-card">
- <div class="mainrow"><div class="product-icon">${x.icon||iconFor(x.product)}</div><div class="product-info"><h3>${esc(x.product)}</h3><div class="meta">📍 ${esc(x.wilaya)} • ${esc(x.market)}</div></div><div class="price">${money(x.price)} <span class="unit">دج/كغ</span></div></div>
- <div class="range"><span>من <b>${money(x.min)} دج</b></span><span>حتى <b>${money(x.max)} دج</b></span><span>📅 ${esc(x.date||today())}</span></div>
- ${x.note?`<div class="small" style="margin-top:7px">📝 ${esc(x.note)}</div>`:""}
- ${x.userName?`<div class="small" style="margin-top:6px">👤 أضافه: ${esc(x.userName)}</div>`:""}
- ${status!=="approved"?`<div style="margin-top:8px"><span class="badge ${status==="pending"?"pending":"rejected"}">${status==="pending"?"قيد المراجعة":"مرفوض"}</span></div>`:""}
- <div class="actions"><button class="action fav" onclick="toggleFav('${String(x.id).replace(/'/g,"\\'")}')">${fav?"❤️":"♡"} مفضلة</button>${owner||!window.cloudReady?`<button class="action" onclick="editPrice('${String(x.id).replace(/'/g,"\\'")}')">✏️ تعديل</button><button class="action del" onclick="deletePrice('${String(x.id).replace(/'/g,"\\'")}')">🗑️</button>`:""}</div>
- </div>`;
+
+const fav=
+favs.some(
+a=>String(a)===String(x.id)
+);
+
+
+const owner=
+window.currentUser&&
+x.uid===window.currentUser.uid;
+
+
+const status=
+x.status||"approved";
+
+
+return `
+
+<div class="card price-card">
+
+<div class="mainrow">
+
+<div class="product-icon">
+${x.icon||iconFor(x.product)}
+</div>
+
+
+<div class="product-info">
+
+<h3>
+${esc(x.product)}
+</h3>
+
+<div class="meta">
+📍 ${esc(x.wilaya)} • ${esc(x.market)}
+</div>
+
+</div>
+
+
+<div class="price">
+
+${money(x.price)}
+
+<span class="unit">
+دج/كغ
+</span>
+
+</div>
+
+</div>
+
+
+<div class="range">
+
+<span>
+من <b>${money(x.min)} دج</b>
+</span>
+
+<span>
+حتى <b>${money(x.max)} دج</b>
+</span>
+
+<span>
+📅 ${esc(x.date||today())}
+</span>
+
+</div>
+
+
+${x.note?
+
+`<div class="small" style="margin-top:7px">
+📝 ${esc(x.note)}
+</div>`
+
+:""}
+
+
+${x.userName?
+
+`<div class="small" style="margin-top:6px">
+👤 أضافه: ${esc(x.userName)}
+</div>`
+
+:""}
+
+
+${status!=="approved"?
+
+`<div style="margin-top:8px">
+
+<span class="badge ${
+status==="pending"
+?"pending"
+:"rejected"
+}">
+
+${
+status==="pending"
+?"قيد المراجعة"
+:"مرفوض"
 }
-function renderHome(){const a=filtered();$("countText").textContent=a.length+" سعر";$("priceList").innerHTML=a.length?a.map(card).join(""):'<div class="empty">لا توجد أسعار مطابقة 🔎</div>'}
-function renderAllPrices(){const a=[...data].sort((x,y)=>(y.date||"").localeCompare(x.date||""));$("allPrices").innerHTML=a.length?a.map(card).join(""):'<div class="empty">لا توجد أسعار.</div>'}
-function renderFav(){const a=data.filter(x=>favs.includes(x.id));$("favList").innerHTML=a.length?a.map(card).join(""):'<div class="empty">لم تضف أي سعر إلى المفضلة ❤️</div>'}
+
+</span>
+
+</div>`
+
+:""}
+
+
+<div class="actions">
+
+
+<button
+class="action fav"
+onclick="toggleFav('${String(x.id).replace(/'/g,"\\'")}')">
+
+${fav?"❤️":"♡"} مفضلة
+
+</button>
+
+
+${
+owner||!window.cloudReady
+
+?
+
+`
+
+<button
+class="action"
+onclick="editPrice('${String(x.id).replace(/'/g,"\\'")}')">
+
+✏️ تعديل
+
+</button>
+
+
+<button
+class="action del"
+onclick="deletePrice('${String(x.id).replace(/'/g,"\\'")}')">
+
+🗑️
+
+</button>
+
+`
+
+:""
+
+}
+
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+
+function renderHome(){
+
+const a=filtered();
+
+
+$("countText").textContent=
+a.length+" سعر";
+
+
+$("priceList").innerHTML=
+
+a.length
+
+?a.map(card).join("")
+
+:'<div class="empty">لا توجد أسعار مطابقة 🔎</div>';
+
+}
+
+
+
+function renderAllPrices(){
+
+const a=
+[...data].sort(
+
+(x,y)=>{
+
+const a1=
+x.createdAt?.seconds
+?Number(x.createdAt.seconds)
+:0;
+
+const a2=
+y.createdAt?.seconds
+?Number(y.createdAt.seconds)
+:0;
+
+if(a2!==a1)
+return a2-a1;
+
+return String(y.date||"")
+.localeCompare(
+String(x.date||"")
+);
+
+}
+
+);
+
+
+$("allPrices").innerHTML=
+
+a.length
+
+?a.map(card).join("")
+
+:'<div class="empty">لا توجد أسعار.</div>';
+
+}
+
+
+
+function renderFav(){
+
+const a=
+data.filter(
+x=>favs.some(
+f=>String(f)===String(x.id)
+)
+);
+
+
+$("favList").innerHTML=
+
+a.length
+
+?a.map(card).join("")
+
+:'<div class="empty">لم تضف أي سعر إلى المفضلة ❤️</div>';
+
+}
+
+
+
 function renderStats(){
- $("statPrices").textContent=data.length;$("statProducts").textContent=new Set(data.map(x=>x.product)).size;$("statWilayas").textContent=new Set(data.map(x=>x.wilaya)).size;$("statFav").textContent=favs.length;
- const c={};data.forEach(x=>c[x.product]=(c[x.product]||0)+1);const top=Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,8);
- $("topProducts").innerHTML=top.length?top.map(x=>`<div class="list-item" style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span>🥬 ${esc(x[0])}</span><b>${x[1]} أسعار</b></div>`).join(""):'<div class="empty">لا توجد بيانات</div>';
+
+$("statPrices").textContent=
+data.length;
+
+
+$("statProducts").textContent=
+new Set(
+data.map(x=>x.product)
+).size;
+
+
+$("statWilayas").textContent=
+new Set(
+data.map(x=>x.wilaya)
+).size;
+
+
+$("statFav").textContent=
+favs.length;
+
+
+const c={};
+
+
+data.forEach(
+x=>c[x.product]=(c[x.product]||0)+1
+);
+
+
+const top=
+Object.entries(c)
+.sort(
+(a,b)=>b[1]-a[1]
+)
+.slice(0,8);
+
+
+$("topProducts").innerHTML=
+
+top.length
+
+?
+
+top.map(
+x=>`
+
+<div
+style="display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid var(--line)">
+
+<span>
+🥬 ${esc(x[0])}
+</span>
+
+<b>
+${x[1]} أسعار
+</b>
+
+</div>
+
+`
+).join("")
+
+:
+
+'<div class="empty">لا توجد بيانات</div>';
+
 }
-function renderAll(){updateMarkets();renderHome();renderAllPrices();renderFav();renderStats();renderAccount()}
-function go(id,btn){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active");scrollTo(0,0)}
-function resetForm(){editId=null;$("formTitle").textContent="إضافة سعر ➕";$("cancelEdit").classList.add("hidden");["customProduct","market","minPrice","maxPrice","priceInput","note"].forEach(i=>$(i).value="");$("product").value=""}
+
+
+
+function renderAll(){
+
+updateMarkets();
+
+renderHome();
+
+renderAllPrices();
+
+renderFav();
+
+renderStats();
+
+renderAccount();
+
+}
+
+
+
+function go(id,btn){
+
+document
+.querySelectorAll(".page")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+
+$(id).classList.add("active");
+
+
+document
+.querySelectorAll(".nav")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+
+if(btn)
+btn.classList.add("active");
+
+
+scrollTo(0,0);
+
+}
+
+
+
+function resetForm(){
+
+editId=null;
+
+
+$("formTitle").textContent=
+"إضافة سعر ➕";
+
+
+$("cancelEdit")
+.classList.add("hidden");
+
+
+[
+"customProduct",
+"market",
+"minPrice",
+"maxPrice",
+"priceInput",
+"note"
+
+].forEach(
+i=>$(i).value=""
+);
+
+
+$("product").value="";
+
+}
+
+
+
 async function savePrice(){
- const p=$("customProduct").value.trim()||$("product").value,w=$("wilaya").value,m=$("market").value.trim(),price=Number($("priceInput").value),min=Number($("minPrice").value)||price,max=Number($("maxPrice").value)||price;
- if(!p||!w||!m||!price){toast("⚠️ أكمل المعلومات المطلوبة");return}if(min>max){toast("⚠️ الأدنى أكبر من الأعلى");return}
- const obj={product:p,icon:iconFor(p),cat:catFor(p),wilaya:w,market:m,price,min,max,note:$("note").value.trim(),date:today(),status:"approved"};
- try{
-  if(window.cloudReady){
-   if(!window.currentUser){toast("🔐 سجّل الدخول أولاً للإضافة السحابية");go("accountPage",document.querySelector('[data-page=accountPage]'));return}
-   if(editId){await window.firebaseUpdate(editId,obj);toast("✅ تم تعديل السعر")}
-   else{obj.status="approved";await window.firebaseSave(obj);toast("☁️ تم حفظ السعر في قاعدة البيانات")}
-  }else{
-   if(editId){const i=data.findIndex(x=>x.id===editId);if(i>=0)data[i]={...data[i],...obj}}else data.push({id:"local_"+Date.now(),uid:window.currentUser?.uid||"local",userName:window.currentUser?.displayName||"مستخدم محلي",...obj});localSave();renderAll();toast(editId?"✅ تم التعديل":"✅ تم الحفظ");
-  }
-  resetForm();go("homePage",document.querySelector('[data-page=homePage]'));
- }catch(e){console.error(e);toast("❌ حدث خطأ، تحقق من إعداد Firebase")}
+
+const p=
+$("customProduct").value.trim()||
+$("product").value;
+
+
+const w=
+$("wilaya").value;
+
+
+const m=
+$("market").value.trim();
+
+
+const price=
+Number($("priceInput").value);
+
+
+const min=
+Number($("minPrice").value)||price;
+
+
+const max=
+Number($("maxPrice").value)||price;
+
+
+
+if(!p||!w||!m||!price){
+
+toast(
+"⚠️ أكمل المعلومات المطلوبة"
+);
+
+return;
+
 }
-function editPrice(id){const x=data.find(a=>String(a.id)===String(id));if(!x)return;editId=id;$("formTitle").textContent="تعديل السعر ✏️";$("cancelEdit").classList.remove("hidden");$("product").value=PRODUCTS.some(p=>p[0]===x.product)?x.product:"";$("customProduct").value=PRODUCTS.some(p=>p[0]===x.product)?"":x.product;$("wilaya").value=x.wilaya;$("market").value=x.market;$("minPrice").value=x.min;$("maxPrice").value=x.max;$("priceInput").value=x.price;$("note").value=x.note||"";go("addPage",document.querySelector('[data-page=addPage]'))}
+
+
+
+if(min>max){
+
+toast(
+"⚠️ الأدنى أكبر من الأعلى"
+);
+
+return;
+
+}
+
+
+
+const obj={
+
+product:p,
+
+icon:iconFor(p),
+
+cat:catFor(p),
+
+wilaya:w,
+
+market:m,
+
+price,
+
+min,
+
+max,
+
+note:$("note").value.trim(),
+
+date:today(),
+
+status:"approved"
+
+};
+
+
+
+try{
+
+
+if(window.cloudReady){
+
+
+if(!window.currentUser){
+
+toast(
+"🔐 سجّل الدخول أولاً للإضافة السحابية"
+);
+
+
+go(
+"accountPage",
+document.querySelector(
+'[data-page=accountPage]'
+)
+);
+
+return;
+
+}
+
+
+
+if(editId){
+
+await window.firebaseUpdate(
+editId,
+obj
+);
+
+toast(
+"✅ تم تعديل السعر"
+);
+
+}else{
+
+await window.firebaseSave(
+obj
+);
+
+toast(
+"☁️ تم حفظ السعر في قاعدة البيانات"
+);
+
+}
+
+
+}else{
+
+
+if(editId){
+
+const i=
+data.findIndex(
+x=>String(x.id)===String(editId)
+);
+
+
+if(i>=0){
+
+data[i]={
+...data[i],
+...obj
+};
+
+}
+
+}else{
+
+data.push({
+
+id:"local_"+Date.now(),
+
+uid:
+window.currentUser?.uid||
+"local",
+
+userName:
+window.currentUser?.displayName||
+"مستخدم محلي",
+
+...obj
+
+});
+
+}
+
+
+localSave();
+
+renderAll();
+
+
+toast(
+editId
+?"✅ تم التعديل"
+:"✅ تم الحفظ"
+);
+
+}
+
+
+
+resetForm();
+
+
+go(
+"homePage",
+document.querySelector(
+'[data-page=homePage]'
+)
+);
+
+
+
+}catch(e){
+
+console.error(e);
+
+
+toast(
+"❌ حدث خطأ، تحقق من إعداد Firebase وFirestore"
+);
+
+}
+
+}
+
+
+
+function editPrice(id){
+
+const x=
+data.find(
+a=>String(a.id)===String(id)
+);
+
+
+if(!x)return;
+
+
+editId=id;
+
+
+$("formTitle").textContent=
+"تعديل السعر ✏️";
+
+
+$("cancelEdit")
+.classList.remove("hidden");
+
+
+$("product").value=
+PRODUCTS.some(
+p=>p[0]===x.product
+)
+?x.product
+:"";
+
+
+$("customProduct").value=
+PRODUCTS.some(
+p=>p[0]===x.product
+)
+?""
+:x.product;
+
+
+$("wilaya").value=
+x.wilaya;
+
+
+$("market").value=
+x.market;
+
+
+$("minPrice").value=
+x.min;
+
+
+$("maxPrice").value=
+x.max;
+
+
+$("priceInput").value=
+x.price;
+
+
+$("note").value=
+x.note||"";
+
+
+go(
+"addPage",
+document.querySelector(
+'[data-page=addPage]'
+)
+);
+
+}
+
+
+
 async function deletePrice(id){
- if(!confirm("هل تريد حذف هذا السعر؟"))return;
- try{if(window.cloudReady)await window.firebaseDelete(id);else{data=data.filter(x=>String(x.id)!==String(id));favs=favs.filter(x=>String(x)!==String(id));localSave();renderAll()}toast("🗑️ تم الحذف")}catch(e){toast("❌ لا يمكن حذف السعر")}
+
+if(!confirm(
+"هل تريد حذف هذا السعر؟"
+))
+return;
+
+
+try{
+
+
+if(window.cloudReady){
+
+await window.firebaseDelete(id);
+
+}else{
+
+data=
+data.filter(
+x=>String(x.id)!==
+String(id)
+);
+
+
+favs=
+favs.filter(
+x=>String(x)!==
+String(id)
+);
+
+
+localSave();
+
+renderAll();
+
 }
-function toggleFav(id){const s=String(id);favs.some(x=>String(x)===s)?favs=favs.filter(x=>String(x)!==s):favs.push(id);localSave();renderAll();toast(favs.some(x=>String(x)===s)?"❤️ أضيف للمفضلة":"💔 أزيل من المفضلة")}
-function toggleTheme(){const light=document.body.dataset.theme==="light";document.body.dataset.theme=light?"dark":"light";if(!light){document.documentElement.style.setProperty("--bg","#eef4f1");document.documentElement.style.setProperty("--card","#fff");document.documentElement.style.setProperty("--card2","#edf3ef");document.documentElement.style.setProperty("--line","#d6e2dc");document.documentElement.style.setProperty("--text","#14221c");document.documentElement.style.setProperty("--muted","#68776f")}else{["--bg","--card","--card2","--line","--text","--muted"].forEach((k,i)=>document.documentElement.style.setProperty(k,["#09120f","#121e19","#17251f","#293b33","#f4f7f5","#9aa9a2"][i]))}localStorage.setItem("theme",document.body.dataset.theme)}
-function authTab(m){authMode=m;$("loginTab").classList.toggle("active",m==="login");$("registerTab").classList.toggle("active",m==="register");$("nameField").classList.toggle("hidden",m!=="register");$("authButton").textContent=m==="login"?"دخول":"إنشاء الحساب"}
+
+
+toast("🗑️ تم الحذف");
+
+
+}catch(e){
+
+console.error(e);
+
+toast(
+"❌ لا يمكن حذف السعر"
+);
+
+}
+
+}
+
+
+
+function toggleFav(id){
+
+const s=String(id);
+
+
+const exists=
+favs.some(
+x=>String(x)===s
+);
+
+
+if(exists){
+
+favs=
+favs.filter(
+x=>String(x)!==s
+);
+
+}else{
+
+favs.push(id);
+
+}
+
+
+localSave();
+
+renderAll();
+
+
+toast(
+!exists
+?"❤️ أضيف للمفضلة"
+:"💔 أزيل من المفضلة"
+);
+
+}
+
+
+
+function toggleTheme(){
+
+const light=
+document.body.dataset.theme==="light";
+
+
+document.body.dataset.theme=
+light
+?"dark"
+:"light";
+
+
+if(!light){
+
+document.documentElement
+.style.setProperty(
+"--bg",
+"#eef4f1"
+);
+
+document.documentElement
+.style.setProperty(
+"--card",
+"#fff"
+);
+
+document.documentElement
+.style.setProperty(
+"--card2",
+"#edf3ef"
+);
+
+document.documentElement
+.style.setProperty(
+"--line",
+"#d6e2dc"
+);
+
+document.documentElement
+.style.setProperty(
+"--text",
+"#14221c"
+);
+
+document.documentElement
+.style.setProperty(
+"--muted",
+"#68776f"
+);
+
+
+}else{
+
+
+[
+"--bg",
+"--card",
+"--card2",
+"--line",
+"--text",
+"--muted"
+
+].forEach(
+
+(k,i)=>
+
+document.documentElement
+.style.setProperty(
+
+k,
+
+[
+"#09120f",
+"#121e19",
+"#17251f",
+"#293b33",
+"#f4f7f5",
+"#9aa9a2"
+
+][i]
+
+)
+
+);
+
+}
+
+
+localStorage.setItem(
+"theme",
+document.body.dataset.theme
+);
+
+}
+
+
+
+function authTab(m){
+
+authMode=m;
+
+
+$("loginTab")
+.classList.toggle(
+"active",
+m==="login"
+);
+
+
+$("registerTab")
+.classList.toggle(
+"active",
+m==="register"
+);
+
+
+$("nameField")
+.classList.toggle(
+"hidden",
+m!=="register"
+);
+
+
+$("authButton").textContent=
+m==="login"
+?"دخول"
+:"إنشاء الحساب";
+
+}
+
+
+
 async function submitAuth(){
- const e=$("email").value.trim(),p=$("password").value,n=$("displayName").value.trim();if(!e||p.length<6){toast("⚠️ أدخل بريد صحيح وكلمة مرور 6 أحرف على الأقل");return}
- if(!window.cloudReady){toast("ℹ️ ضع إعدادات Firebase في الكود أولاً");return}
- try{if(authMode==="register"){await window.firebaseRegister(e,p,n||"مستخدم");toast("✅ تم إنشاء الحساب")}else{await window.firebaseLogin(e,p);toast("✅ مرحباً بك")} }catch(err){console.error(err);toast("❌ البريد أو كلمة المرور غير صحيحة / الحساب موجود")}
+
+const e=
+$("email").value.trim();
+
+
+const p=
+$("password").value;
+
+
+const n=
+$("displayName").value.trim();
+
+
+if(!e||p.length<6){
+
+toast(
+"⚠️ أدخل بريد صحيح وكلمة مرور 6 أحرف على الأقل"
+);
+
+return;
+
 }
+
+
+if(!window.cloudReady){
+
+toast(
+"❌ Firebase غير متصل"
+);
+
+return;
+
+}
+
+
+try{
+
+
+if(authMode==="register"){
+
+await window.firebaseRegister(
+e,
+p,
+n||"مستخدم"
+);
+
+
+toast(
+"✅ تم إنشاء الحساب بنجاح"
+);
+
+
+}else{
+
+
+await window.firebaseLogin(
+e,
+p
+);
+
+
+toast(
+"✅ مرحباً بك"
+);
+
+}
+
+
+}catch(err){
+
+console.error(err);
+
+
+let msg=
+"❌ حدث خطأ";
+
+
+if(err.code==="auth/email-already-in-use")
+msg="❌ هذا البريد مسجل من قبل";
+
+else if(err.code==="auth/invalid-email")
+msg="❌ البريد الإلكتروني غير صحيح";
+
+else if(err.code==="auth/weak-password")
+msg="❌ كلمة المرور ضعيفة";
+
+else if(
+err.code==="auth/invalid-credential"||
+err.code==="auth/wrong-password"||
+err.code==="auth/user-not-found"
+)
+msg="❌ البريد أو كلمة المرور غير صحيحة";
+
+
+toast(msg);
+
+}
+
+}
+
+
+
 function renderAccount(){
- const u=window.currentUser;
- $("loggedOut").classList.toggle("hidden",!!u);$("loggedIn").classList.toggle("hidden",!u);
- if(u){$("userName").textContent=u.displayName||"مستخدم";$("userEmail").textContent=u.email||"";$("roleBadge").textContent="عضو"}
+
+const u=
+window.currentUser;
+
+
+$("loggedOut")
+.classList.toggle(
+"hidden",
+!!u
+);
+
+
+$("loggedIn")
+.classList.toggle(
+"hidden",
+!u
+);
+
+
+if(u){
+
+$("userName").textContent=
+u.displayName||
+"مستخدم";
+
+
+$("userEmail").textContent=
+u.email||
+"";
+
+
+$("roleBadge").textContent=
+"عضو";
+
 }
-function logout(){if(window.cloudReady)window.firebaseLogout();else{window.currentUser=null;renderAccount()}toast("🚪 تم تسجيل الخروج")}
-function showMyPrices(){const u=window.currentUser;if(!u){toast("سجّل الدخول أولاً");return}const a=data.filter(x=>x.uid===u.uid);openModal("أسعاري",a.length?a.map(card).join(""):'<div class="empty">لم تضف أسعاراً بعد.</div>')}
-function openModal(t,c){$("modalTitle").textContent=t;$("modalContent").innerHTML=c;$("modal").classList.add("show")}function closeModal(){$("modal").classList.remove("show")}
-function exportData(){const blob=new Blob([JSON.stringify({data,favs},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="souq-algeria-backup.json";a.click();URL.revokeObjectURL(a.href);toast("📤 تم إنشاء النسخة")}
-function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!Array.isArray(o.data))throw 1;data=o.data;favs=o.favs||[];localSave();renderAll();toast("📥 تم الاستيراد")}catch{toast("❌ ملف غير صالح")}};r.readAsText(f);e.target.value=""}
-function about(){openModal("عن السوق والصندوق",'<div class="notice">منصة جزائرية لعرض أسعار الخضر والفواكه حسب الولاية والسوق.</div><p style="line-height:1.9;color:var(--muted)">النسخة الجديدة مجهزة للحسابات وقاعدة البيانات السحابية Firebase، مع بقاء الوضع المحلي للتجربة قبل ربط المشروع.</p>')}
-window.renderAll=renderAll;window.renderAccount=renderAccount;window.toast=toast;
-fill();renderAll();if(localStorage.getItem("theme")==="light")toggleTheme();
+
+}
+
+
+
+function logout(){
+
+if(window.cloudReady){
+
+window.firebaseLogout();
+
+}else{
+
+window.currentUser=null;
+
+renderAccount();
+
+}
+
+
+toast(
+"🚪 تم تسجيل الخروج"
+);
+
+}
+
+
+
+function showMyPrices(){
+
+const u=
+window.currentUser;
+
+
+if(!u){
+
+toast(
+"سجّل الدخول أولاً"
+);
+
+return;
+
+}
+
+
+const a=
+data.filter(
+x=>x.uid===u.uid
+);
+
+
+openModal(
+
+"أسعاري",
+
+a.length
+
+?a.map(card).join("")
+
+:'<div class="empty">لم تضف أسعاراً بعد.</div>'
+
+);
+
+}
+
+
+
+function openModal(t,c){
+
+$("modalTitle").textContent=t;
+
+$("modalContent").innerHTML=c;
+
+$("modal").classList.add("show");
+
+}
+
+
+
+function closeModal(){
+
+$("modal")
+.classList.remove("show");
+
+}
+
+
+
+function exportData(){
+
+const blob=
+new Blob(
+
+[
+JSON.stringify(
+{
+data,
+favs
+},
+null,
+2
+)
+],
+
+{
+type:"application/json"
+}
+
+);
+
+
+const a=
+document.createElement("a");
+
+
+a.href=
+URL.createObjectURL(blob);
+
+
+a.download=
+"souq-w-sandouq-backup.json";
+
+
+a.click();
+
+
+URL.revokeObjectURL(a.href);
+
+
+toast(
+"📤 تم إنشاء النسخة الاحتياطية"
+);
+
+}
+
+
+
+function importData(e){
+
+const f=
+e.target.files[0];
+
+
+if(!f)return;
+
+
+const r=
+new FileReader();
+
+
+r.onload=()=>{
+
+try{
+
+
+const o=
+JSON.parse(r.result);
+
+
+if(!Array.isArray(o.data))
+throw 1;
+
+
+data=o.data;
+
+
+favs=
+Array.isArray(o.favs)
+?o.favs
+:[];
+
+
+localSave();
+
+renderAll();
+
+
+toast(
+"📥 تم الاستيراد"
+);
+
+
+}catch{
+
+toast(
+"❌ ملف غير صالح"
+);
+
+}
+
+};
+
+
+r.readAsText(f);
+
+e.target.value="";
+
+}
+
+
+
+function about(){
+
+openModal(
+
+"عن السوق والصندوق",
+
+'<div class="notice">منصة جزائرية لعرض أسعار الخضر والفواكه حسب الولاية والسوق.</div><p style="line-height:1.9;color:var(--muted)">منصة السوق والصندوق مجهزة الآن للحسابات وقاعدة البيانات السحابية Firebase، مع دعم حفظ الأسعار والمفضلة والإحصائيات.</p>'
+
+);
+
+}
+
+
+
+window.renderAll=
+renderAll;
+
+
+window.renderAccount=
+renderAccount;
+
+
+window.toast=
+toast;
+
+
+
+fill();
+
+renderAll();
+
+
+
+if(
+localStorage.getItem("theme")==="light"
+)
+toggleTheme();
+
+
 </script>
+
 </body>
 </html>
